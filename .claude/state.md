@@ -1,26 +1,32 @@
 # Project State
 
-_Last updated: 2026-08-10T19:11:19Z by state-tracker_
+_Last updated: 2026-08-10T19:46:36Z by state-tracker_
+
+Note: the previous run of this agent in this session failed mid-way (connection
+error) before writing this file, so the version of `state.md` this replaces was
+stale (it still showed S02 done / S03 & S03B not started). This snapshot is a
+full from-scratch re-inspection — nothing carried over from that failed run.
 
 ## Spec status
 
 | Spec | Deliverable | Status | Notes |
 |---|---|---|---|
-| S00 | repo skeleton, config | done | All deliverables from the S00 tree exist: `app.py`, `graph.py`, `tools_txn.py`, `tools_card.py`, `voice.py`, `data_loader.py`, `eval.py`, `card_terms.yaml`, `mapping.yaml`, `generate_data.py` (real, see S01), `data/`, `evals/gold_questions.json`, `requirements.txt`, `.env.example`, `.gitignore`, `README.md`. `app.py` still only implements the "hello" + key-check gate (unchanged). Repo still has zero commits (`git log` reports "your current branch 'master' does not have any commits yet"; `git status` shows every project file untracked) — a git-hygiene gap, not a skeleton gap. |
-| S01 | `generate_data.py`, `data/transactions.csv` | done | Not re-run this pass (no reason to believe it changed; out of scope for this snapshot which is S02-focused). Spot-checked instead: `generate_data.py` is still 787 lines with 36 `assert` statements; `data/transactions.csv` is still 2,015 lines (1 header + 2,014 data rows), header still the canonical 9-column shape (`txn_id,timestamp,amount,merchant,category,card_id,txn_type,city,currency`). Matches the fully-verified state from the prior snapshot (which did re-run the generator and confirmed "All realism assertions passed"). |
-| S02 | `data_loader.py`, `mapping.yaml` | done | Verified this pass, not taken on faith. `data_loader.py` is now 251 lines with a real `load_transactions()`: parses `mapping.yaml` (source path resolved relative to the mapping file, not cwd), validates all 6 `REQUIRED_FIELDS` are declared and present as real CSV columns (collects *every* problem before raising, not just the first), renames to canonical schema, coerces `timestamp` via `pd.to_datetime` and `amount` via `pd.to_numeric` (with a currency/comma-stripping fallback for non-numeric columns), raises `MappingError` naming both the canonical field and the `mapping.yaml` key to fix, and is wrapped in `@st.cache_data`. `mapping.yaml` (37 lines) is fully documented and points `source: data/transactions.csv` at the real 6 canonical fields (currently identity-mapped since S01's CSV already uses canonical names). New `test_data_loader.py` (147 lines, 5 tests) actually run this pass via `venv/Scripts/python.exe -m pytest test_data_loader.py -v`: **all 5 passed** — canonical schema/dtype checks against the real CSV, both `MappingError` message-content paths (missing declaration; declared-but-absent column), currency-string amount coercion, and — critically — `test_schema_swap_promise_identical_canonical_output`, which renames every column in the real CSV to nonsense (`zz_ref_code`, `qux_moment`, etc.), points a fresh `mapping.yaml` at the new names, and asserts the resulting canonical frame is `pd.testing.assert_frame_equal`-identical to loading the real unmodified CSV. This *is* the literal S02 done-when test (all-specs.md: "rename every column in the CSV to nonsense, edit only `mapping.yaml`... this is the proof"), automated and passing. S02 done-when is met. |
-| S03 | `tools_txn.py` (6 tools) | not started | Still 7-line docstring-only — no `resolve_period`, no tool implementations, no `@tool` decorators. **Now unblocked**: S02's canonical DataFrame loader is real and passing, so the six transaction tools have a real contract to build against. |
-| S03B | `card_terms.yaml`, `tools_card.py` (4 tools) | not started | `card_terms.yaml` (29 lines) is still an empty-value skeleton (`name: "TODO"`, empty fee/reward dicts, no clauses, no dining cap authored). `tools_card.py` is still 6-line docstring-only. Was already unblocked on S01's category list; S02 landing doesn't add a new dependency for S03B (it only needs `data_loader` transitively for `rewards_earned`'s spend lookups, which now also has a real implementation to build against). Not yet picked up. |
-| S04 | `evals/gold_questions.json`, `eval.py` | not started | `gold_questions.json` is still `[]` (0 of 55 entries). `eval.py` is still 8-line docstring-only — no scoring logic. Blocked on S03/S03B for real tool surfaces to write gold questions against. |
-| S05 | `graph.py` planner node + assembly | not started | `graph.py` (4 lines) is still docstring-only — no `StateGraph`, no nodes. Blocked on S03/S03B/S04. |
+| S00 | repo skeleton, config | done | All S00-tree files exist and the repo is committed (`75e5756` → `94e3a74` → `04d6137`). One regression since the last commit: `.env.example` is **deleted in the working tree, unstaged** (`git status` shows `deleted: .env.example`) — it still exists in `HEAD`/git history, so it's recoverable with `git checkout -- .env.example`, but as of right now the file is missing from disk even though `README.md` and `app.py`'s warning message both still reference it. Flagged under Open items. |
+| S01 | `generate_data.py`, `data/transactions.csv` | done | Verified this pass by calling `build_dataset()` + `run_assertions(df)` directly (no file write) — all realism assertions pass: 2,014 rows, includes the dining reward-cap breach (≥2 months over threshold, ≥1 under), ≥8 `cash_advance` rows, ≥8 `fees_interest` rows, spike month, etc. `data/transactions.csv` on disk independently confirmed at 2,014 rows with the canonical 9-column header, matching the in-memory rebuild exactly (deterministic/seeded generator, unchanged since commit `94e3a74`). |
+| S02 | `data_loader.py`, `mapping.yaml` | done | `data_loader.py` (252 lines) is a real mapping-driven `load_transactions()`: resolves `source:` relative to `mapping.yaml`'s own location, validates all 6 `REQUIRED_FIELDS` are declared *and* present (collects every problem before raising `MappingError`, naming both the canonical field and the `mapping.yaml` key to fix), coerces `timestamp`/`amount`, wrapped in `@st.cache_data`. `mapping.yaml` is fully documented and identity-maps the 6 canonical fields onto `data/transactions.csv`. `test_data_loader.py` (5 tests, all passing per this run's full suite) includes the literal schema-swap proof from the spec's done-when (rename every column to nonsense, point a fresh mapping at it, assert identical canonical output). |
+| S03 | `tools_txn.py` (6 tools) | done | Verified by reading the full file (690 lines, real implementation, not a stub) and running the test suite. Contains `resolve_period` (Python-only date resolution, LLM never computes dates) plus all six tools (`spend_total`, `spend_by_category`, `top_merchants`, `compare_periods`, `find_transactions`, `recurring_charges`), each a thin `@tool`-decorated wrapper around a private, directly-testable `_..._core` function. `tests/test_tools_txn.py` collected **39 tests**, all passing. Every tool returns a flat dict of scalars with `period_label` where applicable, matches the S03 tool-table shapes. |
+| S03B | `card_terms.yaml`, `tools_card.py` (4 tools) | done | `card_terms.yaml` (194 lines) is fully authored — real fees (annual, joining, forex markup, tiered late payment, cash advance fee + finance charge, over-limit, EMI processing/foreclosure, card replacement, cheque bounce, reward redemption), reward schedule (base rate + 6 category overrides with caps, exclusions, redemption, milestone bonus), 7 merchant offers — every leaf carries a `clause` string, and 3 deliberate gaps (`railway_surcharge`, `wallet_load_fee`, `balance_transfer_fee`) are genuinely absent for gap-admission testing. `tools_card.py` (693 lines) implements all 4 tools (`card_rewards`, `card_fees`, `card_offers`, `rewards_earned`), plus its own independently-tested `resolve_period` (intentionally not importing S03's, since the two were built in parallel — a documented, low-risk consolidation is left for S05). `rewards_earned` groups by (category, calendar month) so caps apply per-month not per-query-period, nets refunds off before flooring at 0, excludes `cash_advance`/`fees_interest`, and returns `capped_categories`. Missing `fee_type` returns `{"found": false, ...}`, verified by tests. `test_tools_card.py` collected **63 tests**, all passing. |
+| S04 | `evals/gold_questions.json`, `eval.py` | not started | `evals/gold_questions.json` is still `[]` (0 of 55 entries). `eval.py` is still an 8-line docstring-only stub with no scoring logic. **Now the next unblocked spec** — S01/S02/S03/S03B (its only dependencies per the build-order diagram) are all done, so the 55-question gold set can be written against real tool signatures. |
+| S05 | `graph.py` planner node + assembly | not started | `graph.py` (5 lines) is still docstring-only — no `StateGraph`, no nodes, no planner prompt. Blocked on S04 (build gold questions before the planner exists, so questions don't bend toward what the model already handles). |
 | S06 | verbalizer node | not started | Same file (`graph.py`) as S05, same status — no verbalizer logic present. |
-| S07 | `voice.py`, fuzzy merchant correction | not started | `voice.py` (7 lines) is still docstring-only — no `transcribe`/`synthesize`, no rapidfuzz usage. Per the hard rule, must not start until S05+S06 pass their text-input gate. |
-| S08 | `app.py`, Streamlit deploy | not started | `app.py` (20 lines) still only implements the S00 "hello" + key-check gate, not the real UI. No deploy yet. |
-| S09 | `EVAL_REPORT.md`, `README.md`, Loom outline | not started | No `EVAL_REPORT.md` exists. `README.md` (28 lines) still explicitly self-describes as the S00-stage placeholder pointing to PRD/all-specs/CLAUDE.md as source of truth. |
+| S07 | `voice.py`, fuzzy merchant correction | not started | `voice.py` (8 lines) is still docstring-only — no `transcribe`/`synthesize`, no `rapidfuzz` usage. Per the hard rule, must not start until S05+S06 pass their text-input eval gate. |
+| S08 | `app.py`, Streamlit deploy | not started | `app.py` (21 lines) still only implements the S00 "hello" + `OPENAI_API_KEY`-loaded check, not the real UI. No deploy yet. |
+| S09 | `EVAL_REPORT.md`, `README.md`, Loom outline | not started | No `EVAL_REPORT.md` exists. `README.md` (29 lines) still explicitly self-describes as the S00-stage placeholder pointing to `PRD.md`/`all-specs.md`/`CLAUDE.md` as source of truth. |
 
 ## Hard gates (from PRD §8)
 
-Not yet measurable — `eval.py` is a docstring-only stub with no scoring logic, and `evals/gold_questions.json` is an empty array (S04 not started). Nothing to run yet.
+Not yet measurable — `eval.py` is a docstring-only stub with no scoring logic, and
+`evals/gold_questions.json` is an empty array (S04 not started). Nothing to run yet.
 
 | Metric | Target | Current | Notes |
 |---|---|---|---|
@@ -33,55 +39,61 @@ Not yet measurable — `eval.py` is a docstring-only stub with no scoring logic,
 
 ## Recent activity
 
-- S02 is now done. `data_loader.py` went from a 9-line docstring stub to a
-  251-line mapping-driven canonical loader (`load_transactions`, `MappingError`,
-  full validation/coercion pipeline, `@st.cache_data`); `mapping.yaml` went
-  from a 16-line skeleton to a 37-line fully-documented mapping pointing at
-  the real `data/transactions.csv`. New `test_data_loader.py` (147 lines, 5
-  tests) added.
-- Verified this pass by actually running the test suite
-  (`venv/Scripts/python.exe -m pytest test_data_loader.py -v`), not just
-  trusting the handoff note: **5/5 passed**, including the automated version
-  of the exact S02 done-when check — rename every CSV column to nonsense,
-  point a fresh `mapping.yaml` at the new names, confirm the canonical
-  DataFrame is identical to loading the real, unmodified data.
-- S03 and S03B are now unblocked (S03 directly, on S02; S03B was already
-  unblocked on S01 and gains a real `data_loader` to build `rewards_earned`
-  against). Neither has been picked up yet — both remain docstring-only
-  stubs, confirmed by re-reading `tools_txn.py`, `tools_card.py`, and
-  `card_terms.yaml` this pass.
-- S01 unchanged since last snapshot (spot-checked, not re-run — see S01 row).
-  S04 through S09 unchanged since last snapshot (docstring-only stubs /
-  empty scaffolding), confirmed by re-reading each this pass.
-- Repo still has zero commits; `git status` still shows every project file as
-  untracked (`.claude/`, `.env.example`, `.gitignore`, `CLAUDE.md`, `PRD.md`,
-  `README.md`, `all-specs.md`, `app.py`, `card_terms.yaml`, `data/`,
-  `data_loader.py`, `eval.py`, `evals/`, `generate_data.py`, `graph.py`,
-  `mapping.yaml`, `requirements.txt`, `test_data_loader.py`, `tools_card.py`,
-  `tools_txn.py`, `voice.py`).
+- S03 and S03B both landed in this session, built in parallel by dedicated
+  builder subagents, and both independently verified this pass:
+  - S03: `tools_txn.py` went from a 7-line docstring stub to a 690-line real
+    implementation (`resolve_period` + 6 tools). `tests/test_tools_txn.py`
+    added (39 tests).
+  - S03B: `card_terms.yaml` went from a 29-line TODO skeleton to a 194-line
+    fully-authored terms file; `tools_card.py` went from a 6-line docstring
+    stub to a 693-line implementation of the 4 card/rewards tools.
+    `test_tools_card.py` added (63 tests).
+- Ran the full suite this pass (`python -m pytest -q` from `venv`):
+  **107 passed** (5 in `test_data_loader.py`, 63 in `test_tools_card.py`, 39
+  in `tests/test_tools_txn.py`). Matches the "107 passed" figure reported by
+  the builder subagents — independently reproduced, not taken on faith.
+- **Dining reward-cap placeholder issue (carried over from the prior
+  snapshot) is now reconciled.** `generate_data.py`'s
+  `REFERENCE_DINING_CAP_SPEND` placeholder (5 pts/₹100, 2,000-pt monthly cap
+  → ₹40,000/month breach threshold, from the PRD §7.3 worked example) matches
+  S03B's real authored `card_terms.yaml` dining terms exactly
+  (`rewards.category_rates.food_dining`: `points_per_100: 5`,
+  `monthly_cap_points: 2000`) — confirmed by reading both files and by
+  `card_terms.yaml`'s own header comment, which explicitly documents the
+  match. No regeneration of `data/transactions.csv` is needed.
+- None of the S03/S03B work is committed yet. `git status` shows
+  `card_terms.yaml`, `tools_card.py`, `tools_txn.py` as modified (tracked),
+  and `test_tools_card.py` + `tests/` (containing `test_tools_txn.py`) as
+  untracked. A new `.claude/agents/git-syncer.md` subagent definition was
+  also added (untracked) — its job is to run tests and commit/push once a
+  spec's deliverable lands cleanly, which fits this exact situation.
+- `.env.example` is deleted in the working tree (unstaged) — not something
+  any spec's done-when depends on directly, but a live discrepancy against
+  the committed S00 skeleton. See Open items.
 
 ## Open items / blockers
 
-- **S03 and S03B are now the critical path** (both unblocked). S03
-  (`tools_txn.py`: `resolve_period` + the 6 transaction tools) and S03B
-  (`card_terms.yaml` real content + `tools_card.py`'s 4 tools) can proceed in
-  parallel per the build-order diagram — S03B only needed S01's category
-  list, which has been available since the last snapshot.
-- **Dining reward-cap placeholder still needs reconciling against S03B's real
-  authored value** (carried over, unresolved). `card_terms.yaml` still has no
-  authored dining cap (empty `rewards` block), so `generate_data.py` used the
-  PRD §7.3 worked example (5 pts/₹100 dining, capped at 2,000 pts/month →
-  ₹40,000/month breach threshold) as a placeholder, exposed as the named
-  constant `REFERENCE_DINING_CAP_SPEND` in `generate_data.py`. When S03B
-  lands: confirm the real authored dining cap still makes the generated
-  breach months (Oct 2025 at ₹54,504 and Nov 2025 at ₹47,027 dining spend)
-  actually breach, and that at least one other month remains a clean
-  non-breach month. If S03B's real cap differs substantially from ₹40k, the
-  generated data's breach/non-breach months may need regenerating.
-- **No commits yet.** The entire repo (S00 skeleton + S01 + S02 real
-  deliverables + planning docs) is untracked. Not a spec blocker per se, but
-  worth flagging since nothing is currently recoverable via git history if
-  working-tree files are lost — this is now three specs' worth of real,
-  uncommitted work.
-- No other blockers observed — S04 through S09 are cleanly "not started" with
-  no evidence of partial/broken work to clean up.
+- **Nothing from S03/S03B is committed to git yet.** Working tree has real,
+  passing, uncommitted work (`card_terms.yaml`, `tools_card.py`,
+  `tools_txn.py` modified; `test_tools_card.py`, `tests/test_tools_txn.py`
+  untracked). This is exactly what `git-syncer` exists to pick up next —
+  tests are green (107/107), so there's no reason to hold off on
+  committing/pushing.
+- **`.env.example` needs restoring.** `git status` shows it deleted, unstaged,
+  from the working tree, even though it's still present in `HEAD` and is
+  referenced by both `README.md`'s quickstart and `app.py`'s
+  key-not-loaded warning. Likely accidental (not attributable to either the
+  S03 or S03B builder subagent's stated scope). Simplest fix is
+  `git checkout -- .env.example` before the next commit — flagging here
+  rather than fixing it myself, per this agent's scope.
+- **Minor structural inconsistency, not a blocker:** test files are split
+  between the repo root (`test_data_loader.py`, `test_tools_card.py`) and a
+  `tests/` subdirectory (`test_tools_txn.py`). `pytest -q` collects and runs
+  all of them correctly either way, so this doesn't block anything, but
+  whoever picks up S04/S09 may want to consolidate the layout for the
+  README's "run tests" step to read cleanly.
+- **S04 is the next unblocked spec.** All of its stated dependencies (S01
+  synthetic data, S02 loader, S03 six transaction tools, S03B four card/
+  rewards tools) are now done and verified. The 55-question gold set and
+  `eval.py` harness can be built against the real tool signatures now in
+  place — per the spec, this should happen *before* S05's planner exists.

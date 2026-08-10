@@ -1,29 +1,193 @@
 # Card terms — hand-authored by S03B (card-terms-builder), ~40 facts total.
-# Every leaf that could be spoken must carry a `clause` string: the exact
-# sentence the verbalizer will read aloud (see PRD.md §7.3). Category keys
-# under rewards must match the 12 canonical categories from S01 exactly, or
-# reward calculations silently zero out.
 #
-# This is a skeleton only. S03B fills in real values, real clauses, and the
-# deliberate undocumented-charge-type gaps used for "admit a gap, don't fill
-# it in" testing.
+# Every leaf that could be spoken carries a `clause` string: the exact
+# sentence a real terms-and-conditions document would use. tools_card.py
+# reads these values at call time and the verbalizer (S06) speaks the
+# `clause` verbatim, never a paraphrase — that is what makes a Domain B
+# answer auditable back to this file.
 #
-# See all-specs.md S03B and .claude/agents/card-terms-builder.md.
+# Category keys under rewards.category_rates and rewards.excluded_categories
+# MUST match the 12 canonical categories produced by generate_data.py (S01)
+# exactly:
+#     food_dining, groceries, fuel, travel, shopping, entertainment,
+#     utilities, health, education, cash_advance, fees_interest, other
+# A typo here does not raise an error — it silently zeroes out reward
+# calculations for that category, because rewards_earned() would never match
+# any transaction row to the mistyped key. test_tools_card.py cross-checks
+# every key below against the literal category values found in
+# data/transactions.csv, not just against this comment.
+#
+# The dining reward rate (5 pts/₹100) and monthly cap (2,000 pts, i.e. a
+# ₹40,000/month breach threshold) are not arbitrary: they match the
+# REFERENCE_DINING_CAP_SPEND constant generate_data.py used to deliberately
+# build two dining-cap-breach months (Oct 2025, Nov 2025) and one
+# under-cap month into the real dataset, so rewards_earned's cap logic has
+# a genuine end-to-end scenario to hit, not just synthetic unit tests.
+#
+# --- Deliberate gaps -------------------------------------------------------
+# The following are plausible charge types a cardholder might ask about but
+# are INTENTIONALLY left undocumented below, on purpose, as the "admit a gap,
+# don't fill it" test cases for card_fees(fee_type=...):
+#   - "railway_surcharge"    (IRCTC / train-ticket booking surcharge)
+#   - "wallet_load_fee"      (loading a prepaid wallet, e.g. Paytm/PhonePe,
+#                              via credit card)
+#   - "balance_transfer_fee" (transferring another card's balance to this one)
+# card_fees() must return {"found": false, ...} for each of these, never a
+# recalled or invented figure. Do not add these keys "to be thorough" —
+# their absence is the point.
+# ----------------------------------------------------------------------------
 
 card:
-  name: "TODO"
-  network: "TODO"
+  name: "Synthetic Rewards Card"
+  network: "Visa Signature"
+  issuer: "Northbridge Bank"
 
 fees:
-  annual: {}
-  forex_markup: {}
-  late_payment: []
-  cash_advance: []
+  annual:
+    amount_inr: 2500
+    currency: INR
+    waiver_spend_inr: 300000
+    waiver_condition: "Waived if you spend Rs. 3,00,000 or more in a card year."
+    clause: "An annual fee of Rs. 2,500 plus applicable taxes is charged each card year, waived if you spend Rs. 3,00,000 or more in that card year."
+
+  joining:
+    amount_inr: 2500
+    currency: INR
+    waiver_condition: null
+    clause: "A one-time joining fee of Rs. 2,500 plus applicable taxes is charged on card issuance."
+
+  forex_markup:
+    pct: 3.5
+    clause: "A currency conversion markup of 3.5% applies to all transactions billed in a currency other than Indian Rupees."
+
+  late_payment:
+    - min_due_inr: 0
+      max_due_inr: 499.99
+      amount_inr: 0
+      clause: "No late payment charge applies if your total amount due is less than Rs. 500."
+    - min_due_inr: 500
+      max_due_inr: 4999.99
+      amount_inr: 500
+      clause: "A late payment charge of Rs. 500 applies if your total amount due is Rs. 500 up to Rs. 5,000 and is not paid by the due date."
+    - min_due_inr: 5000
+      max_due_inr: 24999.99
+      amount_inr: 750
+      clause: "A late payment charge of Rs. 750 applies if your total amount due is Rs. 5,000 up to Rs. 25,000 and is not paid by the due date."
+    - min_due_inr: 25000
+      max_due_inr: null
+      amount_inr: 1200
+      clause: "A late payment charge of Rs. 1,200 applies if your total amount due is Rs. 25,000 or more and is not paid by the due date."
+
+  cash_advance_fee:
+    pct: 2.5
+    min_amount_inr: 500
+    clause: "Cash withdrawals on this card attract a cash advance fee of 2.5% of the transaction amount, subject to a minimum of Rs. 500."
+
+  cash_advance_finance_charge:
+    pct_per_month: 3.75
+    clause: "Interest on cash advances accrues from the date of withdrawal at 3.75% per month, with no interest-free period."
+
+  over_limit:
+    amount_inr: 600
+    clause: "An over-limit fee of Rs. 600 is charged if a transaction takes your outstanding balance over your credit limit."
+
+  emi_processing:
+    pct: 1.0
+    min_amount_inr: 199
+    clause: "Converting a purchase to EMI attracts a processing fee of 1% of the principal amount, subject to a minimum of Rs. 199."
+
+  emi_foreclosure:
+    pct: 3.0
+    clause: "Foreclosing an EMI plan before the end of its term attracts a foreclosure fee of 3% of the outstanding principal."
+
+  card_replacement:
+    amount_inr: 250
+    clause: "A replacement card issued for a lost, stolen, or damaged card costs Rs. 250."
+
+  cheque_bounce:
+    amount_inr: 500
+    clause: "A payment returned or dishonoured, including a failed auto-debit, is charged Rs. 500."
+
+  reward_redemption:
+    amount_inr: 99
+    waiver_condition: "Waived for redemptions to statement credit."
+    clause: "Redeeming reward points for a catalogue reward or voucher carries a Rs. 99 redemption fee per request, waived for redemptions to statement credit."
 
 rewards:
-  base_rate: {}
-  category_rates: {}
-  excluded_categories: []
-  redemption: {}
+  base_rate:
+    points_per_100: 2
+    clause: "You earn 2 reward points for every Rs. 100 spent on categories without a listed higher rate."
 
-offers: []
+  category_rates:
+    food_dining:
+      points_per_100: 5
+      monthly_cap_points: 2000
+      clause: "You earn 5 reward points for every Rs. 100 spent on dining and food delivery, capped at 2,000 bonus points per calendar month."
+    groceries:
+      points_per_100: 3
+      monthly_cap_points: 1500
+      clause: "You earn 3 reward points for every Rs. 100 spent on groceries and supermarkets, capped at 1,500 points per calendar month."
+    fuel:
+      points_per_100: 1
+      clause: "You earn 1 reward point for every Rs. 100 spent at fuel stations."
+      surcharge_waiver_pct: 1.0
+      surcharge_waiver_cap_inr: 200
+      surcharge_waiver_clause: "A 1% fuel surcharge, up to Rs. 200 per statement cycle, is waived on fuel transactions between Rs. 400 and Rs. 4,000."
+    travel:
+      points_per_100: 4
+      monthly_cap_points: 3000
+      clause: "You earn 4 reward points for every Rs. 100 spent on travel bookings including flights, trains, and cabs, capped at 3,000 points per calendar month."
+    entertainment:
+      points_per_100: 3
+      clause: "You earn 3 reward points for every Rs. 100 spent on movies, streaming, and entertainment, with no monthly cap on this category."
+    utilities:
+      points_per_100: 1
+      monthly_cap_points: 500
+      clause: "You earn 1 reward point for every Rs. 100 spent on utility bill payments, capped at 500 points per calendar month."
+    # shopping, health, education, other: deliberately no override here —
+    # they fall back to base_rate. This is the tested fallback path, not a
+    # gap: card_rewards(category="shopping") should report
+    # used_base_rate_fallback=True, not "not found".
+
+  excluded_categories: [cash_advance, fees_interest]
+  excluded_categories_clause: "Cash advances and fee or interest charges do not earn reward points."
+
+  redemption:
+    value_per_point_inr: 0.25
+    min_redemption_points: 500
+    clause: "Reward points can be redeemed for statement credit at Rs. 0.25 per point, subject to a minimum redemption of 500 points."
+
+  milestone_bonus:
+    spend_threshold_inr: 200000
+    bonus_points: 2500
+    clause: "You earn a one-time bonus of 2,500 points on cumulative eligible spend of Rs. 2,00,000 or more within a card anniversary year."
+
+offers:
+  - merchant: "Swiggy"
+    category: food_dining
+    benefit: "10% instant discount up to Rs. 150 on orders above Rs. 499."
+    valid_until: "2026-09-30"
+  - merchant: "BigBasket"
+    category: groceries
+    benefit: "5% cashback up to Rs. 200 on grocery orders above Rs. 1,000."
+    valid_until: "2026-12-31"
+  - merchant: "MakeMyTrip"
+    category: travel
+    benefit: "Flat Rs. 1,000 off on domestic flight bookings above Rs. 6,000."
+    valid_until: "2026-10-31"
+  - merchant: "Myntra"
+    category: shopping
+    benefit: "12% instant discount up to Rs. 600 on fashion purchases."
+    valid_until: "2026-08-15"
+  - merchant: "PVR Cinemas"
+    category: entertainment
+    benefit: "Buy 1 Get 1 free on movie tickets every Friday."
+    valid_until: "2026-07-31"
+  - merchant: "Amazon"
+    category: shopping
+    benefit: "5% cashback up to Rs. 1,000 during special sale days."
+    valid_until: "2026-01-31"
+  - merchant: "Apollo Pharmacy"
+    category: health
+    benefit: "10% discount on medicine orders above Rs. 500."
+    valid_until: "2026-11-30"
