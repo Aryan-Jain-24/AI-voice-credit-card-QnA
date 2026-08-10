@@ -140,6 +140,20 @@ should still consult those files for anything not covered here.
 - **handover-writer** — S09: eval report, README with the 30-minute swap guide,
   Loom script.
 
+Coordination subagents (not spec builders, but part of every build cycle):
+
+- **orchestrator** — drives the remaining build end-to-end: reads
+  `.claude/state.md` (refreshed via `state-tracker`) to find the next unblocked
+  spec in build order, invokes that spec's owning subagent above, refreshes state
+  again, then ships via `git-syncer` — one spec at a time, sequentially, stopping
+  to report rather than guessing past a blocker.
+- **state-tracker** — inspects the repo (never trusts the prior snapshot) and
+  overwrites `.claude/state.md`, the shared status board every subagent and the
+  orchestrator read to know what's actually done vs. claimed.
+- **git-syncer** — the last step after any spec's deliverable lands: runs the
+  test/eval gate, then commits and pushes to `origin/main`. Never commits or
+  pushes if a discovered test surface is failing.
+
 ## Working conventions
 
 - Never let an LLM node compute a number or recall a card term — everything routes
