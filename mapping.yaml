@@ -1,0 +1,37 @@
+# Field mapping — owned by S02 (data-loader). This is the entire swap path:
+#
+#     real_data.csv --> mapping.yaml --> canonical DataFrame --> tools (unchanged)
+#
+# To point the bot at a different transaction export: change `source:` below
+# to your CSV's path, and change each value under `fields:` to the column
+# name YOUR csv uses for that canonical concept. Do not touch data_loader.py,
+# tools_txn.py, or tools_card.py — they only ever see the canonical names on
+# the left (txn_id, timestamp, amount, merchant, category, card_id).
+#
+# Example — swapping in a real bank export with different column names:
+#
+#   source: data/real_transactions.csv
+#   fields:
+#     txn_id:    transaction_reference
+#     timestamp: posted_at
+#     amount:    amt_inr
+#     merchant:  merchant_name
+#     category:  mcc_description
+#     card_id:   card_last4
+#
+# All six `fields:` entries are required. If one is missing, or points at a
+# column your CSV doesn't actually have, `load_transactions()` raises an
+# error naming exactly which canonical field and which key here to fix —
+# see data_loader.py.
+#
+# See all-specs.md S02, PRD.md §7.4, and .claude/agents/data-loader.md.
+
+source: data/transactions.csv
+
+fields:
+  txn_id: txn_id
+  timestamp: timestamp
+  amount: amount
+  merchant: merchant
+  category: category
+  card_id: card_id

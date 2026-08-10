@@ -1,0 +1,2015 @@
+txn_id,timestamp,amount,merchant,category,card_id,txn_type,city,currency
+TXN000001,2025-02-01T08:48:51,320.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000002,2025-02-01T09:46:29,2241.61,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000003,2025-02-01T10:37:27,318.39,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000004,2025-02-01T14:45:41,239.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000005,2025-02-01T19:06:05,300.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000006,2025-02-02T10:38:40,1899.28,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000007,2025-02-02T10:54:14,589.98,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000008,2025-02-02T16:04:13,789.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000009,2025-02-02T19:10:23,546.93,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000010,2025-02-02T19:36:12,559.58,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000011,2025-02-02T22:14:43,1639.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000012,2025-02-03T08:32:56,405.23,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000013,2025-02-03T11:09:40,659.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000014,2025-02-03T14:09:23,580.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000015,2025-02-03T16:32:48,1270.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000016,2025-02-03T16:49:41,850.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000017,2025-02-03T20:23:14,2210.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000018,2025-02-03T21:33:16,1959.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000019,2025-02-03T22:09:16,1860.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000020,2025-02-04T10:05:46,256.46,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000021,2025-02-04T12:42:30,1452.87,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000022,2025-02-04T15:37:14,680.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000023,2025-02-04T19:28:57,640.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000024,2025-02-04T19:56:53,759.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000025,2025-02-04T21:13:59,391.56,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000026,2025-02-05T20:12:06,429.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000027,2025-02-05T23:13:34,2269.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000028,2025-02-06T07:43:41,975.54,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000029,2025-02-06T07:44:07,650.96,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000030,2025-02-07T08:05:59,531.13,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000031,2025-02-07T12:15:12,505.95,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000032,2025-02-07T12:28:51,189.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000033,2025-02-07T20:57:03,619.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000034,2025-02-07T21:18:27,640.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000035,2025-02-08T07:13:06,117.34,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000036,2025-02-08T13:03:32,640.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000037,2025-02-08T14:03:37,589.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000038,2025-02-08T18:29:20,1769.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000039,2025-02-08T18:59:16,330.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000040,2025-02-08T20:07:56,160.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000041,2025-02-09T09:05:40,1202.64,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000042,2025-02-09T11:04:34,604.11,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000043,2025-02-09T14:23:18,189.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000044,2025-02-09T16:07:56,760.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000045,2025-02-09T19:13:43,199.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000046,2025-02-09T22:00:42,492.88,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000047,2025-02-10T12:34:02,270.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000048,2025-02-10T13:47:28,1030.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000049,2025-02-11T06:07:03,1969.3,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000050,2025-02-11T09:57:22,500.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000051,2025-02-11T13:56:26,578.24,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000052,2025-02-11T20:39:47,470.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000053,2025-02-11T20:51:42,2864.08,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000054,2025-02-12T18:01:07,2100.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000055,2025-02-12T19:19:52,1858.59,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000056,2025-02-12T20:21:17,474.26,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000057,2025-02-12T20:55:02,390.14,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000058,2025-02-13T18:27:38,339.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000059,2025-02-13T18:39:20,500.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000060,2025-02-13T21:00:33,519.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000061,2025-02-13T21:20:25,629.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000062,2025-02-14T06:13:14,295.41,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000063,2025-02-14T13:39:36,1550.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000064,2025-02-14T13:42:05,631.04,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000065,2025-02-14T18:29:28,960.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000066,2025-02-15T12:29:26,200.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000067,2025-02-15T12:41:44,1129.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000068,2025-02-15T15:43:19,432.11,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000069,2025-02-16T22:03:35,660.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000070,2025-02-16T22:35:38,361.92,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000071,2025-02-17T15:53:40,1699.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000072,2025-02-17T21:53:58,1464.04,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000073,2025-02-18T14:04:26,580.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000074,2025-02-18T17:15:17,1009.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000075,2025-02-19T08:54:56,650.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000076,2025-02-19T17:48:24,1206.26,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000077,2025-02-20T07:04:39,131.53,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000078,2025-02-20T08:05:41,1470.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000079,2025-02-20T15:31:14,692.04,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000080,2025-02-20T20:20:21,649.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000081,2025-02-20T20:46:10,320.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000082,2025-02-21T07:22:14,749.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000083,2025-02-21T14:29:44,249.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000084,2025-02-21T15:12:53,1520.92,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000085,2025-02-22T08:59:19,2079.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000086,2025-02-22T11:50:36,448.71,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000087,2025-02-22T14:04:37,3876.53,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000088,2025-02-23T08:54:26,1800.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000089,2025-02-23T10:17:56,346.41,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000090,2025-02-23T18:01:31,735.44,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000091,2025-02-23T22:45:09,450.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000092,2025-02-23T23:29:27,1160.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000093,2025-02-24T17:42:37,220.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000094,2025-02-24T18:22:44,995.71,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000095,2025-02-24T18:35:00,309.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000096,2025-02-24T23:41:45,5170.0,MakeMyTrip,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000097,2025-02-25T13:12:13,529.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000098,2025-02-25T17:06:53,1676.71,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000099,2025-02-26T12:17:02,960.33,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000100,2025-02-26T23:06:55,870.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000101,2025-02-27T23:07:52,1289.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000102,2025-02-28T17:05:15,860.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000103,2025-03-01T11:48:13,1360.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000104,2025-03-01T13:00:26,410.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000105,2025-03-01T14:27:07,537.55,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000106,2025-03-01T22:04:43,430.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000107,2025-03-01T22:19:55,689.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000108,2025-03-02T07:39:20,397.15,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000109,2025-03-02T11:05:14,509.3,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000110,2025-03-02T16:11:37,471.71,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000111,2025-03-02T16:36:02,1199.53,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000112,2025-03-02T17:28:07,1439.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000113,2025-03-02T22:05:38,550.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000114,2025-03-02T23:41:45,-5170.0,MakeMyTrip,travel,XXXX4412,refund,Bengaluru,INR
+TXN000115,2025-03-03T08:42:55,522.42,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000116,2025-03-03T09:29:05,590.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000117,2025-03-03T13:21:26,480.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000118,2025-03-03T22:48:03,620.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000119,2025-03-04T01:31:59,765.59,Cash Advance Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN000120,2025-03-04T08:48:14,640.91,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000121,2025-03-04T10:14:53,560.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000122,2025-03-04T10:17:49,2050.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000123,2025-03-04T12:01:40,352.2,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000124,2025-03-04T23:15:29,619.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000125,2025-03-05T12:31:02,1033.55,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000126,2025-03-05T12:33:58,300.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000127,2025-03-05T20:29:59,479.04,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000128,2025-03-05T21:02:20,2549.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000129,2025-03-05T23:55:09,2179.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000130,2025-03-06T10:30:50,1954.77,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000131,2025-03-06T18:54:43,789.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000132,2025-03-07T07:17:21,118.48,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000133,2025-03-07T12:28:10,523.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000134,2025-03-07T17:22:23,208.51,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000135,2025-03-07T18:14:47,244.43,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000136,2025-03-07T20:55:34,1277.52,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000137,2025-03-08T13:11:05,419.94,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000138,2025-03-08T15:29:40,1580.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000139,2025-03-08T21:44:16,1110.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000140,2025-03-08T21:57:18,473.43,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000141,2025-03-09T16:43:48,3200.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000142,2025-03-09T19:36:18,2259.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000143,2025-03-09T20:17:00,124.13,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000144,2025-03-09T23:53:57,1700.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000145,2025-03-10T08:09:20,2003.2,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000146,2025-03-10T09:19:50,1475.08,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000147,2025-03-10T18:53:10,580.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000148,2025-03-10T21:11:12,909.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000149,2025-03-11T11:29:04,1460.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000150,2025-03-11T20:54:51,575.87,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000151,2025-03-12T18:37:24,129.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000152,2025-03-12T18:58:39,319.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000153,2025-03-12T20:07:08,460.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000154,2025-03-13T20:29:23,180.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000155,2025-03-14T14:28:28,1420.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000156,2025-03-14T19:03:25,209.29,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000157,2025-03-14T21:41:06,1415.95,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000158,2025-03-15T08:03:50,200.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000159,2025-03-15T08:17:54,380.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000160,2025-03-15T14:37:13,2100.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000161,2025-03-16T08:44:05,298.9,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000162,2025-03-16T11:28:32,634.35,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000163,2025-03-16T12:00:22,980.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000164,2025-03-16T12:47:26,549.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000165,2025-03-16T16:39:40,200.0,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000166,2025-03-16T21:43:06,2197.24,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000167,2025-03-16T22:19:29,142.98,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000168,2025-03-17T11:20:27,3359.0,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000169,2025-03-17T14:27:28,583.57,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000170,2025-03-17T21:06:50,799.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000171,2025-03-18T10:05:27,1859.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000172,2025-03-18T22:35:21,1869.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000173,2025-03-19T06:39:03,132.0,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000174,2025-03-19T07:38:59,1203.74,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000175,2025-03-19T17:38:19,1615.33,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000176,2025-03-19T19:54:35,610.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000177,2025-03-20T12:47:40,2289.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000178,2025-03-20T17:58:21,291.86,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000179,2025-03-20T18:10:23,919.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000180,2025-03-21T09:43:05,2330.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000181,2025-03-21T11:22:27,1389.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000182,2025-03-22T09:00:13,1279.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000183,2025-03-22T14:32:35,1980.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000184,2025-03-22T17:20:07,2053.27,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000185,2025-03-23T08:32:40,1440.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000186,2025-03-23T20:33:05,3749.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000187,2025-03-23T20:53:44,640.62,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000188,2025-03-23T21:01:29,426.18,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000189,2025-03-23T21:18:07,4300.0,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000190,2025-03-24T12:15:06,497.33,RedBus,travel,XXXX4412,purchase,Jaipur,INR
+TXN000191,2025-03-25T12:11:49,201.02,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000192,2025-03-26T16:37:03,409.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000193,2025-03-26T17:04:41,979.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000194,2025-03-26T18:55:40,745.83,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000195,2025-03-27T09:15:45,1480.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000196,2025-03-27T09:28:06,599.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000197,2025-03-27T09:28:58,1450.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000198,2025-03-27T17:24:26,679.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000199,2025-03-28T10:21:06,669.32,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000200,2025-03-28T12:21:05,741.39,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000201,2025-03-28T20:08:38,932.15,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000202,2025-03-29T10:41:42,798.24,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000203,2025-03-29T11:32:49,184.88,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000204,2025-03-29T12:38:24,1276.74,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000205,2025-03-29T13:42:44,319.64,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000206,2025-03-29T23:12:14,509.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000207,2025-03-30T13:46:28,2587.98,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000208,2025-03-30T18:48:47,479.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000209,2025-03-30T23:57:53,510.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000210,2025-03-31T09:55:16,1543.65,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000211,2025-03-31T20:32:33,789.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000212,2025-04-01T10:58:14,1150.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000213,2025-04-01T11:18:05,2078.44,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000214,2025-04-01T19:15:24,1409.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000215,2025-04-02T09:38:57,399.47,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000216,2025-04-02T10:33:23,1689.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000217,2025-04-02T15:45:09,970.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000218,2025-04-02T19:50:09,613.34,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000219,2025-04-02T21:28:39,610.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000220,2025-04-02T22:04:07,579.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000221,2025-04-02T22:27:07,129.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000222,2025-04-02T22:35:01,408.36,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000223,2025-04-03T12:22:15,639.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000224,2025-04-03T18:08:02,1765.85,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000225,2025-04-03T22:02:18,373.05,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000226,2025-04-03T22:44:30,2160.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000227,2025-04-04T09:55:41,843.61,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000228,2025-04-04T22:57:24,2129.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000229,2025-04-04T23:16:02,3090.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000230,2025-04-05T10:18:38,646.27,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000231,2025-04-05T17:19:28,1309.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000232,2025-04-05T19:32:51,159.77,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000233,2025-04-05T19:39:27,1599.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000234,2025-04-05T21:05:27,1120.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000235,2025-04-06T13:43:28,1860.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000236,2025-04-06T17:44:58,3049.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000237,2025-04-06T19:25:20,589.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000238,2025-04-06T21:02:08,195.67,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000239,2025-04-06T23:33:24,471.22,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000240,2025-04-07T08:23:35,640.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000241,2025-04-07T10:19:25,2170.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000242,2025-04-07T13:50:23,1662.69,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000243,2025-04-07T17:57:19,594.06,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000244,2025-04-07T21:05:51,570.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000245,2025-04-08T09:10:19,116.72,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000246,2025-04-08T09:20:59,1559.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000247,2025-04-08T10:08:20,1761.41,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000248,2025-04-08T10:16:12,769.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000249,2025-04-08T13:37:37,490.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000250,2025-04-08T13:49:08,1580.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000251,2025-04-09T09:52:55,1430.02,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000252,2025-04-09T18:41:13,622.73,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000253,2025-04-10T09:10:28,859.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000254,2025-04-10T09:41:20,2003.01,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000255,2025-04-10T17:41:19,1097.25,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000256,2025-04-10T18:55:45,685.63,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000257,2025-04-11T11:20:15,1169.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000258,2025-04-11T20:55:39,389.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000259,2025-04-12T09:18:31,1159.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000260,2025-04-12T11:27:08,1559.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000261,2025-04-12T18:12:48,994.83,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000262,2025-04-12T21:01:05,367.41,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000263,2025-04-13T09:08:45,549.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000264,2025-04-13T12:20:59,1470.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000265,2025-04-13T14:23:35,410.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000266,2025-04-13T17:37:21,2181.7,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000267,2025-04-13T18:35:23,2150.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000268,2025-04-13T18:52:39,387.26,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000269,2025-04-14T08:38:30,976.43,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000270,2025-04-14T18:43:07,729.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000271,2025-04-14T20:09:52,1949.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000272,2025-04-15T11:45:08,530.74,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000273,2025-04-15T13:26:44,1399.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000274,2025-04-15T13:29:58,1199.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000275,2025-04-16T10:57:53,303.56,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000276,2025-04-16T16:18:07,619.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000277,2025-04-16T16:39:30,1941.93,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000278,2025-04-16T18:49:18,270.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000279,2025-04-17T12:06:39,1411.59,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000280,2025-04-17T12:18:02,1020.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000281,2025-04-17T23:13:12,1059.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000282,2025-04-18T08:35:59,486.28,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000283,2025-04-18T09:06:26,1820.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000284,2025-04-18T21:41:12,2883.06,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000285,2025-04-19T06:19:28,132.32,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000286,2025-04-19T12:41:36,462.33,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000287,2025-04-19T13:26:56,2501.61,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000288,2025-04-19T16:12:51,1080.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000289,2025-04-19T17:56:02,2189.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000290,2025-04-19T19:18:29,439.47,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000291,2025-04-20T11:47:21,463.59,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000292,2025-04-20T18:59:15,1319.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000293,2025-04-20T20:52:27,600.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000294,2025-04-21T17:37:46,1455.26,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000295,2025-04-22T17:10:25,1879.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000296,2025-04-22T17:23:39,657.3,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000297,2025-04-22T19:26:44,370.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000298,2025-04-23T10:33:28,839.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000299,2025-04-23T14:36:34,2040.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000300,2025-04-23T21:05:57,570.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000301,2025-04-24T12:59:30,489.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000302,2025-04-24T14:37:04,1180.48,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000303,2025-04-24T22:43:51,350.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000304,2025-04-25T19:23:57,1472.16,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000305,2025-04-26T11:02:51,469.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000306,2025-04-26T12:41:55,675.85,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000307,2025-04-26T15:53:00,2579.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000308,2025-04-26T21:34:24,467.06,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000309,2025-04-27T09:28:38,6449.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000310,2025-04-27T13:40:43,622.72,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000311,2025-04-27T14:48:55,729.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000312,2025-04-27T15:26:19,326.88,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000313,2025-04-27T18:36:38,490.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000314,2025-04-28T18:44:26,1136.91,RedBus,travel,XXXX4412,purchase,Pune,INR
+TXN000315,2025-04-28T20:15:54,927.04,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000316,2025-04-29T21:26:35,3859.06,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000317,2025-04-29T22:54:23,749.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000318,2025-04-30T09:55:04,400.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000319,2025-05-01T18:19:58,1210.85,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000320,2025-05-01T18:26:02,939.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000321,2025-05-01T18:49:18,306.8,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000322,2025-05-01T20:06:51,830.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000323,2025-05-01T21:58:15,630.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000324,2025-05-02T21:18:09,795.47,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000325,2025-05-02T21:35:41,321.32,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000326,2025-05-02T23:11:58,621.6,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000327,2025-05-02T23:29:10,383.06,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000328,2025-05-03T07:32:52,1140.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000329,2025-05-03T08:34:35,1449.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000330,2025-05-03T09:48:00,200.28,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000331,2025-05-03T09:49:12,392.09,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000332,2025-05-03T11:58:06,679.82,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000333,2025-05-03T15:19:43,721.5,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000334,2025-05-03T20:05:23,789.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000335,2025-05-03T20:23:03,499.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000336,2025-05-04T04:42:02,751.63,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN000337,2025-05-04T18:24:48,1581.74,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000338,2025-05-04T19:36:54,163.82,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000339,2025-05-04T20:59:04,129.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000340,2025-05-04T23:03:40,1729.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000341,2025-05-04T23:17:02,352.74,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000342,2025-05-05T08:13:27,649.17,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000343,2025-05-05T13:47:24,321.4,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000344,2025-05-05T14:45:04,470.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000345,2025-05-05T20:49:20,180.0,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000346,2025-05-05T22:24:27,539.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000347,2025-05-06T12:08:05,620.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000348,2025-05-06T12:22:35,419.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000349,2025-05-07T10:46:57,999.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000350,2025-05-08T12:17:19,729.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000351,2025-05-08T22:06:08,1940.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000352,2025-05-08T23:50:04,399.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000353,2025-05-09T07:31:38,117.94,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000354,2025-05-09T14:30:20,576.57,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000355,2025-05-09T22:21:27,1030.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000356,2025-05-10T08:46:29,1313.98,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000357,2025-05-10T10:53:48,1973.25,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000358,2025-05-10T19:07:59,268.56,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000359,2025-05-10T20:36:50,808.03,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000360,2025-05-11T10:06:49,615.01,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000361,2025-05-11T11:36:41,1839.02,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000362,2025-05-11T20:34:02,370.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000363,2025-05-11T20:43:31,560.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000364,2025-05-11T20:50:24,248.27,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000365,2025-05-11T21:06:00,1717.73,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000366,2025-05-12T21:23:25,2130.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000367,2025-05-13T11:18:26,489.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000368,2025-05-13T12:22:19,227.68,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000369,2025-05-14T13:59:47,299.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000370,2025-05-14T22:20:04,640.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000371,2025-05-15T07:34:00,297.77,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000372,2025-05-15T14:28:37,1980.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000373,2025-05-15T20:40:11,299.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000374,2025-05-16T12:36:06,229.07,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000375,2025-05-16T23:33:40,659.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000376,2025-05-17T09:52:43,1220.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000377,2025-05-17T12:36:24,1129.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000378,2025-05-17T18:07:15,750.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000379,2025-05-18T13:35:10,1112.69,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000380,2025-05-18T15:18:02,620.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000381,2025-05-18T19:00:31,809.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000382,2025-05-18T21:26:45,629.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000383,2025-05-19T22:52:48,260.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000384,2025-05-19T23:35:32,1141.78,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000385,2025-05-20T07:06:03,131.19,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000386,2025-05-20T15:19:55,2180.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000387,2025-05-21T11:08:48,2160.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000388,2025-05-21T12:44:55,1490.08,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000389,2025-05-21T15:13:51,1000.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000390,2025-05-21T19:34:17,551.17,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000391,2025-05-21T21:10:39,1935.99,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000392,2025-05-22T02:15:00,750.0,Late Payment Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN000393,2025-05-22T20:31:09,559.1,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000394,2025-05-23T10:25:32,1130.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000395,2025-05-23T10:46:29,1160.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000396,2025-05-23T20:13:27,1907.71,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000397,2025-05-24T01:44:58,440.0,Finance Charge,fees_interest,XXXX4412,interest,Bengaluru,INR
+TXN000398,2025-05-24T13:03:25,1123.83,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000399,2025-05-24T18:05:41,1743.36,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000400,2025-05-24T22:01:07,1351.61,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000401,2025-05-24T23:50:21,429.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000402,2025-05-25T10:46:51,859.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000403,2025-05-25T13:41:43,309.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000404,2025-05-25T14:30:04,449.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000405,2025-05-25T19:52:07,399.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000406,2025-05-26T02:15:00,1152.23,Interest Charge,fees_interest,XXXX4412,interest,Bengaluru,INR
+TXN000407,2025-05-26T12:58:26,1520.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000408,2025-05-27T15:35:38,832.3,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000409,2025-05-27T17:13:33,1768.99,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000410,2025-05-27T20:22:27,1089.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000411,2025-05-28T11:23:59,460.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000412,2025-05-28T13:08:59,460.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000413,2025-05-28T13:48:30,2269.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000414,2025-05-28T14:31:24,280.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000415,2025-05-29T09:50:25,1419.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000416,2025-05-29T10:03:15,830.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000417,2025-05-29T10:40:34,660.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000418,2025-05-29T11:19:42,181.47,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000419,2025-05-29T12:34:20,410.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000420,2025-05-30T16:46:56,400.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000421,2025-05-30T18:45:36,300.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000422,2025-05-30T23:22:33,319.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000423,2025-05-31T12:14:47,593.96,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000424,2025-05-31T13:23:10,179.87,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000425,2025-05-31T20:14:20,413.02,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000426,2025-05-31T20:58:09,1599.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000427,2025-06-01T08:14:34,543.6,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000428,2025-06-01T11:11:14,420.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000429,2025-06-01T14:46:57,430.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000430,2025-06-01T17:47:39,1549.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000431,2025-06-01T17:49:54,769.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000432,2025-06-02T10:37:06,870.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000433,2025-06-02T16:05:02,1210.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000434,2025-06-02T17:06:13,930.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000435,2025-06-03T08:54:49,402.38,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000436,2025-06-03T09:13:53,4042.53,IndiGo,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000437,2025-06-03T11:09:06,2470.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000438,2025-06-03T13:15:18,153.01,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000439,2025-06-03T14:28:19,289.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000440,2025-06-03T18:20:28,2430.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000441,2025-06-04T10:37:37,1085.9,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000442,2025-06-04T14:08:12,180.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000443,2025-06-04T15:06:29,1147.31,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000444,2025-06-04T18:16:52,629.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000445,2025-06-04T22:51:08,300.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000446,2025-06-05T07:33:00,657.42,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000447,2025-06-05T09:17:17,939.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000448,2025-06-05T17:31:26,1240.45,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000449,2025-06-05T20:52:46,146.84,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000450,2025-06-06T15:01:57,659.0,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000451,2025-06-06T15:40:51,910.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000452,2025-06-06T19:49:37,257.34,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000453,2025-06-06T23:34:50,995.87,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000454,2025-06-07T08:45:44,1610.37,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000455,2025-06-07T09:48:14,370.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000456,2025-06-07T13:11:15,3942.11,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000457,2025-06-07T18:03:01,2149.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000458,2025-06-07T22:30:00,169.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000459,2025-06-07T23:34:19,1570.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000460,2025-06-08T07:31:42,118.68,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000461,2025-06-08T12:10:46,429.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000462,2025-06-08T19:04:23,660.11,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000463,2025-06-08T19:14:42,810.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000464,2025-06-09T08:36:48,2010.48,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000465,2025-06-09T10:40:36,650.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000466,2025-06-09T11:44:36,509.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000467,2025-06-09T14:22:20,194.54,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000468,2025-06-10T08:03:24,1880.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000469,2025-06-10T18:28:00,3911.48,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000470,2025-06-11T10:51:54,7405.82,IndiGo,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000471,2025-06-11T19:06:53,1639.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000472,2025-06-12T20:10:46,619.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000473,2025-06-13T23:45:01,471.75,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000474,2025-06-14T11:27:05,409.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000475,2025-06-14T14:26:44,1099.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000476,2025-06-14T17:05:30,719.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000477,2025-06-14T17:15:06,4700.63,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000478,2025-06-15T12:05:42,420.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000479,2025-06-15T12:30:00,35988.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000480,2025-06-15T16:05:41,1356.72,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000481,2025-06-15T16:28:29,1979.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000482,2025-06-15T20:52:33,2530.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000483,2025-06-15T23:19:05,1060.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000484,2025-06-16T10:23:32,296.39,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000485,2025-06-16T10:43:27,299.0,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000486,2025-06-16T12:07:48,2856.93,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000487,2025-06-17T08:50:44,1920.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000488,2025-06-17T10:05:24,1280.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000489,2025-06-17T11:44:36,-509.0,Domino's Pizza,food_dining,XXXX4412,refund,Bengaluru,INR
+TXN000490,2025-06-18T11:59:06,1060.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000491,2025-06-18T20:02:25,1169.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000492,2025-06-18T21:16:24,809.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000493,2025-06-19T11:55:14,590.45,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000494,2025-06-19T18:46:26,1997.6,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000495,2025-06-19T19:01:21,369.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000496,2025-06-19T21:47:31,1111.35,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000497,2025-06-20T07:27:47,128.52,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000498,2025-06-20T09:15:02,400.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000499,2025-06-20T11:43:01,880.0,RedBus,travel,XXXX4412,purchase,Delhi,INR
+TXN000500,2025-06-20T20:08:49,2899.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000501,2025-06-21T09:10:54,1889.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000502,2025-06-21T14:17:41,6285.56,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000503,2025-06-21T19:10:53,1160.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000504,2025-06-22T13:38:51,1216.02,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000505,2025-06-22T18:27:57,442.42,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000506,2025-06-22T20:37:06,1329.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000507,2025-06-22T22:41:38,2939.67,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000508,2025-06-23T08:41:31,1051.9,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000509,2025-06-23T09:51:54,689.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000510,2025-06-23T18:55:17,1379.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000511,2025-06-24T10:14:22,2099.15,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000512,2025-06-24T12:47:16,1969.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000513,2025-06-24T14:21:46,1200.81,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000514,2025-06-24T19:16:37,342.85,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000515,2025-06-24T19:32:19,511.47,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000516,2025-06-25T10:30:56,1591.25,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000517,2025-06-25T11:55:54,579.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000518,2025-06-26T13:20:40,3770.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000519,2025-06-26T22:09:20,550.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000520,2025-06-27T10:08:39,959.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000521,2025-06-28T10:52:02,489.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000522,2025-06-28T15:44:56,290.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000523,2025-06-28T19:00:57,640.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000524,2025-06-28T21:56:43,1320.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000525,2025-06-29T09:38:03,1960.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000526,2025-06-29T11:19:26,370.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000527,2025-06-29T12:23:45,230.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000528,2025-06-29T12:26:53,776.46,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000529,2025-06-29T20:01:14,1090.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000530,2025-06-29T21:28:24,288.5,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000531,2025-06-30T19:45:26,560.69,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000532,2025-06-30T21:09:05,1360.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000533,2025-06-30T23:12:38,425.32,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000534,2025-06-30T23:21:15,1538.13,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000535,2025-07-01T13:07:25,1070.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000536,2025-07-01T18:27:47,599.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000537,2025-07-01T19:22:57,130.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000538,2025-07-01T22:18:16,2019.08,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000539,2025-07-02T07:40:00,398.58,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000540,2025-07-02T11:26:58,788.57,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000541,2025-07-02T11:56:26,2150.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000542,2025-07-02T13:07:08,1869.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000543,2025-07-02T19:39:01,1569.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000544,2025-07-03T09:00:41,272.17,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000545,2025-07-03T15:42:55,279.05,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000546,2025-07-03T23:22:42,1267.19,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000547,2025-07-04T12:29:28,410.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000548,2025-07-04T12:50:38,339.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000549,2025-07-04T15:00:21,517.95,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000550,2025-07-04T15:21:17,2979.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000551,2025-07-04T22:21:23,1080.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000552,2025-07-04T23:45:42,1290.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000553,2025-07-04T23:47:41,299.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000554,2025-07-05T07:04:03,643.33,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000555,2025-07-05T11:59:54,429.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000556,2025-07-05T12:06:24,1110.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000557,2025-07-05T19:02:59,1549.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000558,2025-07-05T21:53:37,1160.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000559,2025-07-05T22:42:37,490.28,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000560,2025-07-05T23:08:52,457.33,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000561,2025-07-06T13:32:34,610.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000562,2025-07-06T14:39:45,1689.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000563,2025-07-06T15:17:25,1970.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000564,2025-07-06T17:53:44,599.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000565,2025-07-06T21:43:47,479.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000566,2025-07-07T06:04:20,118.3,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000567,2025-07-07T11:22:52,490.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000568,2025-07-07T17:43:16,345.53,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000569,2025-07-07T20:09:03,1069.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000570,2025-07-07T20:15:32,849.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000571,2025-07-08T05:38:12,610.0,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN000572,2025-07-08T21:50:43,1089.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000573,2025-07-08T22:53:14,280.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000574,2025-07-09T10:11:11,593.7,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000575,2025-07-09T12:02:09,2290.86,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000576,2025-07-09T12:10:37,1020.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000577,2025-07-10T13:33:04,1779.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000578,2025-07-10T15:56:13,729.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000579,2025-07-10T17:31:50,1469.46,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000580,2025-07-10T23:35:52,400.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000581,2025-07-11T10:03:46,1962.17,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000582,2025-07-11T15:02:43,920.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000583,2025-07-11T19:32:51,2031.54,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000584,2025-07-11T20:16:34,3057.09,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000585,2025-07-12T09:05:04,126.13,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000586,2025-07-12T11:10:49,819.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000587,2025-07-12T14:55:43,377.67,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000588,2025-07-12T21:41:52,1129.74,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000589,2025-07-13T08:41:46,459.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000590,2025-07-13T16:26:24,223.67,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000591,2025-07-14T11:18:50,1630.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000592,2025-07-14T20:50:51,809.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000593,2025-07-14T22:24:25,233.63,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000594,2025-07-15T07:48:38,294.93,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000595,2025-07-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN000596,2025-07-15T10:19:13,1610.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000597,2025-07-15T11:54:48,220.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000598,2025-07-15T12:10:11,702.3,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000599,2025-07-15T19:00:35,950.43,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000600,2025-07-16T11:20:15,309.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000601,2025-07-16T15:06:18,2110.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000602,2025-07-16T16:06:12,810.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000603,2025-07-16T17:44:37,3590.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000604,2025-07-17T11:11:41,1339.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000605,2025-07-17T12:43:46,450.4,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000606,2025-07-17T16:46:56,1920.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000607,2025-07-18T18:08:29,238.35,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000608,2025-07-18T20:49:37,1914.22,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000609,2025-07-18T21:41:49,410.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000610,2025-07-19T09:02:41,1790.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000611,2025-07-19T13:47:46,214.95,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000612,2025-07-19T13:48:32,386.15,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000613,2025-07-19T19:14:02,359.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000614,2025-07-20T08:32:56,1226.31,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000615,2025-07-20T09:41:01,127.8,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000616,2025-07-20T13:24:41,570.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000617,2025-07-20T20:22:52,1460.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000618,2025-07-21T13:23:38,389.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000619,2025-07-22T13:08:40,1049.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000620,2025-07-22T20:38:36,4380.0,IndiGo,travel,XXXX4412,purchase,Delhi,INR
+TXN000621,2025-07-22T21:30:13,339.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000622,2025-07-23T10:14:24,9170.32,MakeMyTrip,travel,XXXX4412,purchase,Goa,INR
+TXN000623,2025-07-23T13:39:42,1919.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000624,2025-07-23T22:38:30,1569.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000625,2025-07-24T11:05:30,2010.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000626,2025-07-24T20:52:09,397.04,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000627,2025-07-25T05:41:27,687.89,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN000628,2025-07-25T08:18:38,1000.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000629,2025-07-25T23:50:49,329.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000630,2025-07-26T07:36:33,407.66,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000631,2025-07-26T13:06:13,1170.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000632,2025-07-26T19:39:17,2250.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000633,2025-07-26T20:23:06,320.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000634,2025-07-26T20:47:08,2180.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000635,2025-07-26T23:11:23,930.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000636,2025-07-27T09:10:24,560.7,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000637,2025-07-27T13:40:31,1640.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000638,2025-07-27T20:59:25,669.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000639,2025-07-27T23:59:38,984.81,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000640,2025-07-28T13:05:17,1830.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000641,2025-07-28T22:33:44,2879.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000642,2025-07-29T10:58:05,1199.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000643,2025-07-29T16:14:38,1339.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000644,2025-07-29T21:32:06,1119.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000645,2025-07-30T15:43:44,3929.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000646,2025-07-30T16:44:28,249.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000647,2025-07-30T22:43:29,946.96,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000648,2025-07-31T15:18:05,1460.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000649,2025-07-31T20:20:22,506.44,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000650,2025-08-01T09:54:30,490.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000651,2025-08-01T12:03:33,537.67,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000652,2025-08-01T12:58:05,560.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000653,2025-08-01T16:13:14,1420.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000654,2025-08-01T17:31:11,1089.28,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000655,2025-08-02T12:30:51,632.32,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000656,2025-08-02T13:29:07,650.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000657,2025-08-02T16:28:11,880.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000658,2025-08-02T16:51:15,5430.06,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000659,2025-08-02T18:23:11,689.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000660,2025-08-02T20:37:06,380.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000661,2025-08-02T22:34:46,384.79,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000662,2025-08-03T09:13:52,1186.24,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000663,2025-08-03T10:30:35,396.7,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000664,2025-08-03T13:40:51,1240.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000665,2025-08-03T14:36:36,3289.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000666,2025-08-03T18:23:23,1373.34,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000667,2025-08-03T23:49:47,2159.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000668,2025-08-04T06:39:48,648.84,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000669,2025-08-04T10:06:16,699.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000670,2025-08-04T11:06:04,609.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000671,2025-08-04T12:46:15,300.7,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000672,2025-08-04T15:20:20,1909.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000673,2025-08-04T17:28:40,2069.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000674,2025-08-04T19:47:37,1430.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000675,2025-08-05T12:19:00,219.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000676,2025-08-05T13:37:38,1117.45,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000677,2025-08-05T17:58:22,1070.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000678,2025-08-05T23:29:55,230.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000679,2025-08-06T23:48:30,629.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000680,2025-08-07T19:12:26,1434.31,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000681,2025-08-07T20:53:24,2170.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000682,2025-08-08T07:15:33,119.51,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000683,2025-08-08T13:08:18,1084.52,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000684,2025-08-08T18:18:41,1631.21,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000685,2025-08-09T11:14:05,269.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000686,2025-08-09T12:03:34,879.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000687,2025-08-09T21:23:29,240.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000688,2025-08-10T06:08:09,1998.73,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000689,2025-08-10T11:17:49,567.08,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000690,2025-08-10T12:33:42,225.57,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000691,2025-08-10T17:52:24,654.25,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000692,2025-08-10T18:10:40,528.04,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000693,2025-08-10T20:49:28,784.25,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000694,2025-08-11T14:23:56,781.29,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000695,2025-08-11T19:00:10,1590.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000696,2025-08-11T23:44:38,700.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000697,2025-08-12T09:03:22,600.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000698,2025-08-12T19:51:57,1789.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000699,2025-08-13T14:36:11,438.29,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000700,2025-08-13T18:57:02,1879.98,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000701,2025-08-14T13:04:33,897.01,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000702,2025-08-14T19:46:04,450.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000703,2025-08-14T22:24:46,549.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000704,2025-08-15T08:57:16,297.02,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000705,2025-08-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN000706,2025-08-15T12:11:55,1270.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000707,2025-08-15T17:20:26,1270.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000708,2025-08-15T20:42:31,380.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000709,2025-08-16T08:59:58,210.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000710,2025-08-16T18:04:13,259.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000711,2025-08-16T19:50:45,514.04,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000712,2025-08-16T21:51:40,612.05,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000713,2025-08-17T14:36:40,1619.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000714,2025-08-17T15:36:34,1750.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000715,2025-08-17T18:35:20,1419.84,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000716,2025-08-17T19:43:29,920.72,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000717,2025-08-17T20:32:21,729.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000718,2025-08-17T21:25:00,610.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000719,2025-08-18T12:08:16,739.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000720,2025-08-18T16:58:35,1040.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000721,2025-08-18T17:00:19,669.37,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000722,2025-08-19T11:38:41,628.51,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000723,2025-08-19T14:46:04,1829.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000724,2025-08-20T06:19:09,131.41,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000725,2025-08-20T07:40:49,1620.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000726,2025-08-20T19:56:52,450.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000727,2025-08-21T07:35:25,609.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000728,2025-08-21T22:05:14,2519.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000729,2025-08-21T22:44:14,139.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000730,2025-08-22T10:31:25,1479.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000731,2025-08-22T15:15:04,1451.19,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000732,2025-08-23T10:07:47,372.17,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000733,2025-08-23T19:22:12,739.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000734,2025-08-23T22:39:09,2059.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000735,2025-08-24T08:21:44,1055.63,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000736,2025-08-24T14:13:34,459.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000737,2025-08-25T05:39:17,179.0,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN000738,2025-08-25T08:24:37,1714.15,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000739,2025-08-25T19:55:06,2900.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000740,2025-08-26T11:57:20,1065.07,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN000741,2025-08-27T08:02:15,637.81,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000742,2025-08-27T19:43:22,469.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000743,2025-08-28T12:05:46,349.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000744,2025-08-28T20:56:52,2157.95,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000745,2025-08-29T14:55:08,740.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000746,2025-08-29T17:58:38,559.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN000747,2025-08-30T12:41:59,740.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000748,2025-08-30T13:20:53,380.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000749,2025-08-30T21:26:19,1190.37,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000750,2025-08-31T07:59:17,589.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000751,2025-08-31T08:22:05,1439.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000752,2025-08-31T08:48:39,269.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000753,2025-08-31T19:11:54,1229.53,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000754,2025-09-01T09:33:06,700.28,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000755,2025-09-01T09:38:47,609.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000756,2025-09-01T09:44:33,1180.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000757,2025-09-01T20:47:02,165.81,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000758,2025-09-01T20:56:19,1479.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000759,2025-09-01T22:55:39,1740.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000760,2025-09-02T12:25:26,299.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000761,2025-09-02T12:33:45,494.3,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000762,2025-09-02T13:45:46,486.61,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000763,2025-09-02T14:56:29,670.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000764,2025-09-02T18:36:55,930.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000765,2025-09-02T21:19:19,1940.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000766,2025-09-03T08:31:20,403.53,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000767,2025-09-03T09:09:54,360.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000768,2025-09-03T11:06:26,560.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000769,2025-09-03T15:56:35,1050.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000770,2025-09-03T16:00:29,529.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000771,2025-09-03T23:15:13,992.05,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000772,2025-09-04T08:36:46,1374.16,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000773,2025-09-04T13:29:47,589.77,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000774,2025-09-04T16:21:33,860.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000775,2025-09-04T17:27:38,632.03,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000776,2025-09-04T19:59:08,2393.17,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000777,2025-09-04T20:52:04,2469.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000778,2025-09-05T09:00:47,638.1,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000779,2025-09-05T10:19:19,279.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000780,2025-09-05T17:12:00,650.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000781,2025-09-05T18:25:46,126.62,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000782,2025-09-05T20:26:02,450.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000783,2025-09-05T23:58:30,6160.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000784,2025-09-06T13:36:38,300.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000785,2025-09-06T18:29:50,1473.04,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000786,2025-09-06T18:35:34,210.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000787,2025-09-06T18:45:02,1610.43,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000788,2025-09-06T19:04:09,483.31,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000789,2025-09-07T10:28:32,1129.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000790,2025-09-07T18:13:33,316.94,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000791,2025-09-07T21:46:55,599.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000792,2025-09-08T09:31:00,120.45,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000793,2025-09-08T11:43:54,499.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000794,2025-09-08T12:13:46,1200.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000795,2025-09-08T17:01:36,1160.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000796,2025-09-09T07:05:48,2000.82,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000797,2025-09-09T11:13:34,890.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000798,2025-09-09T17:36:15,886.97,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000799,2025-09-09T22:42:07,640.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000800,2025-09-10T09:06:24,1519.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000801,2025-09-10T12:52:00,5326.11,Amazon.com,shopping,XXXX4412,purchase,Seattle,USD
+TXN000802,2025-09-10T21:39:22,327.72,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000803,2025-09-11T21:30:14,2040.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000804,2025-09-11T22:36:08,1465.26,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000805,2025-09-12T12:20:35,439.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000806,2025-09-12T15:35:10,1289.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000807,2025-09-12T19:50:55,259.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000808,2025-09-12T23:29:54,2329.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000809,2025-09-13T08:48:09,740.02,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000810,2025-09-13T11:05:13,529.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000811,2025-09-13T19:50:27,691.53,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000812,2025-09-13T20:04:38,439.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000813,2025-09-13T22:12:13,818.43,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000814,2025-09-13T23:07:37,1600.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000815,2025-09-14T19:05:37,2408.48,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000816,2025-09-14T19:07:55,873.69,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000817,2025-09-14T19:57:35,329.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000818,2025-09-14T20:40:20,244.68,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000819,2025-09-14T23:08:12,420.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000820,2025-09-15T08:28:01,294.45,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000821,2025-09-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN000822,2025-09-15T12:08:00,1290.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000823,2025-09-15T20:08:05,196.32,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000824,2025-09-15T20:39:11,575.88,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000825,2025-09-16T07:36:31,939.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000826,2025-09-16T19:02:02,3550.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000827,2025-09-17T10:09:46,539.77,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000828,2025-09-17T10:15:30,1180.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000829,2025-09-17T17:39:03,1554.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000830,2025-09-18T16:16:08,410.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000831,2025-09-18T17:46:50,420.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000832,2025-09-18T17:51:47,1169.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000833,2025-09-18T18:26:22,1135.37,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000834,2025-09-19T12:42:28,279.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000835,2025-09-19T12:53:31,2168.94,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000836,2025-09-19T20:11:51,765.75,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000837,2025-09-20T07:07:58,129.78,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000838,2025-09-20T09:06:58,1158.7,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000839,2025-09-20T10:36:46,730.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000840,2025-09-20T11:03:10,1520.3,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000841,2025-09-20T15:24:43,634.37,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000842,2025-09-20T17:59:51,339.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000843,2025-09-21T12:43:28,559.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000844,2025-09-21T13:20:35,907.94,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000845,2025-09-21T14:46:43,259.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000846,2025-09-21T16:21:17,1684.64,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000847,2025-09-22T14:38:40,669.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000848,2025-09-22T20:42:48,165.78,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000849,2025-09-23T09:28:04,1790.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000850,2025-09-23T16:18:29,6480.01,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000851,2025-09-23T16:49:03,339.55,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000852,2025-09-23T21:44:57,1134.22,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000853,2025-09-24T16:49:28,5579.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000854,2025-09-24T21:13:39,299.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000855,2025-09-25T12:44:21,120.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000856,2025-09-26T10:23:34,1735.84,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000857,2025-09-26T10:34:14,2079.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000858,2025-09-26T14:11:35,1640.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN000859,2025-09-26T19:21:43,2670.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000860,2025-09-27T15:31:24,1149.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000861,2025-09-27T18:31:05,819.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000862,2025-09-28T22:01:02,1291.18,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000863,2025-09-28T22:43:55,2099.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000864,2025-09-29T00:07:31,450.0,Finance Charge,fees_interest,XXXX4412,interest,Bengaluru,INR
+TXN000865,2025-09-29T13:40:03,169.47,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000866,2025-09-29T20:20:07,369.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000867,2025-09-29T21:41:01,240.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000868,2025-09-30T09:37:11,1881.03,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000869,2025-09-30T13:44:23,893.65,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000870,2025-09-30T18:26:44,160.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000871,2025-09-30T20:49:10,2059.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000872,2025-09-30T22:26:15,1090.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000873,2025-10-01T10:40:52,1648.54,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000874,2025-10-01T11:39:23,439.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000875,2025-10-01T13:10:50,382.3,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000876,2025-10-01T14:17:03,792.77,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN000877,2025-10-01T15:04:30,809.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000878,2025-10-01T15:49:07,2005.65,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000879,2025-10-01T18:21:39,149.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000880,2025-10-01T21:31:11,483.18,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000881,2025-10-01T21:37:37,181.51,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000882,2025-10-02T13:24:23,1913.35,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000883,2025-10-02T13:36:35,729.57,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000884,2025-10-02T14:37:30,720.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000885,2025-10-02T19:08:02,1549.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000886,2025-10-02T22:26:10,516.18,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000887,2025-10-03T09:30:46,1370.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000888,2025-10-03T11:28:31,440.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000889,2025-10-03T14:57:59,509.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000890,2025-10-03T17:10:45,1769.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000891,2025-10-03T20:13:08,519.13,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000892,2025-10-03T20:38:00,4200.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000893,2025-10-03T22:45:40,424.13,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000894,2025-10-03T22:49:08,750.35,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000895,2025-10-04T07:52:51,405.12,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000896,2025-10-04T08:44:43,644.29,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000897,2025-10-04T14:50:43,1500.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000898,2025-10-04T19:56:03,510.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000899,2025-10-04T22:45:04,369.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000900,2025-10-05T10:05:25,692.63,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000901,2025-10-05T11:44:09,1439.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000902,2025-10-05T14:48:47,249.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000903,2025-10-05T16:03:04,400.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000904,2025-10-05T17:28:39,1389.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000905,2025-10-06T10:53:33,810.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000906,2025-10-06T12:30:22,566.98,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000907,2025-10-06T17:10:50,1320.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000908,2025-10-06T18:31:37,918.45,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000909,2025-10-07T13:10:15,271.18,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000910,2025-10-07T13:39:59,949.0,RedBus,travel,XXXX4412,purchase,Delhi,INR
+TXN000911,2025-10-07T14:35:45,419.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000912,2025-10-07T21:34:00,4600.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000913,2025-10-08T08:40:19,119.63,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000914,2025-10-08T17:07:58,600.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000915,2025-10-08T19:09:00,527.31,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000916,2025-10-08T21:31:11,-483.18,Zomato,food_dining,XXXX4412,refund,Bengaluru,INR
+TXN000917,2025-10-09T09:08:43,389.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000918,2025-10-09T12:51:36,1510.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000919,2025-10-09T16:12:01,1620.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000920,2025-10-09T20:09:45,670.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000921,2025-10-09T22:22:05,1033.18,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000922,2025-10-09T22:25:12,478.84,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000923,2025-10-10T08:05:26,2036.77,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN000924,2025-10-10T09:12:11,980.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000925,2025-10-10T10:09:13,1960.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000926,2025-10-10T17:31:35,910.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000927,2025-10-10T20:05:00,405.37,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000928,2025-10-10T20:51:28,2798.05,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000929,2025-10-10T22:55:35,279.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000930,2025-10-11T11:23:32,605.27,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000931,2025-10-11T15:01:07,599.78,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000932,2025-10-11T18:29:56,699.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000933,2025-10-11T20:54:00,3400.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000934,2025-10-11T21:07:41,200.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000935,2025-10-11T23:36:27,800.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000936,2025-10-12T12:33:18,1289.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000937,2025-10-12T13:06:13,1218.19,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000938,2025-10-12T13:48:06,2890.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000939,2025-10-12T17:17:43,880.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000940,2025-10-12T19:03:18,890.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000941,2025-10-13T11:52:08,1820.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000942,2025-10-13T12:52:28,3392.84,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000943,2025-10-13T22:54:34,540.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000944,2025-10-14T08:05:09,4350.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN000945,2025-10-14T08:47:52,916.99,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000946,2025-10-14T09:30:07,330.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000947,2025-10-14T10:01:49,859.9,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000948,2025-10-14T11:50:07,1418.62,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN000949,2025-10-14T13:13:08,569.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000950,2025-10-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN000951,2025-10-15T10:49:25,300.24,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000952,2025-10-15T12:31:48,939.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000953,2025-10-15T15:32:36,487.42,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000954,2025-10-15T18:10:57,520.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000955,2025-10-15T20:27:13,2119.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000956,2025-10-15T20:52:00,3100.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000957,2025-10-15T23:23:44,779.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000958,2025-10-16T08:47:59,570.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000959,2025-10-16T21:12:54,780.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000960,2025-10-16T21:43:06,619.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000961,2025-10-16T22:38:47,439.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000962,2025-10-17T12:01:06,499.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000963,2025-10-17T16:48:50,547.64,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000964,2025-10-17T18:09:19,489.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000965,2025-10-17T20:07:14,640.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000966,2025-10-17T20:31:32,976.58,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000967,2025-10-17T23:50:29,399.21,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000968,2025-10-18T08:48:02,760.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000969,2025-10-18T21:27:08,2750.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000970,2025-10-18T22:02:02,519.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN000971,2025-10-19T09:11:00,131.98,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN000972,2025-10-19T19:22:51,999.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000973,2025-10-19T20:39:43,210.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000974,2025-10-19T20:52:00,4100.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000975,2025-10-19T23:30:35,1590.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN000976,2025-10-20T08:20:24,531.94,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000977,2025-10-20T11:29:42,180.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000978,2025-10-20T12:58:44,251.24,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000979,2025-10-20T14:21:31,440.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000980,2025-10-20T19:26:22,1809.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000981,2025-10-21T08:37:21,1274.4,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000982,2025-10-21T09:19:36,1289.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000983,2025-10-21T12:41:52,539.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000984,2025-10-21T14:31:40,280.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000985,2025-10-22T13:36:31,320.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN000986,2025-10-22T16:39:32,1559.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000987,2025-10-22T20:59:36,2890.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000988,2025-10-23T09:12:10,1179.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN000989,2025-10-23T14:01:15,1419.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000990,2025-10-23T17:52:18,1287.5,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN000991,2025-10-23T18:54:27,309.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000992,2025-10-23T22:05:00,3600.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000993,2025-10-23T22:11:41,256.95,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN000994,2025-10-24T10:25:53,1363.74,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN000995,2025-10-24T11:33:42,330.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN000996,2025-10-24T12:06:11,1709.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN000997,2025-10-24T18:21:53,840.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN000998,2025-10-24T18:38:19,960.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN000999,2025-10-24T21:34:23,350.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001000,2025-10-25T09:53:47,3899.0,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001001,2025-10-25T15:16:35,5453.41,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001002,2025-10-25T15:54:28,2372.42,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001003,2025-10-25T17:05:59,2429.64,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001004,2025-10-25T18:56:50,344.6,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001005,2025-10-26T08:52:10,1404.34,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001006,2025-10-26T13:00:25,459.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001007,2025-10-26T18:29:44,936.12,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001008,2025-10-26T19:56:51,579.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001009,2025-10-26T23:30:47,669.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001010,2025-10-27T12:54:38,510.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001011,2025-10-27T16:11:43,870.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001012,2025-10-27T20:56:24,799.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001013,2025-10-27T22:56:00,2900.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001014,2025-10-28T09:25:39,387.96,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001015,2025-10-28T09:36:07,608.95,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001016,2025-10-28T15:58:05,1270.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001017,2025-10-28T16:18:47,339.4,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001018,2025-10-28T17:46:43,1591.69,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001019,2025-10-28T21:52:43,350.63,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001020,2025-10-29T10:00:30,2490.94,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001021,2025-10-29T12:41:52,-539.0,Starbucks,food_dining,XXXX4412,refund,Bengaluru,INR
+TXN001022,2025-10-29T14:39:28,135.25,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001023,2025-10-29T20:45:27,639.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001024,2025-10-30T18:47:23,640.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001025,2025-10-30T20:42:23,109.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001026,2025-10-30T21:09:16,298.34,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001027,2025-10-30T21:58:22,420.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001028,2025-10-30T21:59:21,139.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001029,2025-10-31T09:30:16,2209.0,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001030,2025-10-31T09:35:54,841.76,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001031,2025-10-31T12:07:22,1330.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001032,2025-10-31T16:33:20,1690.39,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001033,2025-10-31T18:36:57,220.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001034,2025-10-31T21:02:28,351.31,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001035,2025-11-01T10:15:49,4629.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001036,2025-11-01T11:25:23,830.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001037,2025-11-01T13:15:49,769.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001038,2025-11-01T18:51:03,330.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001039,2025-11-01T22:20:46,460.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001040,2025-11-01T23:29:40,6179.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001041,2025-11-02T10:18:29,4636.39,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001042,2025-11-02T15:33:27,639.0,RedBus,travel,XXXX4412,purchase,Jaipur,INR
+TXN001043,2025-11-02T15:41:43,159.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001044,2025-11-02T17:57:43,229.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001045,2025-11-02T18:41:48,206.36,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001046,2025-11-02T19:39:11,576.92,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001047,2025-11-02T22:56:24,439.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001048,2025-11-03T10:38:07,406.31,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001049,2025-11-03T11:47:42,750.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001050,2025-11-03T17:20:37,1029.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001051,2025-11-03T18:58:55,458.97,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001052,2025-11-03T19:32:00,4200.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001053,2025-11-03T22:42:46,4569.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001054,2025-11-04T14:07:52,989.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001055,2025-11-04T14:27:53,580.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001056,2025-11-04T19:44:43,579.7,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001057,2025-11-04T20:34:01,2970.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001058,2025-11-04T21:44:25,127.05,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001059,2025-11-04T23:27:01,619.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001060,2025-11-05T09:31:25,909.56,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001061,2025-11-05T15:12:18,780.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001062,2025-11-05T21:26:54,350.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001063,2025-11-05T23:14:45,780.41,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001064,2025-11-06T06:36:16,653.63,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001065,2025-11-06T11:10:18,620.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001066,2025-11-06T20:56:30,290.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001067,2025-11-07T13:11:52,649.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001068,2025-11-07T19:33:00,4600.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001069,2025-11-07T19:50:30,2505.54,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001070,2025-11-07T21:19:15,380.86,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001071,2025-11-07T22:08:56,670.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001072,2025-11-07T23:08:11,1480.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001073,2025-11-08T11:52:35,1172.13,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001074,2025-11-08T13:41:23,520.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001075,2025-11-08T15:31:16,479.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001076,2025-11-08T16:57:09,946.31,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001077,2025-11-08T19:10:46,209.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001078,2025-11-08T22:51:29,549.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001079,2025-11-09T06:38:08,118.66,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001080,2025-11-09T14:53:51,350.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001081,2025-11-09T21:23:40,300.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001082,2025-11-09T21:26:58,1719.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001083,2025-11-10T08:45:51,8269.0,IndiGo,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001084,2025-11-10T09:25:34,2019.06,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001085,2025-11-10T17:26:25,750.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001086,2025-11-10T19:00:52,1370.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001087,2025-11-10T21:03:25,840.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001088,2025-11-11T09:34:21,1099.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001089,2025-11-11T17:33:21,1129.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001090,2025-11-11T19:36:00,3400.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001091,2025-11-11T22:44:22,879.0,RedBus,travel,XXXX4412,purchase,Delhi,INR
+TXN001092,2025-11-12T15:22:19,390.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001093,2025-11-12T16:40:32,905.18,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001094,2025-11-12T18:33:37,1929.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001095,2025-11-12T18:46:27,589.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001096,2025-11-12T22:19:36,2027.92,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001097,2025-11-13T21:05:05,240.75,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001098,2025-11-13T22:25:37,369.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001099,2025-11-13T22:44:59,1950.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001100,2025-11-14T11:26:30,2079.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001101,2025-11-14T11:50:09,279.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001102,2025-11-14T13:35:23,869.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001103,2025-11-14T17:02:33,4409.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001104,2025-11-14T18:56:18,343.53,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001105,2025-11-14T22:08:45,689.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001106,2025-11-15T06:24:51,295.23,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001107,2025-11-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001108,2025-11-15T12:48:08,5910.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001109,2025-11-15T13:45:01,909.5,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001110,2025-11-15T18:05:51,610.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001111,2025-11-15T18:34:02,1005.11,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001112,2025-11-15T19:16:00,3100.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001113,2025-11-16T08:07:42,2120.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001114,2025-11-16T10:12:39,371.49,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001115,2025-11-16T18:27:11,760.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001116,2025-11-16T22:05:51,4379.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001117,2025-11-17T11:03:12,2138.37,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001118,2025-11-17T13:03:39,201.74,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001119,2025-11-17T13:18:09,680.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001120,2025-11-17T18:09:26,129.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001121,2025-11-18T08:17:35,639.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001122,2025-11-18T16:03:20,1240.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001123,2025-11-18T17:36:26,370.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001124,2025-11-19T07:29:55,127.85,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001125,2025-11-19T13:50:15,1210.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001126,2025-11-19T20:47:00,4100.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001127,2025-11-19T22:18:02,1880.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001128,2025-11-19T22:53:39,1099.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001129,2025-11-19T23:17:38,251.28,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001130,2025-11-20T12:46:35,480.09,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001131,2025-11-20T18:21:13,400.31,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001132,2025-11-20T18:27:11,-760.0,Ola,travel,XXXX4412,refund,Bengaluru,INR
+TXN001133,2025-11-20T18:40:16,330.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001134,2025-11-21T08:07:29,2189.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001135,2025-11-21T08:38:30,1599.1,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001136,2025-11-21T21:48:25,480.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001137,2025-11-21T22:43:07,819.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001138,2025-11-22T13:35:12,220.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001139,2025-11-22T14:00:12,599.39,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001140,2025-11-22T15:31:23,367.97,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001141,2025-11-22T19:12:05,239.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001142,2025-11-23T10:08:16,1349.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001143,2025-11-23T11:56:46,2130.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001144,2025-11-23T16:12:54,4107.31,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001145,2025-11-23T20:43:00,3600.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001146,2025-11-23T21:54:26,2259.31,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001147,2025-11-23T22:00:27,5459.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001148,2025-11-24T11:30:27,290.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001149,2025-11-24T18:05:56,1499.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001150,2025-11-24T21:04:58,1688.02,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001151,2025-11-25T09:19:39,370.9,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001152,2025-11-25T15:21:53,899.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001153,2025-11-25T18:56:54,419.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001154,2025-11-25T20:25:06,1569.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001155,2025-11-25T21:48:06,399.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001156,2025-11-26T08:21:41,1029.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001157,2025-11-26T11:00:38,599.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001158,2025-11-26T12:40:32,1889.52,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001159,2025-11-26T13:15:08,375.14,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001160,2025-11-26T13:50:15,-798.23,Practo,health,XXXX4412,refund,Bengaluru,INR
+TXN001161,2025-11-27T09:27:22,360.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001162,2025-11-27T14:42:30,459.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001163,2025-11-27T18:39:19,5000.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001164,2025-11-27T19:00:33,1689.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001165,2025-11-27T19:19:37,430.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001166,2025-11-27T21:31:00,2900.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001167,2025-11-28T08:23:00,989.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001168,2025-11-28T19:02:01,409.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001169,2025-11-28T21:14:58,584.34,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001170,2025-11-28T21:47:49,489.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001171,2025-11-29T12:01:53,131.39,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001172,2025-11-29T17:29:15,1790.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001173,2025-11-29T19:54:35,589.25,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001174,2025-11-30T13:54:32,290.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001175,2025-11-30T14:54:34,2549.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001176,2025-11-30T21:56:45,2461.73,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001177,2025-11-30T22:24:44,589.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001178,2025-12-01T09:13:14,630.0,RedBus,travel,XXXX4412,purchase,Pune,INR
+TXN001179,2025-12-01T09:28:14,1529.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001180,2025-12-01T12:10:32,535.87,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001181,2025-12-01T17:28:33,380.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001182,2025-12-01T18:33:44,1099.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001183,2025-12-01T20:36:10,5449.0,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001184,2025-12-01T21:28:29,1343.34,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001185,2025-12-02T10:50:17,940.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001186,2025-12-02T16:12:45,2001.25,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001187,2025-12-02T18:12:43,230.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001188,2025-12-03T07:33:51,402.73,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001189,2025-12-03T12:55:25,1170.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001190,2025-12-03T20:25:52,110.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001191,2025-12-03T21:13:28,460.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001192,2025-12-03T22:46:52,1360.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001193,2025-12-04T11:31:51,430.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001194,2025-12-04T17:20:37,690.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001195,2025-12-04T18:05:10,629.83,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001196,2025-12-04T19:36:40,610.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001197,2025-12-04T20:12:30,1469.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001198,2025-12-05T08:24:57,1789.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001199,2025-12-05T09:23:31,647.72,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001200,2025-12-05T18:55:58,1319.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001201,2025-12-05T20:18:13,2289.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001202,2025-12-05T23:10:38,4070.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001203,2025-12-06T13:26:15,1043.07,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001204,2025-12-06T16:12:00,1430.82,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001205,2025-12-06T18:58:36,170.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001206,2025-12-06T22:22:44,789.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001207,2025-12-07T11:25:44,1000.1,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001208,2025-12-07T17:42:58,1070.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001209,2025-12-07T22:07:23,2499.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001210,2025-12-08T11:29:01,339.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001211,2025-12-09T08:51:44,117.96,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001212,2025-12-09T09:44:09,2000.97,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001213,2025-12-09T14:25:02,469.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001214,2025-12-10T21:29:04,293.37,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001215,2025-12-11T13:10:53,1099.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001216,2025-12-12T13:04:42,185.8,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001217,2025-12-13T08:21:52,719.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001218,2025-12-13T12:24:44,2660.72,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001219,2025-12-13T12:51:53,1313.71,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001220,2025-12-13T14:28:44,949.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001221,2025-12-13T14:59:15,1659.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001222,2025-12-14T07:12:48,301.9,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001223,2025-12-14T08:24:13,285.24,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001224,2025-12-14T11:45:34,580.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001225,2025-12-14T14:13:06,619.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001226,2025-12-14T19:02:04,1531.87,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001227,2025-12-14T19:35:40,140.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001228,2025-12-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001229,2025-12-15T15:32:37,779.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001230,2025-12-15T18:54:42,465.25,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001231,2025-12-15T20:43:59,379.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001232,2025-12-16T17:12:09,1269.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001233,2025-12-16T18:15:47,446.66,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001234,2025-12-16T20:47:56,733.29,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001235,2025-12-17T15:51:43,1059.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001236,2025-12-17T17:48:01,1474.05,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001237,2025-12-18T12:55:31,400.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001238,2025-12-18T14:08:05,147.62,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001239,2025-12-18T14:32:05,560.55,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001240,2025-12-19T20:24:10,438.04,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001241,2025-12-19T22:40:12,4780.0,MakeMyTrip,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001242,2025-12-20T11:00:55,223.73,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001243,2025-12-20T12:35:46,2033.32,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001244,2025-12-20T21:04:21,369.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001245,2025-12-20T23:01:48,590.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001246,2025-12-21T08:17:01,131.01,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001247,2025-12-21T19:24:31,429.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001248,2025-12-21T19:32:45,627.26,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001249,2025-12-21T20:59:36,1210.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001250,2025-12-21T21:47:15,872.17,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001251,2025-12-22T13:00:07,394.63,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001252,2025-12-22T13:16:38,454.4,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001253,2025-12-23T12:17:47,510.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001254,2025-12-23T14:56:27,3990.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001255,2025-12-23T20:37:19,250.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001256,2025-12-24T11:04:49,309.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001257,2025-12-24T13:23:11,439.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001258,2025-12-25T03:07:17,709.0,Finance Charge,fees_interest,XXXX4412,interest,Bengaluru,INR
+TXN001259,2025-12-25T14:11:12,390.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001260,2025-12-25T20:28:40,550.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001261,2025-12-26T12:00:03,373.29,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001262,2025-12-27T16:59:31,209.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001263,2025-12-27T18:51:06,519.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001264,2025-12-27T18:52:15,580.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001265,2025-12-28T12:01:38,1137.29,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001266,2025-12-28T14:23:28,268.12,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001267,2025-12-29T18:01:40,1060.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001268,2025-12-29T22:14:38,2528.55,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001269,2025-12-29T23:42:54,980.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001270,2025-12-30T15:15:13,279.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001271,2025-12-30T17:53:43,348.78,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001272,2025-12-30T22:56:36,279.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001273,2025-12-31T08:10:59,216.02,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001274,2025-12-31T23:57:42,939.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001275,2026-01-01T15:59:36,199.49,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001276,2026-01-01T20:41:41,1520.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001277,2026-01-02T15:06:25,1471.42,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001278,2026-01-02T18:47:37,519.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001279,2026-01-02T18:53:14,287.44,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001280,2026-01-02T20:20:49,429.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001281,2026-01-02T20:36:47,729.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001282,2026-01-03T11:38:20,197.31,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001283,2026-01-03T13:01:35,790.32,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001284,2026-01-03T13:54:31,760.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001285,2026-01-03T19:09:52,490.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001286,2026-01-03T19:25:04,1349.06,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001287,2026-01-03T23:40:53,892.61,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001288,2026-01-04T09:27:44,395.53,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001289,2026-01-04T11:43:50,580.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001290,2026-01-04T13:59:03,514.21,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001291,2026-01-04T14:13:51,1190.76,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001292,2026-01-04T19:37:27,220.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001293,2026-01-04T19:48:50,489.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001294,2026-01-04T22:41:10,1907.13,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001295,2026-01-05T08:34:47,655.84,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001296,2026-01-05T11:11:55,1170.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001297,2026-01-05T13:24:30,783.76,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001298,2026-01-05T13:25:52,429.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001299,2026-01-05T13:41:47,820.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001300,2026-01-05T15:01:37,479.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001301,2026-01-05T19:17:40,1488.82,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001302,2026-01-05T23:04:33,520.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001303,2026-01-06T08:15:19,565.36,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001304,2026-01-06T14:41:10,359.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001305,2026-01-06T22:19:23,570.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001306,2026-01-07T18:33:58,830.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001307,2026-01-08T05:27:44,446.44,Cash Advance Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001308,2026-01-08T09:04:01,118.38,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001309,2026-01-08T09:15:02,1866.64,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001310,2026-01-08T14:45:23,157.4,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001311,2026-01-08T16:24:41,1960.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001312,2026-01-08T22:13:37,569.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001313,2026-01-09T15:17:00,900.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001314,2026-01-09T18:50:27,569.88,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001315,2026-01-09T19:04:21,509.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001316,2026-01-10T13:33:46,520.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001317,2026-01-10T17:35:17,310.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001318,2026-01-11T07:28:10,2024.81,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001319,2026-01-11T13:09:24,483.93,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001320,2026-01-11T13:22:51,2249.39,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001321,2026-01-11T19:45:49,2040.96,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001322,2026-01-11T20:30:37,522.04,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001323,2026-01-12T15:19:40,1473.4,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001324,2026-01-12T22:32:18,607.05,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001325,2026-01-13T10:04:46,947.64,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001326,2026-01-13T13:30:31,478.83,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001327,2026-01-13T14:58:53,1079.13,RedBus,travel,XXXX4412,purchase,Mumbai,INR
+TXN001328,2026-01-13T23:51:55,640.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001329,2026-01-14T09:38:28,510.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001330,2026-01-14T11:18:19,11730.0,MakeMyTrip,travel,XXXX4412,purchase,Jaipur,INR
+TXN001331,2026-01-14T19:03:27,289.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001332,2026-01-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001333,2026-01-15T17:59:59,1979.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001334,2026-01-15T23:03:22,1128.96,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001335,2026-01-16T08:53:44,301.82,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001336,2026-01-16T20:22:00,240.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001337,2026-01-17T21:57:11,319.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001338,2026-01-17T22:10:08,2179.27,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001339,2026-01-17T23:00:09,1099.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001340,2026-01-18T09:08:25,1059.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001341,2026-01-18T13:20:48,411.57,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001342,2026-01-18T20:08:07,491.15,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001343,2026-01-18T23:42:17,154.14,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001344,2026-01-19T12:14:07,1109.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001345,2026-01-19T13:15:17,2039.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001346,2026-01-19T14:30:45,2190.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001347,2026-01-19T15:03:43,390.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001348,2026-01-19T21:30:18,1468.9,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001349,2026-01-20T12:55:03,610.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001350,2026-01-21T02:15:00,750.0,Late Payment Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001351,2026-01-21T07:13:04,129.89,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001352,2026-01-21T09:32:27,2159.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001353,2026-01-21T21:15:20,779.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001354,2026-01-22T13:21:23,481.97,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001355,2026-01-22T14:18:30,147.63,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001356,2026-01-22T15:41:17,1710.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001357,2026-01-22T18:19:07,1259.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001358,2026-01-23T08:02:37,582.68,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001359,2026-01-23T18:19:46,309.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001360,2026-01-24T02:15:00,1321.51,Interest Charge,fees_interest,XXXX4412,interest,Bengaluru,INR
+TXN001361,2026-01-24T11:50:44,489.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001362,2026-01-24T16:57:56,629.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001363,2026-01-24T22:40:45,784.58,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001364,2026-01-24T22:50:01,160.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001365,2026-01-25T10:10:28,604.51,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001366,2026-01-25T14:11:00,530.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001367,2026-01-25T22:29:32,430.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001368,2026-01-26T11:00:41,1760.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001369,2026-01-26T11:10:14,679.66,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001370,2026-01-26T18:59:08,274.68,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001371,2026-01-27T16:46:08,412.33,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001372,2026-01-27T18:14:46,850.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001373,2026-01-28T10:31:11,1116.3,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001374,2026-01-28T12:46:47,404.82,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001375,2026-01-28T13:41:18,310.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001376,2026-01-28T14:52:28,339.55,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001377,2026-01-28T20:09:28,228.08,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001378,2026-01-29T14:04:09,553.27,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001379,2026-01-30T08:38:06,490.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001380,2026-01-31T08:50:00,268.43,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001381,2026-01-31T10:12:08,696.61,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001382,2026-01-31T11:08:15,524.63,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001383,2026-01-31T12:15:03,599.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001384,2026-02-01T09:38:09,2419.8,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001385,2026-02-01T11:31:10,1086.53,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001386,2026-02-01T17:14:58,2909.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001387,2026-02-01T18:39:52,299.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001388,2026-02-01T19:04:39,211.91,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001389,2026-02-01T21:09:00,1859.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001390,2026-02-02T07:09:18,395.78,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001391,2026-02-02T10:50:00,1805.07,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001392,2026-02-02T16:09:05,1259.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001393,2026-02-02T22:46:50,3769.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001394,2026-02-03T20:05:37,695.07,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001395,2026-02-03T20:26:35,2090.86,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001396,2026-02-03T20:38:50,309.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001397,2026-02-04T08:36:53,539.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001398,2026-02-04T12:03:58,309.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001399,2026-02-04T12:24:46,1170.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001400,2026-02-04T12:30:53,316.99,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001401,2026-02-04T15:23:00,1709.15,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001402,2026-02-04T21:15:13,940.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001403,2026-02-05T07:02:44,641.94,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001404,2026-02-05T17:07:09,1784.65,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001405,2026-02-05T17:30:26,1712.76,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001406,2026-02-05T17:58:36,1351.86,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001407,2026-02-05T20:08:47,580.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001408,2026-02-05T22:10:00,1257.81,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001409,2026-02-06T10:52:44,608.2,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001410,2026-02-06T13:03:51,813.24,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001411,2026-02-07T11:36:50,250.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001412,2026-02-07T17:25:32,490.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001413,2026-02-07T18:01:15,230.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001414,2026-02-07T18:12:35,179.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001415,2026-02-08T07:13:20,118.38,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001416,2026-02-08T08:37:50,491.35,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001417,2026-02-08T08:45:14,809.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001418,2026-02-08T18:26:57,400.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001419,2026-02-09T08:14:15,2020.01,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001420,2026-02-09T10:09:36,420.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001421,2026-02-09T10:31:06,1820.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001422,2026-02-09T18:28:50,1190.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001423,2026-02-09T20:02:57,310.97,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001424,2026-02-10T12:04:11,209.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001425,2026-02-10T22:41:59,339.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001426,2026-02-11T20:54:39,379.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001427,2026-02-12T09:39:41,459.06,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001428,2026-02-12T12:18:24,489.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001429,2026-02-12T12:22:29,570.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001430,2026-02-12T19:23:05,391.61,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001431,2026-02-13T13:03:51,-813.24,Ola,travel,XXXX4412,refund,Bengaluru,INR
+TXN001432,2026-02-13T14:44:47,150.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001433,2026-02-13T20:49:27,459.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001434,2026-02-14T08:48:43,2549.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001435,2026-02-14T09:59:51,2571.36,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001436,2026-02-14T10:19:55,309.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001437,2026-02-14T13:40:13,408.89,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001438,2026-02-14T20:48:00,12456.22,Booking.com,travel,XXXX4412,purchase,Singapore,USD
+TXN001439,2026-02-15T08:23:29,303.62,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001440,2026-02-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001441,2026-02-15T10:57:57,1060.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001442,2026-02-15T13:44:27,440.0,RedBus,travel,XXXX4412,purchase,Delhi,INR
+TXN001443,2026-02-15T14:04:46,2180.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001444,2026-02-15T18:00:09,881.28,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001445,2026-02-15T21:16:33,2850.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001446,2026-02-16T11:02:13,797.72,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001447,2026-02-16T19:01:19,639.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001448,2026-02-16T20:13:22,1099.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001449,2026-02-17T11:05:51,573.15,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001450,2026-02-17T11:59:11,870.58,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001451,2026-02-17T17:54:42,719.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001452,2026-02-17T21:22:22,7695.9,IndiGo,travel,XXXX4412,purchase,Delhi,INR
+TXN001453,2026-02-18T15:49:29,159.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001454,2026-02-18T19:50:14,816.45,RedBus,travel,XXXX4412,purchase,Mumbai,INR
+TXN001455,2026-02-18T19:50:58,1919.87,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001456,2026-02-18T22:06:40,449.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001457,2026-02-19T12:22:29,-570.0,McDonald's,food_dining,XXXX4412,refund,Bengaluru,INR
+TXN001458,2026-02-19T15:35:25,2120.36,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001459,2026-02-19T21:43:15,972.38,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001460,2026-02-19T22:52:47,140.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001461,2026-02-20T06:02:31,130.93,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001462,2026-02-20T09:32:07,1119.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001463,2026-02-20T20:46:11,1809.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001464,2026-02-21T13:01:39,351.83,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001465,2026-02-21T13:20:13,748.33,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001466,2026-02-21T17:12:34,328.63,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001467,2026-02-21T22:40:40,530.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001468,2026-02-22T10:31:40,1039.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001469,2026-02-22T12:04:31,269.71,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001470,2026-02-22T16:05:59,657.64,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001471,2026-02-22T21:51:10,1955.83,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001472,2026-02-22T21:59:38,459.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001473,2026-02-23T11:07:21,469.62,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001474,2026-02-23T16:59:07,1189.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001475,2026-02-24T13:17:17,139.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001476,2026-02-24T14:55:23,394.54,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001477,2026-02-25T16:25:06,549.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001478,2026-02-25T22:47:51,878.89,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001479,2026-02-26T09:32:16,1479.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001480,2026-02-26T19:27:12,1542.25,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001481,2026-02-26T21:56:28,610.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001482,2026-02-27T18:07:00,759.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001483,2026-02-27T18:57:14,1930.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001484,2026-02-27T21:50:11,1190.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001485,2026-02-28T08:36:57,1139.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001486,2026-02-28T08:58:29,809.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001487,2026-02-28T14:12:03,1098.65,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001488,2026-02-28T22:10:38,209.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001489,2026-03-01T11:01:14,6215.38,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001490,2026-03-01T12:30:06,610.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001491,2026-03-01T20:05:35,630.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001492,2026-03-01T20:14:10,193.53,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001493,2026-03-01T22:31:54,560.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001494,2026-03-02T09:05:23,391.48,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001495,2026-03-02T13:48:37,429.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001496,2026-03-02T16:56:50,1413.03,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001497,2026-03-02T20:17:44,619.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001498,2026-03-03T10:22:35,729.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001499,2026-03-03T11:58:08,1646.17,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001500,2026-03-03T14:44:04,1050.51,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001501,2026-03-03T20:12:31,149.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001502,2026-03-03T22:54:20,551.42,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001503,2026-03-03T23:17:20,1269.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001504,2026-03-04T10:04:17,1620.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001505,2026-03-04T12:25:32,1119.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001506,2026-03-04T20:56:06,1729.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001507,2026-03-04T23:42:33,329.0,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001508,2026-03-05T09:20:59,646.66,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001509,2026-03-05T11:36:17,629.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001510,2026-03-05T18:55:00,14500.0,MakeMyTrip,travel,XXXX4412,purchase,Goa,INR
+TXN001511,2026-03-05T20:06:43,429.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001512,2026-03-05T20:12:18,319.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001513,2026-03-05T20:25:25,897.33,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001514,2026-03-06T15:41:00,9200.0,IndiGo,travel,XXXX4412,purchase,Goa,INR
+TXN001515,2026-03-06T17:28:00,8600.0,IndiGo,travel,XXXX4412,purchase,Goa,INR
+TXN001516,2026-03-06T17:45:38,1239.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001517,2026-03-07T13:11:21,623.44,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001518,2026-03-07T14:12:03,-1098.65,Myntra,shopping,XXXX4412,refund,Bengaluru,INR
+TXN001519,2026-03-07T21:21:01,4375.4,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001520,2026-03-07T21:47:19,386.72,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001521,2026-03-08T08:36:43,639.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001522,2026-03-08T08:40:58,120.95,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001523,2026-03-08T11:06:19,679.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001524,2026-03-08T11:38:22,210.48,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001525,2026-03-09T10:01:03,2010.57,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001526,2026-03-09T15:42:09,579.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001527,2026-03-09T16:42:31,1976.82,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001528,2026-03-09T21:23:13,824.26,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001529,2026-03-09T23:07:17,280.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001530,2026-03-10T18:53:39,440.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001531,2026-03-10T20:37:26,690.0,RedBus,travel,XXXX4412,purchase,Jaipur,INR
+TXN001532,2026-03-10T22:57:58,458.53,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001533,2026-03-11T23:59:43,560.7,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001534,2026-03-12T13:19:31,779.34,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001535,2026-03-13T09:16:08,1077.8,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001536,2026-03-13T11:03:31,780.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001537,2026-03-14T07:36:56,300.77,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001538,2026-03-14T13:05:45,472.62,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001539,2026-03-14T14:02:30,1549.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001540,2026-03-14T20:10:00,24000.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001541,2026-03-14T20:43:56,609.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001542,2026-03-14T21:25:57,992.88,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001543,2026-03-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001544,2026-03-15T17:19:05,640.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001545,2026-03-15T19:29:22,664.12,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001546,2026-03-15T21:06:08,1530.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001547,2026-03-16T07:49:26,1045.8,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001548,2026-03-16T22:23:08,449.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001549,2026-03-17T11:07:47,419.69,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001550,2026-03-17T12:21:38,359.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001551,2026-03-17T12:25:42,2214.14,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001552,2026-03-18T08:51:31,3200.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001553,2026-03-18T11:15:13,380.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001554,2026-03-18T23:08:14,880.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001555,2026-03-19T20:30:11,359.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001556,2026-03-20T09:11:00,131.72,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001557,2026-03-20T10:21:00,7200.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001558,2026-03-20T11:27:09,1264.63,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001559,2026-03-20T13:32:47,1846.17,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001560,2026-03-20T21:09:01,1889.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001561,2026-03-20T23:23:42,480.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001562,2026-03-21T16:00:10,2744.09,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001563,2026-03-21T20:32:04,1069.76,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001564,2026-03-21T21:02:58,130.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001565,2026-03-22T13:17:50,2490.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001566,2026-03-22T16:08:44,1630.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001567,2026-03-22T23:24:30,750.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001568,2026-03-23T10:02:01,742.94,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001569,2026-03-23T23:59:43,1964.62,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001570,2026-03-24T10:28:48,770.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001571,2026-03-24T20:48:26,500.32,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001572,2026-03-25T12:40:36,589.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001573,2026-03-25T15:12:47,1207.65,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001574,2026-03-26T10:21:11,650.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001575,2026-03-26T11:13:02,290.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001576,2026-03-27T10:36:05,5210.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001577,2026-03-27T19:22:39,310.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001578,2026-03-27T22:21:01,279.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001579,2026-03-28T13:18:04,530.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001580,2026-03-28T17:25:39,1259.63,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001581,2026-03-28T18:41:01,2810.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001582,2026-03-29T09:22:04,710.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001583,2026-03-29T18:59:48,1079.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001584,2026-03-30T14:34:38,210.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001585,2026-03-30T16:46:02,410.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001586,2026-03-30T20:30:19,389.03,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001587,2026-03-30T20:49:24,1609.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001588,2026-03-31T09:04:03,5960.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001589,2026-03-31T18:22:12,1169.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001590,2026-03-31T21:47:48,809.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001591,2026-04-01T14:31:45,489.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001592,2026-04-01T15:18:08,1071.72,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001593,2026-04-02T09:15:44,1663.58,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001594,2026-04-02T15:19:47,480.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001595,2026-04-02T16:17:37,1150.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001596,2026-04-02T17:55:41,3769.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001597,2026-04-02T19:57:26,999.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001598,2026-04-03T07:28:40,403.4,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001599,2026-04-03T11:34:48,470.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001600,2026-04-03T18:59:53,2388.63,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001601,2026-04-03T21:02:14,319.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001602,2026-04-04T08:29:02,1899.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001603,2026-04-04T10:17:57,799.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001604,2026-04-04T12:19:36,2658.47,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001605,2026-04-04T16:05:15,377.29,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001606,2026-04-04T16:10:24,2080.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001607,2026-04-04T16:16:55,370.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001608,2026-04-04T19:17:42,390.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001609,2026-04-04T20:46:59,646.49,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001610,2026-04-04T20:55:27,300.7,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001611,2026-04-05T09:11:43,1459.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001612,2026-04-05T09:28:09,648.06,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001613,2026-04-05T15:22:06,939.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001614,2026-04-05T16:16:01,459.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001615,2026-04-05T19:21:26,1079.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001616,2026-04-05T19:53:52,179.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001617,2026-04-06T09:15:44,-1663.58,Amazon,shopping,XXXX4412,refund,Bengaluru,INR
+TXN001618,2026-04-06T09:58:37,1269.0,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001619,2026-04-06T12:24:48,410.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001620,2026-04-06T15:36:32,1150.7,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001621,2026-04-06T22:50:37,230.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001622,2026-04-07T09:38:30,1300.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001623,2026-04-07T12:59:34,1070.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001624,2026-04-07T15:21:15,870.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001625,2026-04-07T15:28:46,480.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001626,2026-04-07T19:41:30,500.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001627,2026-04-08T02:21:20,529.0,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001628,2026-04-08T10:21:36,120.37,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001629,2026-04-08T21:40:56,343.14,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001630,2026-04-09T12:08:32,559.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001631,2026-04-09T15:45:18,3039.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001632,2026-04-09T23:47:06,2059.0,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001633,2026-04-10T06:14:48,1997.3,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001634,2026-04-10T09:04:47,4365.91,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001635,2026-04-11T10:09:57,616.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001636,2026-04-11T10:27:33,1730.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001637,2026-04-11T12:14:19,2258.55,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001638,2026-04-11T20:20:28,316.03,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001639,2026-04-11T21:18:20,1100.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001640,2026-04-11T21:18:48,793.92,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001641,2026-04-12T12:59:14,272.89,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001642,2026-04-12T13:01:38,653.34,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001643,2026-04-12T16:31:28,309.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001644,2026-04-13T08:23:13,107.33,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001645,2026-04-13T12:17:46,459.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001646,2026-04-13T15:46:04,678.26,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001647,2026-04-13T17:58:07,1970.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001648,2026-04-14T18:57:59,800.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001649,2026-04-14T19:12:53,614.16,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001650,2026-04-15T06:19:00,295.61,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001651,2026-04-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001652,2026-04-15T09:46:31,1339.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001653,2026-04-15T14:00:27,1740.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001654,2026-04-15T15:08:37,1432.92,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001655,2026-04-16T20:40:37,599.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001656,2026-04-17T15:07:56,769.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001657,2026-04-17T17:42:31,2313.04,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001658,2026-04-18T11:11:29,780.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001659,2026-04-18T14:49:40,339.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001660,2026-04-18T14:56:54,1089.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001661,2026-04-18T18:40:52,1110.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001662,2026-04-18T21:25:51,530.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001663,2026-04-18T23:53:51,479.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001664,2026-04-19T08:51:24,240.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001665,2026-04-19T12:41:03,1800.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001666,2026-04-19T15:18:51,330.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001667,2026-04-20T07:02:54,701.86,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001668,2026-04-20T13:18:19,169.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001669,2026-04-21T06:49:56,132.07,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001670,2026-04-21T20:41:25,315.87,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001671,2026-04-22T21:01:00,1940.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001672,2026-04-23T10:24:01,1749.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001673,2026-04-23T17:50:20,2479.0,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001674,2026-04-23T20:24:18,819.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001675,2026-04-24T09:20:44,919.75,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001676,2026-04-24T11:41:19,949.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001677,2026-04-24T14:03:49,450.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001678,2026-04-24T22:14:36,1749.13,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001679,2026-04-24T23:37:15,470.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001680,2026-04-25T10:58:06,1006.32,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001681,2026-04-25T11:10:12,530.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001682,2026-04-25T20:34:31,780.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001683,2026-04-25T23:08:47,159.0,RedBus,travel,XXXX4412,purchase,Pune,INR
+TXN001684,2026-04-26T14:51:39,1520.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001685,2026-04-26T16:33:20,520.5,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001686,2026-04-26T17:44:12,447.22,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001687,2026-04-26T18:59:47,669.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001688,2026-04-26T21:38:10,399.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001689,2026-04-26T23:00:20,281.83,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001690,2026-04-27T17:52:58,919.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001691,2026-04-28T13:51:33,1590.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001692,2026-04-28T14:04:37,1469.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001693,2026-04-28T15:13:05,2029.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001694,2026-04-28T16:51:47,893.81,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001695,2026-04-29T09:08:32,1179.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001696,2026-04-29T11:15:35,1060.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001697,2026-04-29T16:45:09,4352.69,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001698,2026-04-29T18:33:05,1390.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001699,2026-04-30T14:00:37,2989.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001700,2026-04-30T14:24:23,584.44,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001701,2026-04-30T19:46:27,573.35,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001702,2026-04-30T21:41:22,1788.48,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001703,2026-05-01T05:17:41,479.0,Cash Advance Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001704,2026-05-01T08:55:45,1360.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001705,2026-05-01T11:02:23,640.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001706,2026-05-02T11:03:28,719.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001707,2026-05-02T14:41:39,440.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001708,2026-05-02T18:57:45,699.11,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001709,2026-05-03T10:11:46,1349.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001710,2026-05-03T10:28:48,399.88,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001711,2026-05-03T11:21:29,2090.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001712,2026-05-03T12:46:17,626.23,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001713,2026-05-03T13:50:00,433.31,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001714,2026-05-03T14:03:49,-310.77,McDonald's,food_dining,XXXX4412,refund,Bengaluru,INR
+TXN001715,2026-05-03T20:26:53,500.13,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001716,2026-05-03T22:26:11,143.59,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001717,2026-05-04T13:17:08,401.34,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001718,2026-05-04T14:47:48,9160.0,IndiGo,travel,XXXX4412,purchase,Hyderabad,INR
+TXN001719,2026-05-04T17:16:44,1879.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001720,2026-05-04T22:53:40,860.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001721,2026-05-05T09:20:44,728.87,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001722,2026-05-05T09:26:01,655.17,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001723,2026-05-05T13:30:08,710.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001724,2026-05-05T16:05:32,453.83,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001725,2026-05-05T20:22:41,319.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001726,2026-05-06T11:11:58,619.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001727,2026-05-07T16:46:23,427.59,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001728,2026-05-07T21:37:36,220.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001729,2026-05-08T07:20:50,119.94,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001730,2026-05-08T15:48:59,163.34,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001731,2026-05-08T20:37:01,3683.94,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001732,2026-05-08T22:12:36,608.85,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001733,2026-05-09T10:11:15,3010.0,MakeMyTrip,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001734,2026-05-09T11:24:08,1627.14,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001735,2026-05-09T13:51:22,539.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001736,2026-05-09T14:58:30,369.52,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001737,2026-05-09T19:00:30,300.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001738,2026-05-09T21:41:22,-1788.48,Flipkart,shopping,XXXX4412,refund,Bengaluru,INR
+TXN001739,2026-05-10T07:32:20,2034.98,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001740,2026-05-10T08:14:56,1556.26,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001741,2026-05-10T12:46:17,-626.23,Amazon,shopping,XXXX4412,refund,Bengaluru,INR
+TXN001742,2026-05-10T20:58:04,970.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001743,2026-05-10T21:38:25,950.59,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001744,2026-05-11T11:29:51,300.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001745,2026-05-11T20:02:16,835.53,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001746,2026-05-11T20:41:11,139.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001747,2026-05-12T13:20:08,590.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001748,2026-05-13T11:50:11,1294.3,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001749,2026-05-13T19:27:49,416.22,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001750,2026-05-13T21:32:23,257.08,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001751,2026-05-14T14:11:05,310.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001752,2026-05-14T16:12:32,1569.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001753,2026-05-14T18:49:52,479.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001754,2026-05-14T19:19:40,209.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001755,2026-05-14T23:29:23,749.0,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001756,2026-05-15T08:13:31,302.94,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001757,2026-05-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001758,2026-05-15T11:24:32,349.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001759,2026-05-15T17:27:25,471.55,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001760,2026-05-15T21:44:39,459.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001761,2026-05-16T08:14:56,-976.42,Flipkart,shopping,XXXX4412,refund,Bengaluru,INR
+TXN001762,2026-05-16T10:53:58,893.75,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001763,2026-05-16T15:44:51,629.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001764,2026-05-17T13:17:32,2070.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001765,2026-05-17T16:00:26,2024.01,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001766,2026-05-18T18:06:14,540.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001767,2026-05-18T21:37:26,1779.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001768,2026-05-19T18:22:52,1369.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001769,2026-05-19T20:16:25,920.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001770,2026-05-19T22:22:05,632.89,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001771,2026-05-20T09:12:51,131.09,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001772,2026-05-20T20:26:48,430.02,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001773,2026-05-20T22:43:29,434.44,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001774,2026-05-21T20:38:54,1190.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001775,2026-05-22T09:49:49,1789.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001776,2026-05-23T14:40:01,1379.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001777,2026-05-23T16:20:49,490.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001778,2026-05-23T17:52:59,1037.73,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001779,2026-05-23T18:32:34,1810.95,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001780,2026-05-23T21:01:20,1458.84,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001781,2026-05-23T22:41:11,310.0,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001782,2026-05-24T14:36:29,450.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001783,2026-05-24T15:11:30,784.25,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001784,2026-05-24T20:35:32,2049.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001785,2026-05-24T22:32:41,599.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001786,2026-05-25T10:00:47,2039.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001787,2026-05-26T10:50:26,797.23,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001788,2026-05-27T08:28:30,573.82,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001789,2026-05-27T09:23:25,570.0,Apollo Pharmacy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001790,2026-05-27T11:09:54,570.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001791,2026-05-27T12:58:15,1950.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001792,2026-05-27T22:57:45,530.0,Practo,health,XXXX4412,purchase,Bengaluru,INR
+TXN001793,2026-05-28T17:01:14,349.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001794,2026-05-28T18:50:28,1054.74,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001795,2026-05-29T12:38:18,923.23,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001796,2026-05-29T17:09:37,2579.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001797,2026-05-29T17:30:45,847.99,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001798,2026-05-29T22:25:30,502.2,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001799,2026-05-30T14:14:09,3409.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001800,2026-05-30T19:31:29,2620.69,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001801,2026-05-30T22:23:24,460.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001802,2026-05-30T23:11:30,1035.86,PharmEasy,health,XXXX4412,purchase,Bengaluru,INR
+TXN001803,2026-05-31T10:17:35,1189.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001804,2026-05-31T15:14:44,607.61,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001805,2026-05-31T15:15:16,1170.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001806,2026-05-31T15:47:12,1705.2,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001807,2026-06-01T12:57:57,260.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001808,2026-06-01T14:30:07,871.77,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001809,2026-06-01T17:36:00,230.0,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001810,2026-06-01T21:29:06,150.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001811,2026-06-02T17:40:28,1051.68,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001812,2026-06-02T17:41:19,1240.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001813,2026-06-02T21:31:10,380.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001814,2026-06-02T22:00:16,1780.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001815,2026-06-03T08:29:17,392.74,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001816,2026-06-03T13:12:49,750.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001817,2026-06-03T13:20:33,1919.48,Tata Power,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001818,2026-06-03T18:10:12,310.38,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001819,2026-06-03T22:30:06,229.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001820,2026-06-04T13:29:49,150.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001821,2026-06-04T14:51:13,540.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001822,2026-06-04T17:23:09,480.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001823,2026-06-04T17:53:23,740.23,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001824,2026-06-04T19:28:59,169.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001825,2026-06-04T20:48:26,2199.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001826,2026-06-04T23:15:17,169.68,RedBus,travel,XXXX4412,purchase,Chennai,INR
+TXN001827,2026-06-04T23:46:37,779.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001828,2026-06-05T08:08:49,1335.52,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001829,2026-06-05T09:55:40,656.48,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001830,2026-06-05T14:11:20,2120.0,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001831,2026-06-05T15:20:36,899.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001832,2026-06-05T17:43:00,3264.39,Apple Store,entertainment,XXXX4412,purchase,Dubai,USD
+TXN001833,2026-06-05T20:52:09,1333.18,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001834,2026-06-06T10:47:04,1220.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001835,2026-06-06T16:38:47,851.88,Ola,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001836,2026-06-06T21:02:32,2029.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001837,2026-06-06T23:51:03,229.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001838,2026-06-07T10:36:59,684.94,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001839,2026-06-07T16:29:28,330.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001840,2026-06-07T17:00:39,689.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001841,2026-06-07T18:29:33,629.0,Udemy,education,XXXX4412,purchase,Bengaluru,INR
+TXN001842,2026-06-08T11:49:08,220.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001843,2026-06-08T12:12:49,1851.97,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001844,2026-06-08T14:12:19,3639.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001845,2026-06-08T19:34:29,290.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001846,2026-06-09T07:45:37,121.24,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001847,2026-06-09T12:56:57,1129.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001848,2026-06-09T14:24:03,1019.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001849,2026-06-10T09:01:32,1990.01,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001850,2026-06-10T09:32:58,1479.0,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001851,2026-06-10T19:47:20,570.0,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001852,2026-06-11T12:29:01,539.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001853,2026-06-11T19:23:19,332.16,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001854,2026-06-12T09:03:38,550.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001855,2026-06-12T11:09:54,506.7,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001856,2026-06-12T13:11:59,669.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001857,2026-06-12T19:56:30,721.1,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001858,2026-06-13T11:47:55,295.74,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001859,2026-06-13T12:50:10,1526.91,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001860,2026-06-13T18:39:20,282.21,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001861,2026-06-13T22:10:10,140.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001862,2026-06-14T08:19:30,247.85,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001863,2026-06-14T11:30:29,466.49,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001864,2026-06-14T11:30:31,258.45,RedBus,travel,XXXX4412,purchase,Mumbai,INR
+TXN001865,2026-06-15T09:00:00,2999.0,Croma,shopping,XXXX4412,emi,Bengaluru,INR
+TXN001866,2026-06-15T09:25:38,301.63,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001867,2026-06-15T12:14:42,1620.0,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001868,2026-06-15T14:14:16,500.0,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001869,2026-06-15T21:42:37,1741.99,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001870,2026-06-16T09:50:12,922.73,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001871,2026-06-16T12:37:47,1729.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001872,2026-06-16T13:25:20,260.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001873,2026-06-17T20:28:13,4626.49,IndiGo,travel,XXXX4412,purchase,Hyderabad,INR
+TXN001874,2026-06-18T12:42:54,550.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001875,2026-06-18T18:21:57,530.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001876,2026-06-19T12:06:14,879.86,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001877,2026-06-19T12:55:22,232.31,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001878,2026-06-20T08:12:46,255.88,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001879,2026-06-20T08:55:12,127.53,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001880,2026-06-20T09:51:34,550.0,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001881,2026-06-20T20:52:56,209.6,RedBus,travel,XXXX4412,purchase,Delhi,INR
+TXN001882,2026-06-21T14:53:59,210.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001883,2026-06-21T17:13:59,1709.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001884,2026-06-21T20:57:30,277.14,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001885,2026-06-21T21:54:12,515.31,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001886,2026-06-22T11:46:47,2510.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001887,2026-06-22T13:48:51,1719.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001888,2026-06-22T14:15:53,529.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001889,2026-06-23T12:04:56,704.56,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001890,2026-06-23T18:00:40,454.9,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001891,2026-06-23T21:14:42,397.85,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001892,2026-06-24T00:24:53,718.9,Cash Advance Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001893,2026-06-24T18:40:32,566.43,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001894,2026-06-24T19:15:55,166.94,Swiggy,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001895,2026-06-24T21:03:40,2922.41,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001896,2026-06-24T23:48:18,4509.0,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001897,2026-06-25T23:15:37,789.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001898,2026-06-25T23:35:38,840.0,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001899,2026-06-26T08:36:06,460.0,Shell,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001900,2026-06-26T20:52:25,311.17,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001901,2026-06-26T21:42:58,6065.8,Croma,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001902,2026-06-26T22:36:55,395.33,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001903,2026-06-27T08:46:29,2090.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001904,2026-06-27T19:15:17,981.32,BSES,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001905,2026-06-28T13:13:35,490.53,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001906,2026-06-28T13:48:24,1749.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001907,2026-06-28T14:20:53,570.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001908,2026-06-28T19:49:52,581.94,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001909,2026-06-29T17:48:35,119.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001910,2026-06-29T19:48:10,2096.01,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001911,2026-06-30T12:54:47,400.0,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001912,2026-06-30T18:14:28,989.71,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001913,2026-06-30T19:54:16,680.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001914,2026-07-01T15:15:56,780.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001915,2026-07-01T15:20:34,1106.61,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001916,2026-07-01T19:40:36,977.25,Bharat Petroleum,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001917,2026-07-01T19:51:51,4987.17,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001918,2026-07-01T23:53:28,590.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001919,2026-07-02T22:52:14,240.0,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001920,2026-07-02T23:34:20,2119.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001921,2026-07-02T23:37:27,177.46,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001922,2026-07-03T08:45:38,1588.92,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001923,2026-07-03T09:18:10,402.29,Jio Postpaid,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001924,2026-07-03T13:04:43,419.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001925,2026-07-04T10:39:04,879.0,PhonePe,other,XXXX4412,purchase,Bengaluru,INR
+TXN001926,2026-07-04T13:53:11,1680.0,Myntra,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001927,2026-07-04T17:21:14,830.0,Paytm,other,XXXX4412,purchase,Bengaluru,INR
+TXN001928,2026-07-04T18:55:00,2100.0,Ajio,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001929,2026-07-04T20:36:44,509.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001930,2026-07-05T06:27:50,646.39,Netflix,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001931,2026-07-05T08:00:20,2299.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001932,2026-07-05T08:11:12,1519.0,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001933,2026-07-05T11:19:22,609.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001934,2026-07-05T11:51:59,200.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001935,2026-07-05T11:55:43,1293.67,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001936,2026-07-05T13:32:09,4295.94,Cash Advance - Branch,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN001937,2026-07-05T16:01:56,1048.34,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001938,2026-07-05T19:49:52,-581.94,Disney+ Hotstar,entertainment,XXXX4412,refund,Bengaluru,INR
+TXN001939,2026-07-05T20:12:14,589.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001940,2026-07-06T11:31:12,1859.0,Reliance Fresh,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001941,2026-07-06T20:50:28,6600.0,Reliance Digital,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001942,2026-07-07T00:42:41,640.0,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001943,2026-07-07T17:20:08,2028.77,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001944,2026-07-07T20:51:53,482.07,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001945,2026-07-07T23:12:50,389.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001946,2026-07-08T11:31:06,1969.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001947,2026-07-08T17:49:43,1680.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001948,2026-07-09T07:31:36,117.75,Spotify Premium,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001949,2026-07-09T09:52:52,389.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001950,2026-07-09T13:41:20,2100.0,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001951,2026-07-09T19:43:44,639.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001952,2026-07-10T09:35:04,1998.38,Cult.fit Membership,health,XXXX4412,purchase,Bengaluru,INR
+TXN001953,2026-07-10T19:04:45,623.48,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001954,2026-07-11T12:59:18,2299.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001955,2026-07-11T15:39:42,749.0,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001956,2026-07-11T19:11:24,469.58,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001957,2026-07-12T05:19:13,520.85,Over-limit Fee,fees_interest,XXXX4412,fee,Bengaluru,INR
+TXN001958,2026-07-12T09:44:49,1930.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001959,2026-07-12T20:17:53,550.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001960,2026-07-13T20:18:34,1693.18,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001961,2026-07-13T23:04:11,219.0,BookMyShow,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001962,2026-07-14T14:05:35,1680.0,Coursera,education,XXXX4412,purchase,Bengaluru,INR
+TXN001963,2026-07-14T23:30:06,1619.48,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN001964,2026-07-15T09:35:38,304.03,Amazon Prime,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001965,2026-07-15T12:15:27,217.77,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001966,2026-07-16T09:25:24,608.24,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001967,2026-07-16T14:49:13,1220.0,IRCTC,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001968,2026-07-16T18:55:16,1380.72,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001969,2026-07-17T12:35:20,3920.0,IndiGo,travel,XXXX4412,purchase,Goa,INR
+TXN001970,2026-07-17T18:42:46,779.3,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001971,2026-07-18T13:46:59,1291.83,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001972,2026-07-18T20:00:36,589.0,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001973,2026-07-19T07:36:34,1599.8,Indian Oil,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001974,2026-07-19T20:18:43,2680.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001975,2026-07-20T06:41:02,130.99,Google One,other,XXXX4412,purchase,Bengaluru,INR
+TXN001976,2026-07-20T17:40:46,610.56,RedBus,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001977,2026-07-20T19:40:29,857.51,Uber,travel,XXXX4412,purchase,Bengaluru,INR
+TXN001978,2026-07-20T19:47:01,649.54,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001979,2026-07-21T15:25:08,1330.84,BigBasket,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001980,2026-07-21T22:46:28,450.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001981,2026-07-22T09:46:33,872.92,HP Petrol Pump,fuel,XXXX4412,purchase,Bengaluru,INR
+TXN001982,2026-07-22T19:57:29,500.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001983,2026-07-23T21:03:12,1874.13,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001984,2026-07-23T22:27:11,591.66,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001985,2026-07-23T23:06:34,1009.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001986,2026-07-24T10:01:00,1584.76,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN001987,2026-07-24T14:09:26,1033.66,Amazon,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001988,2026-07-24T18:39:59,2290.0,DMart,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN001989,2026-07-24T18:47:43,324.56,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001990,2026-07-25T13:57:56,368.01,PVR Cinemas,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN001991,2026-07-25T14:47:09,1310.0,Netmeds,health,XXXX4412,purchase,Bengaluru,INR
+TXN001992,2026-07-25T15:07:42,2167.44,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN001993,2026-07-25T20:10:35,182.77,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001994,2026-07-25T22:30:21,1020.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001995,2026-07-25T23:24:30,210.0,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN001996,2026-07-26T12:56:23,620.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001997,2026-07-26T13:07:59,450.74,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001998,2026-07-26T13:28:57,2979.0,Barbeque Nation,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN001999,2026-07-27T08:31:20,2894.3,BYJU'S,education,XXXX4412,purchase,Bengaluru,INR
+TXN002000,2026-07-27T10:22:38,378.83,Disney+ Hotstar,entertainment,XXXX4412,purchase,Bengaluru,INR
+TXN002001,2026-07-27T21:10:23,117.55,Local Kirana Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN002002,2026-07-28T08:47:36,1549.0,ACT Fibernet,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN002003,2026-07-28T16:35:12,1210.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN002004,2026-07-28T18:44:24,229.0,McDonald's,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN002005,2026-07-28T19:02:17,490.0,Zomato,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN002006,2026-07-29T11:15:04,5243.02,ATM Cash Withdrawal,cash_advance,XXXX4412,purchase,Bengaluru,INR
+TXN002007,2026-07-29T18:55:32,2410.0,Blinkit,groceries,XXXX4412,purchase,Bengaluru,INR
+TXN002008,2026-07-30T12:00:46,544.77,Starbucks,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN002009,2026-07-30T13:37:40,581.18,Domino's Pizza,food_dining,XXXX4412,purchase,Bengaluru,INR
+TXN002010,2026-07-31T10:00:27,652.59,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN002011,2026-07-31T12:12:58,959.0,Google Play Store,other,XXXX4412,purchase,Bengaluru,INR
+TXN002012,2026-07-31T13:30:18,634.73,Flipkart,shopping,XXXX4412,purchase,Bengaluru,INR
+TXN002013,2026-07-31T14:16:09,1139.0,Airtel,utilities,XXXX4412,purchase,Bengaluru,INR
+TXN002014,2026-07-31T20:20:40,457.49,Practo,health,XXXX4412,purchase,Bengaluru,INR

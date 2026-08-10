@@ -1,0 +1,29 @@
+# Card terms — hand-authored by S03B (card-terms-builder), ~40 facts total.
+# Every leaf that could be spoken must carry a `clause` string: the exact
+# sentence the verbalizer will read aloud (see PRD.md §7.3). Category keys
+# under rewards must match the 12 canonical categories from S01 exactly, or
+# reward calculations silently zero out.
+#
+# This is a skeleton only. S03B fills in real values, real clauses, and the
+# deliberate undocumented-charge-type gaps used for "admit a gap, don't fill
+# it in" testing.
+#
+# See all-specs.md S03B and .claude/agents/card-terms-builder.md.
+
+card:
+  name: "TODO"
+  network: "TODO"
+
+fees:
+  annual: {}
+  forex_markup: {}
+  late_payment: []
+  cash_advance: []
+
+rewards:
+  base_rate: {}
+  category_rates: {}
+  excluded_categories: []
+  redemption: {}
+
+offers: []
