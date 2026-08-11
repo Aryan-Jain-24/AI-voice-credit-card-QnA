@@ -421,12 +421,17 @@ def top_merchants(period: str, top_n: int = 5) -> dict:
 
     Use this when the user asks WHO or WHERE they spend the most, by
     merchant name — not by category. Example utterances: "Who do I spend
-    the most at?", "What are my top merchants this month?", "Where do I
-    shop most often?".
+    the most at this month?", "What are my top merchants this month?",
+    "Where have I been shopping most often lately?" (a vague-but-present
+    time cue like "lately" is still a period to interpret, e.g. as the last
+    3 months).
 
     Not for a category breakdown. Do NOT use this for "where did my money
     go" by category (use spend_by_category), and do NOT use this to check
-    whether one specific transaction happened (use find_transactions).
+    whether one specific transaction happened (use find_transactions). And
+    do NOT use this — call ask_clarification instead — for a merchant-
+    ranking question with no time cue at all, e.g. a bare "Who do I spend
+    the most with?"; a required `period` must never be guessed.
 
     Args:
         period: A period phrase resolved by resolve_period, e.g. "last

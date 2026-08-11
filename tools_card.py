@@ -163,6 +163,15 @@ def _card_rewards_core(terms: dict[str, Any], category: str | None) -> dict[str,
     result: dict[str, Any] = {
         "found": True,
         "category": category,
+        # Every rate on this card is quoted "points per Rs. 100 spent" --
+        # 100 is fixed, not a per-category figure, but it is still a number
+        # that appears in every `clause` (and `base_rate_clause`) verbatim
+        # text. Exposed here as a literal value for the same reason
+        # `waiver_spend_inr`/`min_amount_inr` are on `card_fees`: a number
+        # the verbalizer speaks from a clause must also exist as a plain
+        # scalar in this dict, not only inside the clause string, to pass
+        # the hallucination-grounding check.
+        "rate_basis_inr": 100,
         "base_rate_points_per_100": base_rate,
         "base_rate_clause": base_clause,
         "category_rate_points_per_100": None,
@@ -281,6 +290,20 @@ def _summarize_fee(key: str, entry: Any) -> dict[str, Any]:
         "amount_or_pct": amount_or_pct,
         "currency": entry.get("currency", "INR" if "amount_inr" in entry else None),
         "waiver_condition": entry.get("waiver_condition"),
+        # Secondary numeric facts a spoken answer may need alongside the
+        # primary amount/pct (e.g. the annual fee's waiver spend threshold,
+        # or the cash-advance fee's minimum amount). These already appear in
+        # prose inside `clause`/`waiver_condition`, but graph.py's verbalizer
+        # (S05/S06) is only allowed to speak a number that also exists as a
+        # literal scalar somewhere in this dict -- a number that only shows
+        # up inside a string is, by the letter of eval.py's hallucination
+        # check, unaccounted-for. Exposing them here as real dict values
+        # (not just prose) is what makes "speak the clause verbatim" and
+        # "every number traces to tool_result" simultaneously satisfiable.
+        # None when the underlying yaml entry doesn't have one -- never
+        # invented.
+        "waiver_spend_inr": entry.get("waiver_spend_inr"),
+        "min_amount_inr": entry.get("min_amount_inr"),
         "clause": entry.get("clause"),
     }
 
@@ -328,6 +351,11 @@ def card_fees(fee_type: str | None = None) -> dict[str, Any]:
     (e.g. a railway-booking surcharge, a wallet-load fee, a balance-transfer
     fee), the return is {"found": False, "requested": ..., ...} — never a
     recalled or invented number for it.
+
+    A single-fee result includes `amount_or_pct`, `waiver_spend_inr` and
+    `min_amount_inr` (each None if this fee has no such term) as literal
+    numbers alongside `clause` — every figure the clause mentions in prose
+    is also available as a plain scalar here.
     """
     terms = load_card_terms()
     return _card_fees_core(terms, fee_type)
@@ -336,6 +364,31 @@ def card_fees(fee_type: str | None = None) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 # card_offers
 # ---------------------------------------------------------------------------
+
+_BENEFIT_NUM_RE = re.compile(r"\d[\d,]*(?:\.\d+)?")
+
+
+def _extract_benefit_numbers(text: str | None) -> list[float]:
+    """Pull every number literally written in an offer's `benefit` prose
+    (e.g. "5% cashback up to Rs. 200 on grocery orders above Rs. 1,000." ->
+    [5.0, 200.0, 1000.0]), so those figures exist as literal scalars in the
+    tool's return value, not only inside the `benefit` string.
+
+    Same rationale as `waiver_spend_inr`/`min_amount_inr` on `card_fees`
+    above: a number the verbalizer speaks from `benefit` text must also be
+    traceable as a plain numeric value in `tool_result` to pass the
+    hallucination-grounding check, which does not parse digits out of
+    strings. Comma-grouped thousands ("1,000") are parsed as one number, not
+    split on the comma.
+    """
+    out: list[float] = []
+    for m in _BENEFIT_NUM_RE.finditer(text or ""):
+        try:
+            out.append(float(m.group().replace(",", "")))
+        except ValueError:
+            continue
+    return out
+
 
 def _is_offer_active(valid_until: str | None, today: date) -> bool | None:
     if not valid_until:
@@ -371,6 +424,7 @@ def _card_offers_core(
             {
                 "merchant": o.get("merchant"),
                 "benefit": o.get("benefit"),
+                "benefit_numbers": _extract_benefit_numbers(o.get("benefit")),
                 "valid_until": valid_until,
                 "category": o.get("category"),
                 "is_active": _is_offer_active(valid_until, today),
@@ -394,8 +448,12 @@ def card_offers(merchant: str | None = None, category: str | None = None) -> dic
         category: filter to offers tagged with one of the 12 canonical
             categories, e.g. "food_dining".
 
-    Returns {offers: [{merchant, benefit, valid_until, category, is_active}],
-    count}. `is_active` compares `valid_until` to today's date but does NOT
+    Returns {offers: [{merchant, benefit, benefit_numbers, valid_until,
+    category, is_active}], count}. `benefit_numbers` is every number written
+    in `benefit`'s prose (e.g. "10% ... up to Rs. 150" -> [10.0, 150.0]) as
+    plain scalars, so a spoken figure lifted from `benefit` is still
+    traceable to a literal number in this dict, not just inside a string.
+    `is_active` compares `valid_until` to today's date but does NOT
     remove expired offers from the list — an expired offer is still named
     and marked inactive rather than silently disappearing, so "is the Swiggy
     offer still on" can be answered honestly either way. An empty `offers`

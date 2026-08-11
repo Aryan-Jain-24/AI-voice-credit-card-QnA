@@ -322,7 +322,14 @@ def _gt_card_rewards(terms: dict, spec: dict) -> dict:
     return {"required_numbers": [rate], "summary": {"rate": rate, "cap": None, "fallback": True}}
 
 
-_NUM_IN_TEXT_RE = re.compile(r"\d+(?:\.\d+)?")
+# NB: matches comma-grouped thousands ("1,000") as a single token, same as
+# _ANSWER_NUM_RE below -- a plain r"\d+(?:\.\d+)?" would instead split
+# "1,000" into "1" and "000" (i.e. 1.0 and 0.0), producing a bogus expected
+# number that no natural spoken rendering of "Rs. 1,000" could ever satisfy.
+# This was caught wiring up graph.py's verbalizer (S05/S06) against this
+# harness: Q30's BigBasket offer ("...above Rs. 1,000.") required_numbers
+# included a phantom 0.0 under the old pattern.
+_NUM_IN_TEXT_RE = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
 
 def _gt_card_offers(terms: dict, spec: dict) -> dict:
@@ -338,7 +345,9 @@ def _gt_card_offers(terms: dict, spec: dict) -> dict:
         matches.append(o)
     if not matches:
         return {"required_numbers": [], "summary": {"count": 0}}
-    numbers = [float(n) for n in _NUM_IN_TEXT_RE.findall(matches[0].get("benefit", ""))]
+    numbers = [
+        float(n.replace(",", "")) for n in _NUM_IN_TEXT_RE.findall(matches[0].get("benefit", ""))
+    ]
     return {"required_numbers": numbers, "summary": {"count": len(matches), "benefit": matches[0].get("benefit")}}
 
 
