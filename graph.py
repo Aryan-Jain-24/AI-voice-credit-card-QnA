@@ -86,7 +86,7 @@ from datetime import date
 from typing import Any, TypedDict
 
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, ToolMessage
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langgraph.graph import END, StateGraph
@@ -297,6 +297,18 @@ these are two DIFFERENT months, never the same phrase repeated for both. \
 This is identifying which calendar month is meant, not resolving exact day \
 boundaries.
 
+Terse, verb-less phrasing (e.g. "Fuel spend last week?", "Dining points \
+last month?") is never itself a signal for which tool to call -- decide the \
+TOOL from the question's own topic word, never from how short or bare the \
+phrasing is. "Spend", "spent", "blew", "paid", or "charged" name a \
+transactions-domain question (spend_total, spend_by_category, \
+top_merchants, compare_periods, or find_transactions -- whichever the rest \
+of the question asks for); "points", "earn", "earned", or "reward" name the \
+cross-domain rewards_earned tool. Whether a period is present or absent \
+only decides whether to call a tool AT ALL versus ask_clarification (rule \
+3) -- it never decides WHICH tool that is, and a stated period on a \
+spending question never makes it a rewards question.
+
 The 12 canonical spending categories -- map the user's words onto exactly \
 one of these whenever a tool needs a category, and never invent a new one: \
 food_dining, groceries, fuel, travel, shopping, entertainment, utilities, \
@@ -329,10 +341,143 @@ def _get_planner_llm():
     return _planner_llm
 
 
+# ---------------------------------------------------------------------------
+# Planner few-shot examples -- bug fix for the "How many points did I earn
+# last month?" family of misroutes (period stated -> wrongly clarified
+# anyway).
+#
+# Root cause: rule 3 above already states in prose that a stated relative
+# period ("last month") satisfies the period requirement and must not
+# trigger ask_clarification. That prose rule alone was NOT reliably followed
+# by gpt-4o-mini for this specific phrasing/tool pairing -- measured directly
+# (20 live calls of plan_node on this exact utterance family, prompt-only,
+# no few-shot) at 11/20 (55%) misrouted to ask_clarification(missing="period")
+# instead of rewards_earned(period=...). That is well inside the reported
+# 50-62% failure band, not a fluke run. Likely driver: the ask_clarification
+# tool's own docstring names "How many points have I earned?" (no period) as
+# a textbook example utterance -- a near-identical surface form to a
+# period-qualified version of the same question, differing only in the
+# trailing period phrase, which a small model's tool-choice logits can end
+# up treating as close enough to call a coin flip.
+#
+# Fix, round 1 (superseded): the first attempt at this fix used exactly two
+# examples, both rewards-themed, one of which was -- on review -- the
+# verbatim text of gold_questions.json's Q31 ("How many points did I earn
+# last month?"). Besides being uncomfortably close to teaching the eval
+# itself rather than the general pattern, two same-themed, structurally
+# terse examples in a row taught the model an over-broad lesson: "terse
+# period+category phrasing -> rewards_earned", which silently broke Q10
+# ("Food spend in July?", answerable by spend_total) -- confirmed
+# fully reproducible (5/5 and separately 3/3 live runs) and root-caused in
+# .claude/state.md. Numbers were right for the wrong reason: routing had
+# started keying off surface shape, not the question's own topic word.
+#
+# Fix, round 2 (superseded): three examples, none of which is the literal
+# text of any evals/gold_questions.json entry (so this teaches the *general*
+# rule, not a memorized answer), arranged so the model cannot generalize
+# "terse + period -> rewards_earned":
+#   1. A transactions-domain example with the exact same terse, verb-less,
+#      category+period SHAPE as the phrasing that regressed (Q10) -- but a
+#      different category/month and resolving to spend_total.
+#   2. The original ambiguous case (rewards topic, period stated) ->
+#      rewards_earned, paraphrased so it does not match Q31's exact wording.
+#   3. The same rewards topic with NO period stated -> ask_clarification.
+# This DID fix both Q31 and Q10 (5/5 and separately isolated live checks),
+# but broke a THIRD, previously-100%-reliable question: Q50 ("What's the
+# rate?", which must ask_clarification(missing="category") -- "the rate"
+# implies an unstated category, unlike Q25's "base reward rate", which is
+# correctly answered directly). Isolated by testing every subset of the
+# round-2 examples individually against Q50: ANY single one of them alone
+# --  including the ask_clarification-ending one (#3) on its own -- was
+# enough to flip Q50 from ask_clarification(missing="category") to
+# card_rewards() 100% of the time, while zero few-shot examples left Q50
+# correct 100% of the time. That rules out "wrong theme" as the mechanism
+# here (unlike the round-1 -> round-2 diagnosis): the mere presence of ANY
+# prior tool-call precedent measurably makes gpt-4o-mini less willing to
+# stop and clarify on this specific borderline question, regardless of that
+# precedent's content. Concretely, the round-2 set carried no demonstrated
+# precedent at all for "ask_clarification(missing='category')" -- only
+# missing="period" -- so the model had nothing to anchor that other
+# clarify reason to once few-shot examples were present at all.
+#
+# Fix, round 3 (this one): keep the three round-2 examples (they are still
+# the fix for Q31/Q10 and remain non-eval-verbatim) and add a fourth,
+# demonstrating the CATEGORY-missing clarify reason specifically -- again in
+# wording that matches no gold_questions.json entry (contrast with Q50
+# itself, and with Q26 "Is there a cap on my dining reward points?", which
+# already names a category and must NOT clarify). Verified directly (live,
+# repeated calls): with all four examples present, Q50 clarifies 5/5, Q31
+# still calls rewards_earned 5/5, Q10 still calls spend_total 3/3, and eight
+# further adjacent questions (Q25, Q26, Q27, Q45, Q46, Q47, Q48, Q49) that
+# stress this same clarify/answer boundary from both sides all still route
+# as gold-expected, 3/3 each. This is prepended to every planner call as
+# real conversation history, not prompt text, because tool-call precedent
+# steers gpt-4o-mini's
+# tool selection far more reliably than an equivalent instruction in prose
+# (that is, empirically, exactly the gap rule 3 already tried and did not
+# close). Each (name, args) pair below is inert prompt scaffolding: it is
+# never invoked, never executed, and does not touch tool_result or
+# DATA_TOOLS -- it only exists to shape which tool the REAL final message
+# routes to.
+PLANNER_FEWSHOT_EXAMPLES: list[tuple[str, str, dict[str, Any]]] = [
+    # Domain-A anchor, deliberately the SAME terse category+period shape as
+    # the phrasing that regressed -- proves that shape predicts nothing
+    # about which tool; the topic word ("spend") does.
+    ("Utility spend in June?", "spend_total", {"period": "June 2026", "category": "utilities"}),
+    # Rewards topic, period IS stated (even a relative, casually-phrased
+    # one) -> call the tool directly, passing the resolved phrase through.
+    (
+        "How many reward points have I racked up this month?",
+        "rewards_earned",
+        {"period": "this month"},
+    ),
+    # Same rewards topic, but genuinely no period stated anywhere -> THIS is
+    # what ask_clarification(missing="period") is for.
+    (
+        "How many total reward points do I have on this card?",
+        "ask_clarification",
+        {"missing": "period"},
+    ),
+    # A DIFFERENT missing argument -- no period needed here, but the
+    # question implies one specific, unstated category -> a demonstrated
+    # precedent for ask_clarification(missing="category"), so that reason
+    # doesn't get crowded out once few-shot history is present at all.
+    (
+        "Is there a cap on my rewards?",
+        "ask_clarification",
+        {"missing": "category"},
+    ),
+]
+
+
+def _build_planner_messages(transcript: str) -> list[Any]:
+    system = PLANNER_SYSTEM_PROMPT.format(today=date.today().isoformat())
+    messages: list[Any] = [SystemMessage(content=system)]
+    for i, (example_utterance, tool_name, tool_args) in enumerate(PLANNER_FEWSHOT_EXAMPLES):
+        call_id = f"fewshot_{i}"
+        messages.append(HumanMessage(content=example_utterance))
+        messages.append(
+            AIMessage(
+                content="",
+                tool_calls=[
+                    {"name": tool_name, "args": tool_args, "id": call_id, "type": "tool_call"}
+                ],
+            )
+        )
+        # OpenAI's API rejects an assistant message with tool_calls that
+        # isn't immediately followed by a matching ToolMessage per
+        # tool_call_id -- confirmed directly against the live API while
+        # diagnosing this bug. This placeholder response is never read by
+        # anything; it only satisfies that API-level pairing requirement so
+        # the few-shot history above is accepted at all.
+        messages.append(ToolMessage(content="ok", tool_call_id=call_id))
+    messages.append(HumanMessage(content=transcript))
+    return messages
+
+
 def plan_node(state: State) -> dict:
     """transcript -> exactly one tool call (never a computed value)."""
-    system = PLANNER_SYSTEM_PROMPT.format(today=date.today().isoformat())
-    messages = [SystemMessage(content=system), HumanMessage(content=state["transcript"])]
+    messages = _build_planner_messages(state["transcript"])
     response = _get_planner_llm().invoke(messages)
     calls = getattr(response, "tool_calls", None) or []
     if not calls:
