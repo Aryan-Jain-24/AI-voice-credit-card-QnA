@@ -1,1 +1,936 @@
-[]
+[
+  {
+    "id": "Q01",
+    "bucket": "domain_a_straightforward",
+    "utterance": "How much did I spend last month?",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_total",
+    "expected_args": {
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 122048.88,
+    "ground_truth_spec": {
+      "kind": "spend_total",
+      "start": "2026-07-01",
+      "end": "2026-07-31"
+    },
+    "notes": "Plain aggregate total, no category filter -- the single most baseline Domain A question."
+  },
+  {
+    "id": "Q02",
+    "bucket": "domain_a_straightforward",
+    "utterance": "How much did I spend on groceries last month?",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_total",
+    "expected_args": {
+      "period": "last month",
+      "category": "groceries"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 20629.78,
+    "ground_truth_spec": {
+      "kind": "spend_total",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "category": "groceries"
+    },
+    "notes": "spend_total with a category filter."
+  },
+  {
+    "id": "Q03",
+    "bucket": "domain_a_straightforward",
+    "utterance": "Break down my spending by category for last month.",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_by_category",
+    "expected_args": {
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 25851.67,
+    "ground_truth_spec": {
+      "kind": "spend_by_category_top1",
+      "start": "2026-07-01",
+      "end": "2026-07-31"
+    },
+    "notes": "Category breakdown; primary required figure is the #1 (shopping) category total, since the verbalizer is only asked to name the top three."
+  },
+  {
+    "id": "Q04",
+    "bucket": "domain_a_straightforward",
+    "utterance": "Who are my top merchants last month?",
+    "expected_domain": "transactions",
+    "expected_tool": "top_merchants",
+    "expected_args": {
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 9927.0,
+    "ground_truth_spec": {
+      "kind": "top_merchants_top1",
+      "start": "2026-07-01",
+      "end": "2026-07-31"
+    },
+    "notes": "Merchant ranking; primary required figure is the #1 merchant's (Barbeque Nation) total."
+  },
+  {
+    "id": "Q05",
+    "bucket": "domain_a_straightforward",
+    "utterance": "Compare my spending in July 2026 to June 2026.",
+    "expected_domain": "transactions",
+    "expected_tool": "compare_periods",
+    "expected_args": {
+      "period_a": "July 2026",
+      "period_b": "June 2026"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 122048.88,
+    "ground_truth_spec": {
+      "kind": "compare_periods",
+      "start_a": "2026-07-01",
+      "end_a": "2026-07-31",
+      "start_b": "2026-06-01",
+      "end_b": "2026-06-30"
+    },
+    "notes": "Explicit two-period comparison, both named months, no category."
+  },
+  {
+    "id": "Q06",
+    "bucket": "domain_a_straightforward",
+    "utterance": "Did I make any purchases at Zomato last month?",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "merchant": "Zomato",
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 5,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "merchant": "Zomato"
+    },
+    "notes": "Merchant existence/lookup query."
+  },
+  {
+    "id": "Q07",
+    "bucket": "domain_a_straightforward",
+    "utterance": "What did I buy on March 14, 2026?",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "date": "March 14, 2026"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 6,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "date": "2026-03-14"
+    },
+    "notes": "Single-date lookup -- lands on the genuine spend-spike day (Croma Rs.24,000)."
+  },
+  {
+    "id": "Q08",
+    "bucket": "domain_a_straightforward",
+    "utterance": "What subscriptions am I paying for?",
+    "expected_domain": "transactions",
+    "expected_tool": "recurring_charges",
+    "expected_args": {},
+    "expected_behaviour": "answer",
+    "expected_value": 3599.55,
+    "ground_truth_spec": {
+      "kind": "recurring_charges"
+    },
+    "notes": "No-argument recurring-charges family."
+  },
+  {
+    "id": "Q09",
+    "bucket": "domain_a_phrasing",
+    "utterance": "What'd I blow on food last month?",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_total",
+    "expected_args": {
+      "period": "last month",
+      "category": "food_dining"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 18159.05,
+    "ground_truth_spec": {
+      "kind": "spend_total",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "category": "food_dining"
+    },
+    "notes": "Casual phrasing of spend_total+category (the worked example from all-specs.md S04)."
+  },
+  {
+    "id": "Q10",
+    "bucket": "domain_a_phrasing",
+    "utterance": "Food spend in July?",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_total",
+    "expected_args": {
+      "period": "July 2026",
+      "category": "food_dining"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 18159.05,
+    "ground_truth_spec": {
+      "kind": "spend_total",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "category": "food_dining"
+    },
+    "notes": "Terse, no-verb phrasing; bare month name with no year (resolve_period's missing-year rule picks 2026)."
+  },
+  {
+    "id": "Q11",
+    "bucket": "domain_a_phrasing",
+    "utterance": "How's my grocery spending looking this year so far?",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_total",
+    "expected_args": {
+      "period": "YTD",
+      "category": "groceries"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 96973.53,
+    "ground_truth_spec": {
+      "kind": "spend_total",
+      "start": "2026-01-01",
+      "end": "2026-08-11",
+      "category": "groceries"
+    },
+    "notes": "'this year so far' phrasing for YTD."
+  },
+  {
+    "id": "Q12",
+    "bucket": "domain_a_phrasing",
+    "utterance": "Give me a breakdown of where my money's been going the last 3 months.",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_by_category",
+    "expected_args": {
+      "period": "last 3 months"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 74382.57,
+    "ground_truth_spec": {
+      "kind": "spend_by_category_top1",
+      "start": "2026-05-01",
+      "end": "2026-07-31"
+    },
+    "notes": "'where my money's been going' phrasing for spend_by_category."
+  },
+  {
+    "id": "Q13",
+    "bucket": "domain_a_phrasing",
+    "utterance": "Who am I handing the most money to lately?",
+    "expected_domain": "transactions",
+    "expected_tool": "top_merchants",
+    "expected_args": {
+      "period": "last 3 months"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 20977.77,
+    "ground_truth_spec": {
+      "kind": "top_merchants_top1",
+      "start": "2026-05-01",
+      "end": "2026-07-31"
+    },
+    "notes": "Colloquial 'lately' phrasing mapped to last 3 months."
+  },
+  {
+    "id": "Q14",
+    "bucket": "domain_a_phrasing",
+    "utterance": "Was my spend higher last month compared to the month before that?",
+    "expected_domain": "transactions",
+    "expected_tool": "compare_periods",
+    "expected_args": {
+      "period_a": "last month",
+      "period_b": "June 2026"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 122048.88,
+    "ground_truth_spec": {
+      "kind": "compare_periods",
+      "start_a": "2026-07-01",
+      "end_a": "2026-07-31",
+      "start_b": "2026-06-01",
+      "end_b": "2026-06-30"
+    },
+    "notes": "Yes/no framed comparison; period_a given as a relative phrase instead of a named month (same resolved dates as Q05)."
+  },
+  {
+    "id": "Q15",
+    "bucket": "domain_a_phrasing",
+    "utterance": "Any charges from Amazon last month?",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "merchant": "Amazon",
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 4,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "merchant": "Amazon"
+    },
+    "notes": "Substring merchant match should also catch 'Amazon Prime'."
+  },
+  {
+    "id": "Q16",
+    "bucket": "domain_a_phrasing",
+    "utterance": "What am I paying on autopilot every month?",
+    "expected_domain": "transactions",
+    "expected_tool": "recurring_charges",
+    "expected_args": {},
+    "expected_behaviour": "answer",
+    "expected_value": 3599.55,
+    "ground_truth_spec": {
+      "kind": "recurring_charges"
+    },
+    "notes": "Slang phrasing ('autopilot') for recurring_charges."
+  },
+  {
+    "id": "Q17",
+    "bucket": "domain_a_multi_constraint",
+    "utterance": "Find my Croma purchases over 2,000 rupees in the last 6 months.",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "merchant": "Croma",
+      "min_amount": 2000,
+      "period": "last 6 months"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 9,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "start": "2026-02-01",
+      "end": "2026-07-31",
+      "merchant": "Croma",
+      "min_amount": 2000
+    },
+    "notes": "3 simultaneous constraints (merchant + amount floor + period) on one tool call. Hits the EMI instalment series plus the March spike purchase."
+  },
+  {
+    "id": "Q18",
+    "bucket": "domain_a_multi_constraint",
+    "utterance": "Show me my McDonald's orders over 400 rupees last month.",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "merchant": "McDonald's",
+      "min_amount": 400,
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 6,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "merchant": "McDonald's",
+      "min_amount": 400
+    },
+    "notes": "Merchant + amount floor + period."
+  },
+  {
+    "id": "Q19",
+    "bucket": "domain_a_multi_constraint",
+    "utterance": "How does my fuel spend in July 2026 compare to June 2026?",
+    "expected_domain": "transactions",
+    "expected_tool": "compare_periods",
+    "expected_args": {
+      "period_a": "July 2026",
+      "period_b": "June 2026",
+      "category": "fuel"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 5451.04,
+    "ground_truth_spec": {
+      "kind": "compare_periods",
+      "start_a": "2026-07-01",
+      "end_a": "2026-07-31",
+      "start_b": "2026-06-01",
+      "end_b": "2026-06-30",
+      "category": "fuel"
+    },
+    "notes": "period_a + period_b + category -- 3 simultaneous constraints on compare_periods."
+  },
+  {
+    "id": "Q20",
+    "bucket": "domain_a_multi_constraint",
+    "utterance": "Was I charged more than 10,000 rupees on March 14, 2026?",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "min_amount": 10000,
+      "date": "2026-03-14"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 1,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "date": "2026-03-14",
+      "min_amount": 10000
+    },
+    "notes": "Amount floor + specific date; verifies the spike-day Croma charge is findable by threshold."
+  },
+  {
+    "id": "Q21",
+    "bucket": "domain_b_terms",
+    "utterance": "What's my annual fee?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "annual"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2500,
+    "ground_truth_spec": {
+      "kind": "card_fees",
+      "fee_type": "annual"
+    },
+    "notes": "Flat fee lookup with a waiver clause; both the fee (2,500) and the waiver threshold (3,00,000) should be spoken per the clause-verbatim rule."
+  },
+  {
+    "id": "Q22",
+    "bucket": "domain_b_terms",
+    "utterance": "What's the forex markup on this card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "forex_markup"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 3.5,
+    "ground_truth_spec": {
+      "kind": "card_fees",
+      "fee_type": "forex_markup"
+    },
+    "notes": "Percentage-rate fee lookup."
+  },
+  {
+    "id": "Q23",
+    "bucket": "domain_b_terms",
+    "utterance": "What's the late payment fee if I owe 10,000 rupees?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "late_payment"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 750,
+    "ground_truth_spec": {
+      "kind": "card_fees",
+      "fee_type": "late_payment",
+      "due_amount_inr": 10000
+    },
+    "notes": "Tiered fee -- the tool returns all 4 tiers; the correct spoken figure for a Rs.10,000 due amount is the Rs.5,000-Rs.25,000 tier (Rs.750), not just any tier."
+  },
+  {
+    "id": "Q24",
+    "bucket": "domain_b_terms",
+    "utterance": "What's the cash advance fee?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "cash_advance_fee"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2.5,
+    "ground_truth_spec": {
+      "kind": "card_fees",
+      "fee_type": "cash_advance_fee"
+    },
+    "notes": "Percentage-plus-minimum fee lookup."
+  },
+  {
+    "id": "Q25",
+    "bucket": "domain_b_terms",
+    "utterance": "What's the base reward rate on this card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_rewards",
+    "expected_args": {},
+    "expected_behaviour": "answer",
+    "expected_value": 2,
+    "ground_truth_spec": {
+      "kind": "card_rewards",
+      "category": null
+    },
+    "notes": "No category -> base rate."
+  },
+  {
+    "id": "Q26",
+    "bucket": "domain_b_terms",
+    "utterance": "Is there a cap on my dining reward points?",
+    "expected_domain": "terms",
+    "expected_tool": "card_rewards",
+    "expected_args": {
+      "category": "food_dining"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2000,
+    "ground_truth_spec": {
+      "kind": "card_rewards",
+      "category": "food_dining"
+    },
+    "notes": "Category with an explicit monthly cap -- rate (5) and cap (2000) must both be spoken per the verbalizer's cap-alongside-rate rule."
+  },
+  {
+    "id": "Q27",
+    "bucket": "domain_b_terms",
+    "utterance": "What do I earn on fuel purchases?",
+    "expected_domain": "terms",
+    "expected_tool": "card_rewards",
+    "expected_args": {
+      "category": "fuel"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 1,
+    "ground_truth_spec": {
+      "kind": "card_rewards",
+      "category": "fuel"
+    },
+    "notes": "Category with no monthly cap."
+  },
+  {
+    "id": "Q28",
+    "bucket": "domain_b_terms",
+    "utterance": "What rate do I earn on shopping?",
+    "expected_domain": "terms",
+    "expected_tool": "card_rewards",
+    "expected_args": {
+      "category": "shopping"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2,
+    "ground_truth_spec": {
+      "kind": "card_rewards",
+      "category": "shopping"
+    },
+    "notes": "Category with no override in category_rates -- tests the base-rate fallback path, not a gap."
+  },
+  {
+    "id": "Q29",
+    "bucket": "domain_b_terms",
+    "utterance": "Any offers at Myntra right now?",
+    "expected_domain": "terms",
+    "expected_tool": "card_offers",
+    "expected_args": {
+      "merchant": "Myntra"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 12,
+    "ground_truth_spec": {
+      "kind": "card_offers",
+      "merchant": "Myntra"
+    },
+    "notes": "Merchant-filtered offer lookup."
+  },
+  {
+    "id": "Q30",
+    "bucket": "domain_b_terms",
+    "utterance": "Are there any offers on groceries right now?",
+    "expected_domain": "terms",
+    "expected_tool": "card_offers",
+    "expected_args": {
+      "category": "groceries"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 5,
+    "ground_truth_spec": {
+      "kind": "card_offers",
+      "category": "groceries"
+    },
+    "notes": "Category-filtered offer lookup."
+  },
+  {
+    "id": "Q31",
+    "bucket": "cross_domain_rewards_earned",
+    "utterance": "How many points did I earn last month?",
+    "expected_domain": "cross",
+    "expected_tool": "rewards_earned",
+    "expected_args": {
+      "period": "last month"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2912,
+    "ground_truth_spec": {
+      "kind": "rewards_earned",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "category": null
+    },
+    "notes": "All-category cross-domain total for July 2026; dining (907) is the largest single contributor."
+  },
+  {
+    "id": "Q32",
+    "bucket": "cross_domain_rewards_earned",
+    "utterance": "How many dining points did I earn last month?",
+    "expected_domain": "cross",
+    "expected_tool": "rewards_earned",
+    "expected_args": {
+      "period": "last month",
+      "category": "food_dining"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 907,
+    "ground_truth_spec": {
+      "kind": "rewards_earned",
+      "start": "2026-07-01",
+      "end": "2026-07-31",
+      "category": "food_dining"
+    },
+    "notes": "Single-category cross-domain total, cap not hit this month."
+  },
+  {
+    "id": "Q33",
+    "bucket": "cross_domain_rewards_earned",
+    "utterance": "Did I hit my dining rewards cap in October 2025?",
+    "expected_domain": "cross",
+    "expected_tool": "rewards_earned",
+    "expected_args": {
+      "period": "October 2025",
+      "category": "food_dining"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2000,
+    "ground_truth_spec": {
+      "kind": "rewards_earned",
+      "start": "2025-10-01",
+      "end": "2025-10-31",
+      "category": "food_dining"
+    },
+    "notes": "One of the two deliberately dining-cap-breaching months from generate_data.py; answer must name the cap (2,000), not the uncapped 2,674."
+  },
+  {
+    "id": "Q34",
+    "bucket": "cross_domain_rewards_earned",
+    "utterance": "How many reward points did I earn from cash advances last year?",
+    "expected_domain": "cross",
+    "expected_tool": "rewards_earned",
+    "expected_args": {
+      "period": "last year",
+      "category": "cash_advance"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 0,
+    "ground_truth_spec": {
+      "kind": "rewards_earned",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "category": "cash_advance"
+    },
+    "notes": "Excluded-category test -- cash_advance never earns points regardless of spend (Rs.42,094.84 of net spend, 0 points)."
+  },
+  {
+    "id": "Q35",
+    "bucket": "cross_domain_rewards_earned",
+    "utterance": "How many reward points did I earn last quarter?",
+    "expected_domain": "cross",
+    "expected_tool": "rewards_earned",
+    "expected_args": {
+      "period": "last quarter"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 8312,
+    "ground_truth_spec": {
+      "kind": "rewards_earned",
+      "start": "2026-04-01",
+      "end": "2026-06-30",
+      "category": null
+    },
+    "notes": "Multi-month (3-month) query -- verifies caps apply per calendar month, not once across the quarter (dining totals 2,169 uncapped across the 3 months)."
+  },
+  {
+    "id": "Q36",
+    "bucket": "domain_routing_trap",
+    "utterance": "What fees do I pay on this card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {},
+    "expected_behaviour": "answer",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_listing"
+    },
+    "notes": "Trap pair 1a: the fee SCHEDULE (Domain B) -- contrast with Q37. No single required figure; graded on domain routing + hallucination only."
+  },
+  {
+    "id": "Q37",
+    "bucket": "domain_routing_trap",
+    "utterance": "What fees was I charged last year?",
+    "expected_domain": "transactions",
+    "expected_tool": "spend_total",
+    "expected_args": {
+      "period": "last year",
+      "category": "fees_interest"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 6495.34,
+    "ground_truth_spec": {
+      "kind": "spend_total",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "category": "fees_interest"
+    },
+    "notes": "Trap pair 1b: actual fee/interest transactions on the statement (Domain A) -- contrast with Q36. PRD's explicitly named routing ambiguity."
+  },
+  {
+    "id": "Q38",
+    "bucket": "domain_routing_trap",
+    "utterance": "What's the late payment fee on this card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "late_payment"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_listing"
+    },
+    "notes": "Trap pair 2a: the SCHEDULE, no due amount given -- contrast with Q39. No single required figure (see Q23 for the amount-qualified version)."
+  },
+  {
+    "id": "Q39",
+    "bucket": "domain_routing_trap",
+    "utterance": "Was I ever charged a late fee?",
+    "expected_domain": "transactions",
+    "expected_tool": "find_transactions",
+    "expected_args": {
+      "merchant": "Late Payment Fee"
+    },
+    "expected_behaviour": "answer",
+    "expected_value": 2,
+    "ground_truth_spec": {
+      "kind": "find_transactions",
+      "merchant": "Late Payment Fee"
+    },
+    "notes": "Trap pair 2b: whether the charge actually happened (Domain A, all-time search) -- contrast with Q38."
+  },
+  {
+    "id": "Q40",
+    "bucket": "missing_terms_gap",
+    "utterance": "What's the railway booking surcharge on this card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "railway_surcharge"
+    },
+    "expected_behaviour": "gap_admission",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_missing",
+      "fee_type": "railway_surcharge"
+    },
+    "notes": "Deliberately undocumented charge type -- card_terms.yaml must return found:false; the answer must admit the gap, never invent a plausible figure."
+  },
+  {
+    "id": "Q41",
+    "bucket": "missing_terms_gap",
+    "utterance": "Is there a fee for loading my Paytm wallet with this card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "wallet_load_fee"
+    },
+    "expected_behaviour": "gap_admission",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_missing",
+      "fee_type": "wallet_load_fee"
+    },
+    "notes": "Deliberately undocumented charge type -- card_terms.yaml must return found:false; the answer must admit the gap, never invent a plausible figure."
+  },
+  {
+    "id": "Q42",
+    "bucket": "missing_terms_gap",
+    "utterance": "What's the balance transfer fee?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "balance_transfer_fee"
+    },
+    "expected_behaviour": "gap_admission",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_missing",
+      "fee_type": "balance_transfer_fee"
+    },
+    "notes": "Deliberately undocumented charge type -- card_terms.yaml must return found:false; the answer must admit the gap, never invent a plausible figure."
+  },
+  {
+    "id": "Q43",
+    "bucket": "missing_terms_gap",
+    "utterance": "What's the fee for a duplicate statement request?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "duplicate_statement_fee"
+    },
+    "expected_behaviour": "gap_admission",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_missing",
+      "fee_type": "duplicate_statement_fee"
+    },
+    "notes": "Deliberately undocumented charge type -- card_terms.yaml must return found:false; the answer must admit the gap, never invent a plausible figure."
+  },
+  {
+    "id": "Q44",
+    "bucket": "missing_terms_gap",
+    "utterance": "What's the fee for adding an add-on card?",
+    "expected_domain": "terms",
+    "expected_tool": "card_fees",
+    "expected_args": {
+      "fee_type": "add_on_card_fee"
+    },
+    "expected_behaviour": "gap_admission",
+    "expected_value": null,
+    "ground_truth_spec": {
+      "kind": "card_fees_missing",
+      "fee_type": "add_on_card_fee"
+    },
+    "notes": "Deliberately undocumented charge type -- card_terms.yaml must return found:false; the answer must admit the gap, never invent a plausible figure."
+  },
+  {
+    "id": "Q45",
+    "bucket": "underspecified_clarify",
+    "utterance": "How much did I spend?",
+    "expected_domain": null,
+    "expected_tool": "ask_clarification",
+    "expected_args": {},
+    "expected_behaviour": "clarify",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "spend_total's period is required; no default may be guessed."
+  },
+  {
+    "id": "Q46",
+    "bucket": "underspecified_clarify",
+    "utterance": "Where did my money go?",
+    "expected_domain": null,
+    "expected_tool": "ask_clarification",
+    "expected_args": {},
+    "expected_behaviour": "clarify",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "spend_by_category's period is required."
+  },
+  {
+    "id": "Q47",
+    "bucket": "underspecified_clarify",
+    "utterance": "Who do I spend the most with?",
+    "expected_domain": null,
+    "expected_tool": "ask_clarification",
+    "expected_args": {},
+    "expected_behaviour": "clarify",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "top_merchants's period is required."
+  },
+  {
+    "id": "Q48",
+    "bucket": "underspecified_clarify",
+    "utterance": "Am I spending more than before?",
+    "expected_domain": null,
+    "expected_tool": "ask_clarification",
+    "expected_args": {},
+    "expected_behaviour": "clarify",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "compare_periods needs both periods; 'before' names no resolvable baseline."
+  },
+  {
+    "id": "Q49",
+    "bucket": "underspecified_clarify",
+    "utterance": "How many points have I earned?",
+    "expected_domain": null,
+    "expected_tool": "ask_clarification",
+    "expected_args": {},
+    "expected_behaviour": "clarify",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "rewards_earned's period is required -- the cross-domain tool must never guess a default period either."
+  },
+  {
+    "id": "Q50",
+    "bucket": "underspecified_clarify",
+    "utterance": "What's the rate?",
+    "expected_domain": null,
+    "expected_tool": "ask_clarification",
+    "expected_args": {},
+    "expected_behaviour": "clarify",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "card_rewards(category=None) is technically valid (returns the base rate), but 'the rate' implies an unstated specific category the user has in mind -- must ask which one rather than silently answering the general rate."
+  },
+  {
+    "id": "Q51",
+    "bucket": "out_of_scope_refuse",
+    "utterance": "Is this card better than an Amex Platinum?",
+    "expected_domain": null,
+    "expected_tool": "refuse",
+    "expected_args": {},
+    "expected_behaviour": "refuse",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "Cross-card comparison -- explicitly out of scope (PRD S4)."
+  },
+  {
+    "id": "Q52",
+    "bucket": "out_of_scope_refuse",
+    "utterance": "Should I close this card?",
+    "expected_domain": null,
+    "expected_tool": "refuse",
+    "expected_args": {},
+    "expected_behaviour": "refuse",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "Financial advice, not a fact -- explicitly out of scope."
+  },
+  {
+    "id": "Q53",
+    "bucket": "out_of_scope_refuse",
+    "utterance": "Should I apply for a different credit card?",
+    "expected_domain": null,
+    "expected_tool": "refuse",
+    "expected_args": {},
+    "expected_behaviour": "refuse",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "Advice/comparison -- out of scope."
+  },
+  {
+    "id": "Q54",
+    "bucket": "out_of_scope_refuse",
+    "utterance": "What's my credit score?",
+    "expected_domain": null,
+    "expected_tool": "refuse",
+    "expected_args": {},
+    "expected_behaviour": "refuse",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "Not data this system has access to or is scoped to answer."
+  },
+  {
+    "id": "Q55",
+    "bucket": "out_of_scope_refuse",
+    "utterance": "Can you increase my credit limit?",
+    "expected_domain": null,
+    "expected_tool": "refuse",
+    "expected_args": {},
+    "expected_behaviour": "refuse",
+    "expected_value": null,
+    "ground_truth_spec": null,
+    "notes": "An action request, not a Q&A retrieval; also outside v1 scope."
+  }
+]
