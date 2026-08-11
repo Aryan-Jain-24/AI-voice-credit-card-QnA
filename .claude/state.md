@@ -1,242 +1,226 @@
 # Project State
 
-_Last updated: 2026-08-11 (from-scratch inspection; the prior state.md was **not**
-trusted as a starting point — every claim below was re-verified directly against
-the repo this pass: `git log`/`git status`/`git diff --stat` run, `voice.py` and
-`test_voice.py` read in full, the full `pytest` suite executed, and `eval.py`
-executed **three times** end-to-end against the real OpenAI API specifically to
-check a flakiness report — see the flagged section below before treating S05/S06
-as a durably green gate.)_
+_Last updated: 2026-08-12 (from-scratch inspection; the prior state.md was **not**
+trusted — every claim below was re-verified directly against the repo this pass:
+`git status`/`git diff --stat`/`git log`/`git rev-parse` executed directly,
+`app.py` read in full, `graph.py`/`tools_txn.py`/`tools_card.py`/`card_terms.yaml`/
+`eval.py`/`evals/gold_questions.json` diffed against `HEAD` directly,
+`python -m pytest -q` run once directly, and `eval.py` run **five separate times**
+live against the real OpenAI API — not fewer — specifically to settle an open
+question about whether a previously-reported intermittent failure is noise or a
+reproducible bug. It is neither pure noise nor a blanket bug — see the dedicated
+section below. Per-question detail was obtained by writing a throwaway script in
+the session scratchpad (outside the repo) that imports `eval.py`'s own
+`evaluate()`/`compute_metrics()`/`print_report()` unmodified and additionally
+prints per-row detail for two buckets; `eval.py` itself was never edited, and
+nothing from that investigation was committed.)_
 
 ## Spec status
 
 | Spec | Deliverable | Status | Notes |
 |---|---|---|---|
-| S00 | repo skeleton, config | done | `app.py` still the verbatim S00 stub (title/hello + API-key check) — correct, S08 not started. `.env` present locally (git-ignored, untracked). `.env.example` tracked, clean vs HEAD. |
-| S01 | `generate_data.py`, `data/transactions.csv` | done | 2,014 rows, confirmed by direct `pandas.read_csv` this pass. |
+| S00 | repo skeleton, config | done | — |
+| S01 | `generate_data.py`, `data/transactions.csv` | done | Unchanged this pass (no diff vs `HEAD`). |
 | S02 | `data_loader.py`, `mapping.yaml` | done | Unchanged this pass. |
-| S03 | `tools_txn.py` (6 tools) | done | 6 `@tool`-decorated functions, confirmed by direct grep this pass. |
-| S03B | `card_terms.yaml`, `tools_card.py` (4 tools) | done | 4 `@tool`-decorated functions, confirmed by direct grep this pass. |
-| S04 | `evals/gold_questions.json`, `eval.py` | done | 55 gold questions, confirmed by direct `json.load` this pass. |
-| S05 | `graph.py` planner node + assembly | done — committed and pushed (`d9c8e57`) | Unchanged this pass (`git diff --stat -- graph.py` empty). **See flakiness flag below — do not treat as unconditionally durable.** |
-| S06 | verbalizer node | done — committed and pushed (`d9c8e57`) | Same file/commit as S05. Unchanged this pass. |
-| S07 | `voice.py`, fuzzy merchant correction | **done — in working tree, not yet committed** | Verified real (not a stub) by reading both files in full this pass. See verification below. `git status` shows `voice.py` modified and `test_voice.py` untracked; HEAD is still `d9c8e57` (S05/S06) — **git-syncer has not run for S07 yet.** |
-| S08 | `app.py`, Streamlit deploy | not started | `app.py` still the S00 "hello" placeholder, byte-for-byte the stub described in S00. Next unblocked spec — see below. |
-| S09 | `EVAL_REPORT.md`, `README.md`, Loom outline | not started | No `EVAL_REPORT.md` anywhere in the repo. `README.md` unchanged (still the S00 stub README). |
+| S03 | `tools_txn.py` (6 tools) | done | Unchanged this pass (confirmed via `git diff --stat HEAD -- tools_txn.py`, empty). |
+| S03B | `card_terms.yaml`, `tools_card.py` (4 tools) | done | Unchanged this pass. |
+| S04 | `evals/gold_questions.json`, `eval.py` | done | Unchanged this pass. |
+| S05 | `graph.py` planner node + assembly | done | Unchanged this pass. **See eval flakiness section — not unconditionally durable.** |
+| S06 | verbalizer node | done | Same file (`graph.py`) as S05, same caveat. |
+| S07 | `voice.py`, fuzzy merchant correction | done | Unchanged this pass. |
+| S08 | `app.py`, Streamlit deploy | **done this pass — NOT yet committed/pushed** | See verification below. `app.py` is a real, substantial rewrite (278 lines; +266/-8 vs the old S00 stub per `git diff --stat`), not a stub. Sits uncommitted in the working tree — `git status` shows `app.py` modified, `HEAD` (`0f68f62`, S07) still equals `origin/main`. **Next action is `git-syncer`**, pending the gate decision below. |
+| S09 | `EVAL_REPORT.md`, `README.md`, Loom outline | not started | No `EVAL_REPORT.md` in the repo (`ls` confirms). `README.md` still the S00-stage placeholder pointing to PRD/specs, not the full S09 doc. |
 
-## S07 verification (this pass — read both files in full)
+## S08 verification (this pass)
 
-**`voice.py` (437 lines) is a real, complete implementation**, not a stub:
-
-- `transcribe(audio_bytes, filename="audio.wav") -> str`: calls
-  `client.audio.transcriptions.create(model="whisper-1", ...)`, passes
-  `_MERCHANT_PROMPT` (every name in `generate_data.ALL_MERCHANTS`, ~50 merchants)
-  as Whisper's `prompt` bias, logs the raw transcript at INFO, raises `ValueError`
-  on empty input.
-- `synthesize(text) -> bytes`: calls `client.audio.speech.create(model="tts-1",
-  voice="nova", response_format="mp3")`, raises `ValueError` on empty input.
-- `correct_merchants(text, merchants=None, threshold=75) -> str`: two-pass
-  (exact-then-fuzzy, longest-window-first, non-overlapping) token-span matcher
-  against `ALL_MERCHANTS` using `rapidfuzz.fuzz.ratio` on normalized strings, with
-  a `_SKIP_SINGLE_WORD` denylist of ~120 in-domain/stopword tokens to suppress
-  false positives. The module docstring documents empirical tuning: threshold 75
-  (not the spec's approximate ~80) chosen because it's the smallest value that
-  still catches the spec's own worked example ("Swiggie"->"Swiggy" scores 76.9)
-  while staying above every measured false positive (e.g. "how"->"BookMyShow" 90
-  under `WRatio`/`JaroWinkler`, which is why plain `fuzz.ratio` + denylist was
-  chosen over those scorers instead).
-- `build_voice_graph()` / `voice_graph` / `run_voice_pipeline()`: a **second**
-  compiled LangGraph (`listen -> plan -> {query, clarify} -> verbalize/clarify ->
-  speak -> END`) built from `graph.py`'s own unmodified `plan_node`, `route`,
-  `query_node`, `clarify_node`, `verbalize_node` (imported, not copied). Confirmed
-  by direct read that this does **not** touch `graph.py`'s own `build_graph()`,
-  module-level `graph`/`app`, or `run_pipeline` — `git diff --stat -- graph.py`
-  is empty this pass, confirming `graph.py` itself is byte-for-byte unchanged.
-  `test_voice.py::test_voice_graph_is_a_separate_object_from_text_graph` asserts
-  `voice.voice_graph is not graph.graph` and `is not graph.app` directly.
-
-**`test_voice.py` (178 lines, 21 test functions, confirmed by
-`grep -c '^def test_'` and by `pytest test_voice.py -q` collecting and passing 21)
-is a real offline suite**, not a stub: true-positive merchant-correction cases
-(Swiggie->Swiggy, Zomatoo->Zomato, split compounds, "Mac Donalds"->"McDonald's"),
-false-positive guards (dining/amount/payment/rate/compare/number NOT corrected to
-IndiGo/Amazon/Paytm/Airtel/Croma/Uber), an "already correct, left alone" case, a
-merchant-prompt-completeness check, `transcribe`/`synthesize` empty-input
-validation, and the voice-graph-isolation check above. No network/API-key calls —
-runs fully offline, expectations hand-copied from `ALL_MERCHANTS`, not
-round-tripped through the function under test.
-
-**Files confirmed untouched this pass** (`git diff --stat -- graph.py
-tools_txn.py tools_card.py eval.py card_terms.yaml requirements.txt app.py` —
-empty): S07 touched only `voice.py` and added `test_voice.py`, exactly as
-voice-ui-engineer reported. `requirements.txt` already listed `rapidfuzz`, no new
-dependency needed.
+- `git diff --stat HEAD -- app.py`: 274 lines changed (266 insertions, 8
+  deletions) — a real rewrite, not a one-line edit or a stub swap.
+- Read `app.py` in full (278 lines): implements `st.audio_input` mic capture,
+  a `run_turn()` orchestrator that sequences `voice.py`'s own node functions
+  (`listen_node`, `plan_node`, `route`, `query_node`, `clarify_node`,
+  `verbalize_node`, `speak_node`) one at a time with real per-stage
+  `st.status()` labels ("Listening…" / "Thinking…" / "Answering…"), an
+  expander ("How it got this answer") showing tool name/args/raw result dict,
+  a grouped sidebar of example questions (Your spending / Your card / Your
+  rewards) that exercise the same `run_turn()` path with a typed transcript,
+  and a dataset summary sidebar read live from `load_transactions()` +
+  `card_terms.yaml`. Matches the S08 spec's seven required elements. Contains
+  no planning/tool/ASR/TTS logic of its own — confirmed it only calls into
+  `voice.py`, never reimplements graph/tool behavior.
+- **Scope check — confirmed clean.** `git diff --stat HEAD -- graph.py
+  tools_txn.py tools_card.py card_terms.yaml eval.py evals/gold_questions.json
+  voice.py` is **empty** — voice-ui-engineer touched only `app.py` this pass, as
+  required (S07's `voice.py` was already committed in `0f68f62` and is untouched
+  now).
+- `.env.example` exists on disk, tracked, and clean vs `HEAD` (the `D
+  .env.example` seen in the very first snapshot at conversation start is stale
+  and not reflected in current `git status`).
 
 ## Test suite (run directly this pass)
 
-**`python -m pytest -q`: 128 passed, 0 failed, 3.80s.** Matches voice-ui-engineer's
-reported count exactly (107 pre-S07 + 21 new in `test_voice.py` = 128).
-`test_voice.py` alone: 21/21 passed in isolation too.
+`python -m pytest -q`: **128 passed, 0 failed, 3.69s.** `--collect-only` also
+reports 128 collected. Matches voice-ui-engineer's reported figure exactly.
 
-## eval.py flakiness — investigated directly this pass, CONFIRMED REAL
+## eval.py — five live runs this pass (raw, per-run — NOT averaged)
 
-**voice-ui-engineer's report is accurate.** Per the task instructions, `eval.py`
-was run three separate times, live against the real OpenAI API, specifically to
-get first-hand evidence rather than relying on their characterization. Full
-metrics from all three runs:
+Ran `python eval.py` (or an import-only wrapper calling `eval.py`'s own
+`evaluate()`/`compute_metrics()`/`print_report()` unmodified) five separate times
+against the live OpenAI API. Every run scored all 55 gold questions. Full per-run
+numbers for the two contested metrics, plus whether all six **literal PRD §8**
+hard gates passed (numeric exactness, term exactness, hallucination=0,
+gap-admission precision, clarify **recall**, refusal recall/precision — note the
+PRD's "clarify on underspecified" gate is a recall metric over the 6
+`underspecified_clarify` questions, a distinct number from `eval.py`'s own
+"clarify precision" metric discussed below):
 
-### Run 1 (22:28-22:30)
-
-| Metric | Score | Target | Status |
+| Run | cross_domain_exactness (target ≥95%) | clarify precision (target ==100%) | All 6 literal PRD §8 gates? |
 |---|---|---|---|
-| Intent accuracy | 100.0% (n=55) | >=90% | PASS |
-| Domain routing accuracy | 100.0% (n=44) | >=95% | PASS |
-| Argument accuracy | 88.6% (n=44) | >=85% | PASS |
-| Numeric exactness (Domain A) | 100.0% (n=22) | >=95% | PASS |
-| Term exactness (Domain B) | 100.0% (n=10) | ==100% | PASS |
-| Cross-domain exactness (rewards_earned) | 100.0% (n=5) | >=95% | PASS |
-| Hallucination rate | 0.0% (n=55) | ==0% | PASS |
-| Gap-admission precision | 100.0% (n=5) | ==100% | PASS |
-| Clarify precision / recall | 100.0% / 100.0% (6/6) | ==100% | PASS |
-| Refusal precision / recall | 100.0% / 100.0% (5/5) | ==100% | PASS |
+| 1 | **100.0%** PASS | **100.0%** PASS | PASS (6/6) |
+| 2 | **80.0%** FAIL | **85.7%** FAIL | PASS (6/6) — failures are both non-literal-table metrics |
+| 3 | **80.0%** FAIL | **85.7%** FAIL | PASS (6/6) |
+| 4 | **80.0%** FAIL | **85.7%** FAIL | PASS (6/6) |
+| 5 | **100.0%** PASS | **100.0%** PASS | PASS (6/6) |
 
-Latency p50/p95: 1.99s / 7.31s (targets <=4s/<=7s — p95 passed but with almost no
-headroom this run).
+**Raw pattern: 4 of 5 runs failed, identically, on the same two metrics with the
+exact same scores (80.0% / 85.7%) every time; 1 of 5 (this pass's own "clean"
+run) had every failing run's own scores flip to 100.0%/100.0%.** This is not
+"mostly noise with one outlier" — it is the opposite: failure was the *majority*
+outcome (4/5) this pass, with clean runs the minority. All six literal PRD §8
+hard gates passed on every single run, all 5 times — the two contested metrics
+are `eval.py`'s own additional (non-literal-PRD-table) metrics, not the PRD's
+named gates themselves, though "clarify precision" is closely related in spirit
+to the "no false clarifies" intent behind the PRD's clarify gate.
 
-### Run 2 (22:31-22:32)
+### Root cause, isolated to a single gold question (Q31)
 
-Identical to run 1 on every gate metric — all PASS, all 100% except argument
-accuracy (88.6%, not a hard gate). Latency p50/p95: 2.10s / 3.18s (comfortable
-this run).
+Per-question instrumentation (temporary, scratchpad-only, not committed; reverted
+by simply not touching `eval.py` — the investigation script only imported it)
+shows that **in all four failing runs, exactly one question failed, and it was
+the same question every time**:
 
-### Run 3 (22:33-22:34) — **reproduces the reported failure**
+- **Q31** — `"How many points did I earn last month?"` (bucket
+  `cross_domain_rewards_earned`, `expected_tool="rewards_earned"`,
+  `expected_behaviour="answer"`, required answer 2,912 points).
+  - Runs 2, 3, 4 (all identical): the planner routed this to
+    `ask_clarification(missing="period")` instead of calling `rewards_earned`,
+    producing the answer *"Which time period are you asking about — for example
+    this month, last month, or a specific month?"* — even though the utterance
+    already names "last month" as the period. This single misroute is
+    simultaneously: (a) the `cross_domain_rewards_earned` bucket's one failure
+    (4/5 correct = 80.0%), and (b) `eval.py`'s one clarify **false positive**
+    (an entry whose `expected_behaviour` is `"answer"` got scored as `"clarify"`),
+    which drags `clarify_precision` from 6/6 to 6/7 = 85.7%. **The two failing
+    metrics are not two independent bugs — they are the same single misroute
+    counted by two different metrics.**
+  - Run 5 (clean): the same utterance correctly routed to
+    `rewards_earned(period="last month")` and produced *"You earned 2,912 points
+    last month."*
+  - Run 1 (clean, no per-question instrumentation captured, but consistent):
+    both metrics scored 100%/100%, which is only possible if Q31 (the sole
+    question ever observed to fail) was answered correctly that run too.
+  - The other 4 `cross_domain_rewards_earned` questions (Q32–Q35) and all 6
+    `underspecified_clarify` questions (Q45–Q50) passed in **every** run,
+    5 for 5, with byte-identical answer text each time — the flakiness is
+    entirely localized to Q31, not spread across the bucket.
 
-| Metric | Score | Target | Status |
-|---|---|---|---|
-| Intent accuracy | 98.2% (n=55) | >=90% | PASS |
-| Domain routing accuracy | 97.7% (n=44) | >=95% | PASS |
-| Argument accuracy | 86.4% (n=44) | >=85% | PASS |
-| Numeric exactness (Domain A) | 100.0% (n=22) | >=95% | PASS |
-| Term exactness (Domain B) | 100.0% (n=10) | ==100% | PASS |
-| **Cross-domain exactness (rewards_earned)** | **80.0% (n=5)** | **>=95%** | **FAIL** |
-| Hallucination rate | 0.0% (n=55) | ==0% | PASS |
-| Gap-admission precision | 100.0% (n=5) | ==100% | PASS |
-| **Clarify precision** | **85.7%** | **==100%** | **FAIL** |
-| Refusal precision / recall | 100.0% / 100.0% (5/5) | ==100% | PASS |
+`graph.py`'s planner prompt (read this pass) does explicitly instruct the model
+to pass through a stated relative period like "last month" as the tool argument
+rather than asking again, and explicitly gives `ask_clarification` as the
+fallback only when "the question names NO time cue at all" — so this is a
+genuine prompt-following failure at the model level, not a spec gap in the
+prompt itself. `PLANNER_MODEL = "gpt-4o-mini"` at `temperature=0`
+(`ChatOpenAI(model=PLANNER_MODEL, temperature=0)`), confirming OpenAI's
+temperature-0 setting reduces but does not guarantee determinism — and here it
+produced an 80% (4/5) failure rate on one specific phrasing, not rare noise.
 
-Clarify recall was still 100% (6/6 underspecified questions triggered clarify) —
-the 85.7% precision failure means clarify fired 7 times total, i.e. **one false
-positive**: some question that should have routed to a normal tool call instead
-got clarified. `cross_domain_rewards_earned` bucket breakdown: 4/5 correct (one
-`rewards_earned` question got a wrong number, a routing/argument slip, or a
-tool-call miss — `eval.py` has no `--verbose`/`--json`/per-question dump flag, so
-the exact failing question/args could not be isolated further without
-instrumenting the harness, which was out of scope for this inspection pass).
-Latency p50/p95: 2.06s / 3.09s (fine this run — the metric failures are
-independent of latency).
+### How this reconciles with the previous state-tracker's "1-of-3" finding
 
-### Assessment
+A previous pass ran `eval.py` three times and saw only 1 of 3 fail (33%). This
+pass's larger sample (5 runs) saw 4 of 5 fail (80%). Combined across both
+characterizations: 5 failures in 8 total live runs (62.5%). The two
+characterizations are not in conflict — 3 runs is too small a sample to pin down
+a rate this variable — but the combined, larger picture makes clear this is a
+**real, recurring, majority-likelihood failure on one specific gold question**,
+not rare intermittent noise that can be safely averaged away or attributed to
+one bad run.
 
-**Real, intermittent, non-deterministic failure — 1 of 3 runs this pass (~33%)
-failed two PRD §8 hard gates** (`cross_domain_rewards_earned` and, critically,
-`clarify precision`, which is explicitly one of the six official hard gates in
-CLAUDE.md's table). Numeric exactness (Domain A) and Term exactness (Domain B —
-the one held to a strict 100% by design, since it's "a dictionary lookup") stayed
-100% clean across all three runs; the failures are concentrated in the
-LLM-planner-dependent buckets (tool routing / clarify-vs-tool-call decision and
-the cross-domain rewards question), consistent with `temperature=0` not
-fully eliminating run-to-run variance in `gpt-4o-mini` tool-call selection for a
-handful of borderline gold questions. This is a plausible root cause but not
-confirmed without per-question logging.
-
-**This is exactly what CLAUDE.md's S07 gate condition was meant to catch before
-voice was layered on.** The gate language is "S05+S06 pass their gate via text
-input" — on any given run they usually do, but "usually" is not the same claim as
-"pass," and 1-in-3 failing two hard gates (one of which is explicitly named in
-CLAUDE.md's own hard-gate table) is not a gate a build should be waved through on
-without comment. voice-ui-engineer's own work (S07) does not appear to be at fault
-— they touched only `voice.py`/`test_voice.py`, `graph.py` is confirmed
-byte-for-byte unchanged this pass, and S07's test suite is separately green and
-deterministic (offline, no live API calls). The flakiness is in `graph.py`'s
-planner/routing behavior against the live OpenAI API, pre-existing since S05/S06,
-just not caught by the single live run each prior pass happened to execute.
-
-**Recommendation to the orchestrator: do not treat S05/S06 as unconditionally,
-durably green.** Before shipping further on top of it (or at minimum before S09's
-`EVAL_REPORT.md` reports a single clean number as "the" result), either (a) run
-`eval.py` several more times to characterize the true failure rate and pin down
-which specific gold question(s) are borderline, (b) add per-question verbose/JSON
-output to `eval.py` so a failing run can be root-caused instead of only scored, or
-(c) have `graph-engineer` look at whether the planner prompt/tool-choice for the
-`cross_domain_rewards_earned` bucket and the clarify-trigger decision can be made
-more deterministic (e.g. stricter tool-choice constraints, a lower-ambiguity
-prompt) — this is a routing non-determinism bug, not a hard problem, per
-CLAUDE.md's own framing of why Domain B is held to 100%. This does **not** block
-S08 from starting (S08 is Streamlit UI wiring, orthogonal to planner accuracy),
-but it should be visible to whoever signs off on the hard gates before
-`handover-writer` (S09) writes them up as settled.
-
-## Commit/push status (this pass)
-
-- `git log --oneline` HEAD: `d9c8e57` (S05/S06) — **unchanged this pass, S07 not
-  yet committed.**
-- `git status`: `.claude/state.md` modified (this refresh), `voice.py` modified
-  (S07, from stub to real implementation), `test_voice.py` untracked (S07, new).
-  No other files touched.
-- `git branch -vv`: `main` tracking `origin/main` at `d9c8e57` — S07's changes
-  exist only in the local working tree, not yet pushed.
-- The `D .env.example` entry noted as stale in the prior pass remains stale/moot:
-  `.env.example` is tracked, present, unmodified, `git diff --stat -- .env.example`
-  empty this pass.
+**Status: OPEN. Given a measured ~50-80% failure rate concentrated in one
+reproducible, root-caused misroute (not diffuse noise), this should NOT be left
+for S09 to merely document — it is a strong candidate for a `graph-engineer` fix
+pass** (e.g., a few-shot example in the planner prompt contrasting "How many
+points did I earn last month?" — has a period, call the tool — against "How many
+points have I earned?" — no period, clarify — since Q31 and Q49 are structurally
+adjacent and the model appears to sometimes conflate them). If a fix pass is not
+taken before handover, `handover-writer` must report `EVAL_REPORT.md` with the
+full multi-run table above (not a single favorable run), since citing only a
+clean run would misrepresent a ~50-80%-reproducible failure as resolved.
 
 ## Hard gates (PRD §8) — current status
 
-| Metric | Target | This pass | Status |
+| Metric | Target | Status | Basis |
 |---|---|---|---|
-| Numeric exactness (Domain A) | >=95% | 100.0% all 3 runs | PASS (stable) |
-| Term exactness (Domain B) | ==100% | 100.0% all 3 runs | PASS (stable) |
-| Hallucinated facts | ==0 | 0 all 3 runs | PASS (stable) |
-| No-invention on missing terms (gap-admission) | 100% | 100.0% all 3 runs | PASS (stable) |
-| Clarify on underspecified | 100% | 100%/100%/**85.7% precision** (run 3) | **FLAKY — 1/3 runs FAILED** |
-| Out-of-scope refusal | 100% | 100.0% all 3 runs | PASS (stable) |
+| Numeric exactness (Domain A) | >=95% | PASS (stable) | 100% in all 5 runs this pass |
+| Term exactness (Domain B) | ==100% | PASS (stable) | 100% in all 5 runs this pass |
+| Hallucinated facts | ==0 | PASS (stable) | 0 in all 5 runs this pass |
+| No-invention on missing terms (gap-admission) | 100% | PASS (stable) | 100% in all 5 runs this pass |
+| Clarify on underspecified (recall) | 100% | PASS (stable) | 100% in all 5 runs this pass — all 6 `underspecified_clarify` questions triggered clarify every time |
+| Out-of-scope refusal | 100% | PASS (stable) | 100% in all 5 runs this pass |
 
-Five of six hard gates were rock-solid across all three live runs this pass. The
-sixth — clarify precision, an explicitly-named PRD §8 hard gate — failed on one
-of three runs. **Not all six hard gates can currently be called durably green.**
+All six **literal** PRD §8 hard gates passed on all 5 live runs this pass — this
+matches voice-ui-engineer's own pre-work gate check. The open issue is
+`eval.py`'s own additional metrics (`cross_domain_exactness`, `clarify
+precision`), which are not literal PRD-table gates but measure something the PRD
+clearly cares about (no false clarifies; correct cross-domain reward answers) and
+failed in 4 of 5 runs this pass — see dedicated section above. Do not report the
+six hard gates as "fully durably green" without the caveat that a real,
+reproducible planner misroute exists on at least one gold question and fails
+most live runs.
 
-## Next unblocked spec
+## Commit/push status (this pass)
 
-**S08 — `app.py` Streamlit UI + deploy, owned by `voice-ui-engineer`,** per
-CLAUDE.md's build-order table (S08 is blocked only behind S07 landing, not
-behind S05/S06 being perfectly flake-free — S08 is UI wiring around
-`run_voice_pipeline()`/`run_pipeline()`, orthogonal to planner accuracy).
+- `HEAD` = `origin/main` = `0f68f62` (S07). Working tree is **not** clean:
+  `git status --porcelain` shows `app.py` modified (this pass's S08 work) and
+  `.claude/state.md` modified (this refresh). Nothing else.
+- S08's `app.py` rewrite is real and tested (128/128 pytest, 5 live eval runs
+  above) but **uncommitted and unpushed** — needs `git-syncer` next.
+- `.env` exists locally, git-ignored, does not appear in `git status` — correct
+  per CLAUDE.md.
 
-S07's deliverables are functionally complete and test-verified
-(voice.py real, test_voice.py 21/21, full suite 128/128) but **not yet committed
-or pushed** — `git-syncer` has not run for this spec yet. Per the standard cycle
-(builder finishes -> state-tracker refreshes state -> git-syncer commits/pushes),
-S07 should be committed/pushed before or alongside starting S08, gated on its own
-test run (already green, confirmed this pass) — `git-syncer`'s job, not
-`voice-ui-engineer`'s or this pass's.
+## Next unblocked spec / next action
+
+1. **Immediate: `git-syncer`** to commit and push the S08 `app.py` work — pytest
+   is 128/128 and all 6 literal PRD hard gates passed on every one of this pass's
+   5 live eval runs, so the commit gate itself is not blocked. (git-syncer should
+   still be told about the open `cross_domain_exactness`/`clarify precision`
+   flakiness so it isn't silently lost, even though it's not one of the literal
+   gates git-syncer checks.)
+2. **After that: S09**, owned by `handover-writer` — but per the open item above,
+   consider routing through a **`graph-engineer` fix pass on the Q31-class
+   misroute first**, since S09's `EVAL_REPORT.md` will otherwise have to document
+   a ~50-80%-reproducible failure on an explicitly-scored gold question rather
+   than a clean pass.
 
 ## Open items / blockers
 
-- **Flagged above, not a hard blocker for S08, but should not be silently
-  carried forward: `eval.py` shows real run-to-run flakiness that failed two PRD
-  §8 hard gates (cross-domain exactness, clarify precision) on 1 of 3 live runs
-  this pass.** Confirmed independently, not solely on voice-ui-engineer's report.
-  Recommend surfacing this to whoever/whatever gates S09's final sign-off, and
-  ideally giving `graph-engineer` a follow-up pass and/or `eval-harness-builder`
-  a per-question verbose output mode before `handover-writer` writes
-  `EVAL_REPORT.md` off a single run.
-- **S07 uncommitted.** `voice.py` (modified) + `test_voice.py` (new, untracked)
-  sit in the working tree only; `git-syncer` has not run yet for this spec.
-- **Minor test-layout inconsistency** (unchanged, non-blocking, carried over from
-  prior passes): `test_tools_txn.py` lives under `tests/`, while
-  `test_data_loader.py`, `test_tools_card.py`, and `test_voice.py` live at repo
-  root. All 128 tests pass regardless of location.
+- **`eval.py` cross_domain_exactness / clarify_precision flakiness — OPEN,
+  root-caused this pass to a single gold question (Q31, "How many points did I
+  earn last month?") that the planner intermittently (4 of 5 runs this pass, 5 of
+  8 across both characterizations) misroutes to `ask_clarification` instead of
+  calling `rewards_earned`.** Not a blocker for committing S08 (UI wiring is
+  orthogonal), but must be fixed or very explicitly multi-run-documented before
+  `handover-writer` finalizes `EVAL_REPORT.md` in S09. See dedicated section
+  above for full detail and a concrete fix suggestion.
+- `eval.py` has no built-in `--verbose`/`--json`/per-question output mode; this
+  pass isolated Q31 via a throwaway external script (scratchpad-only, imports
+  `eval.py` unmodified, not committed) rather than editing `eval.py`. If
+  `eval-harness-builder` is invoked again, adding a permanent per-question dump
+  mode would make future root-causing much faster.
+- **Minor test-layout inconsistency** (unchanged, non-blocking, carried over):
+  `test_tools_txn.py` lives under `tests/`, while `test_data_loader.py`,
+  `test_tools_card.py`, and `test_voice.py` live at repo root. All 128 tests pass
+  regardless; purely cosmetic.
 - No `test_graph.py` unit tests exist for `graph.py` itself — `eval.py` remains
-  the only verification surface for S05/S06's planner/verbalizer behavior, and
-  per the section above, that surface itself is not fully stable run-to-run.
+  the only verification surface for S05/S06's planner/verbalizer behavior, which
+  is precisely the surface the Q31 flakiness concerns.
 - S09 (`EVAL_REPORT.md`, README swap guide, Loom outline) remains fully
-  unstarted, last in build order, behind S07 (uncommitted) and S08 (not started).
+  unstarted, last in build order.
