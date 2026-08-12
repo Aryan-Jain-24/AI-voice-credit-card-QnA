@@ -7,15 +7,13 @@ Single column, deliberately plain, per all-specs.md S08 /
 
     1. Title + one-line scope explanation.
     2. st.audio_input -- native mic widget.
-    3. A spinner/status that names the current stage (Listening / Thinking /
-       Answering) as it actually happens, not a cosmetic fake.
+    3. A progress indicator that names the current stage (Listening /
+       Thinking / Answering) as it actually happens, not a cosmetic fake --
+       cleared once the turn finishes, leaving no residual box behind.
     4. st.audio(response, autoplay=True) for the spoken answer.
     5. Transcript + answer shown as text, always -- "trust requires seeing
        what it heard."
-    6. An expander ("How it got this answer") showing the tool name, its
-       args, and the raw result dict -- the thing that makes "the LLM never
-       does arithmetic" visible instead of merely claimed.
-    7. A sidebar: example questions as buttons, grouped "Your spending" /
+    6. A sidebar: example questions as buttons, grouped "Your spending" /
        "Your card" / "Your rewards", plus a dataset summary.
 
 This file does not reimplement any planning/tool/verbalizing/ASR/TTS logic --
@@ -120,13 +118,13 @@ EXAMPLE_QUESTIONS: dict[str, list[str]] = {
 
 # ---------------------------------------------------------------------------
 # One turn -- reuses voice.py's own node functions verbatim (see the module
-# docstring). `status` is an st.status(...) context manager whose label is
-# updated as each real stage starts, so "Listening... Thinking... Answering"
-# reflects actual progress, not a timer.
+# docstring). `progress` is an st.empty() placeholder whose text is updated
+# as each real stage starts, so "Listening... Thinking... Answering" reflects
+# actual progress, not a timer -- and it's cleared at the end so no box lingers.
 # ---------------------------------------------------------------------------
 
 
-def run_turn(status, *, audio_bytes: bytes | None = None, transcript: str | None = None) -> dict:
+def run_turn(progress, *, audio_bytes: bytes | None = None, transcript: str | None = None) -> dict:
     state: voice.State = {
         "audio_in": audio_bytes,
         "transcript": transcript or "",
@@ -138,10 +136,10 @@ def run_turn(status, *, audio_bytes: bytes | None = None, transcript: str | None
     }
 
     if audio_bytes:
-        status.update(label="Listening...")
+        progress.write("Listening...")
         state.update(voice.listen_node(state))
 
-    status.update(label="Thinking...")
+    progress.write("Thinking...")
     state.update(voice.plan_node(state))
     branch = voice.route(state)
     if branch == "query":
@@ -150,20 +148,19 @@ def run_turn(status, *, audio_bytes: bytes | None = None, transcript: str | None
     else:
         state.update(voice.clarify_node(state))
 
-    status.update(label="Answering...")
+    progress.write("Answering...")
     state.update(voice.speak_node(state))
 
+    progress.empty()
     return state
 
 
 def render_result(result: dict, *, heard_via_mic: bool) -> None:
-    """The text/audio/expander panel -- shared by the mic path and the
-    sidebar example-question path so both are equally auditable."""
+    """The text/audio panel -- shared by the mic path and the sidebar
+    example-question path so both render identically."""
     transcript = result.get("transcript") or ""
     answer_text = result.get("answer_text") or ""
     audio_out = result.get("audio_out")
-    tool_call = result.get("tool_call") or {}
-    tool_result = result.get("tool_result")
 
     label = "What I heard" if heard_via_mic else "Question"
     st.markdown(f"**{label}:** {transcript}")
@@ -171,13 +168,6 @@ def render_result(result: dict, *, heard_via_mic: bool) -> None:
 
     if audio_out:
         st.audio(audio_out, format="audio/mp3", autoplay=True)
-
-    with st.expander("How it got this answer"):
-        st.markdown(f"**Tool called:** `{tool_call.get('name') or '(none)'}`")
-        st.markdown("**Arguments:**")
-        st.json(tool_call.get("args") or {})
-        st.markdown("**Raw result:**")
-        st.json(tool_result if tool_result is not None else {})
 
 
 # ---------------------------------------------------------------------------
@@ -244,27 +234,25 @@ if audio_value is not None:
         new_audio_bytes = raw
 
 if new_audio_bytes is not None:
-    with st.status("Listening...", expanded=False) as status:
-        try:
-            result = run_turn(status, audio_bytes=new_audio_bytes)
-            status.update(label="Done", state="complete")
-        except Exception as exc:
-            status.update(label="Something went wrong", state="error")
-            st.error(f"Couldn't process that: {exc}")
-            result = None
+    progress = st.empty()
+    try:
+        result = run_turn(progress, audio_bytes=new_audio_bytes)
+    except Exception as exc:
+        progress.empty()
+        st.error(f"Couldn't process that: {exc}")
+        result = None
     if result is not None:
         st.session_state["last_result"] = result
         st.session_state["last_result_heard_via_mic"] = True
 
 elif clicked_question is not None:
-    with st.status("Thinking...", expanded=False) as status:
-        try:
-            result = run_turn(status, transcript=clicked_question)
-            status.update(label="Done", state="complete")
-        except Exception as exc:
-            status.update(label="Something went wrong", state="error")
-            st.error(f"Couldn't process that: {exc}")
-            result = None
+    progress = st.empty()
+    try:
+        result = run_turn(progress, transcript=clicked_question)
+    except Exception as exc:
+        progress.empty()
+        st.error(f"Couldn't process that: {exc}")
+        result = None
     if result is not None:
         st.session_state["last_result"] = result
         st.session_state["last_result_heard_via_mic"] = False
