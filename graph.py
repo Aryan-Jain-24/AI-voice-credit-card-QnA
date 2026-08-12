@@ -205,7 +205,15 @@ def refuse(reason: str) -> dict:
     this card better than an Amex Platinum?", "Should I close this card?".
     Not for an in-scope question about this card's own fees, rewards,
     offers, or transaction history, even a critical-sounding one like "am I
-    close to the dining cap?" -- that goes to a data tool instead.
+    close to the dining cap?" -- that goes to a data tool instead. Also not
+    for a fee/terms question that merely NAMES a third-party brand, app, or
+    service this card might charge you for using -- e.g. "is there a fee
+    for topping up a PhonePe wallet with this card?" or "does this card
+    charge extra if I use it on Ola Money?" are still asking about THIS
+    card's OWN fee for that action, not about the other company's product,
+    so they go to card_fees, even when that specific fee_type turns out to
+    be undocumented (found: false there is a normal, correct outcome --
+    never a reason you should have refused instead).
 
     Args:
         reason: why it's out of scope, one of:
@@ -276,7 +284,21 @@ ordinary spending categories, not a signal to refuse. For example, "how \
 many reward points did I earn from cash advances last year?" is answerable \
 by rewards_earned(period="last year", category="cash_advance") -- that this \
 category is excluded from earning points (the answer will be 0) makes it a \
-normal, correctly-answerable lookup, not a reason to refuse.
+normal, correctly-answerable lookup, not a reason to refuse. Naming a \
+third-party brand, app, or service is likewise not, by itself, a reason to \
+refuse -- what matters is WHOSE fee is being asked about, not which words \
+appear in the question. "Is there a fee for topping up a PhonePe wallet \
+with this card?" and "Does this card charge extra if I use it on Ola \
+Money?" are both asking about THIS card's own fee for an action involving \
+an outside service, not about the other company's own product -- call \
+card_fees(fee_type=...) for these exactly as you would for "what's the \
+annual fee?", even when the specific fee_type comes back undocumented \
+(card_fees correctly returning found: false for it is a normal \
+gap-admission outcome, never evidence that the question itself needed \
+refuse instead). Reserve refuse(reason="out_of_scope") for what this bot \
+has no way to answer even in principle -- your credit score, raising your \
+credit limit, disputing a charge -- not for an ordinary fee, terms, or \
+spending question that happens to mention another company's name.
 6. Today's date is {today}. Relative dates pass through as phrases exactly \
 as the user said them (e.g. "last month", "last quarter", "YTD") -- a \
 Python helper (resolve_period) resolves them into actual date ranges \
