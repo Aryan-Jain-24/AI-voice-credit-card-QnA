@@ -17,6 +17,19 @@ endpoint, Aura-2 for TTS via the standard (non-streaming) synthesis
 endpoint. `gpt-4o-mini` (the planner/verbalizer in graph.py) is unchanged --
 this file has never called it directly and still doesn't.
 
+S12 note: `transcribe()` and `synthesize()` are the two raw, non-LangChain
+Deepgram SDK calls in the pipeline -- everything else (`listen_node`,
+`plan_node`, `query_node`, `verbalize_node`, `clarify_node`, `speak_node`,
+and the compiled `voice_graph` itself) is a LangGraph/LangChain primitive
+and gets traced automatically once `LANGSMITH_TRACING`/`LANGSMITH_API_KEY`/
+`LANGSMITH_PROJECT` are set -- no code changes needed there. These two are
+wrapped in `@traceable` below so they nest into the same trace tree instead
+of showing up as untraced gaps. With tracing env vars unset (the default,
+including every test in this repo), `@traceable` is a no-op passthrough --
+no network call, no behavior change; a LangSmith outage or missing
+credentials degrades to "tracing silently stops," never to a broken voice
+pipeline. See .claude/agents/langsmith-observability.md (S12).
+
 Everything else in this file exists to make transcription trustworthy for
 Indian merchant names, which whisper-1 reliably mangled ("Swiggie",
 "Zomatoo", "Big Basket", ...). Two independent layers, per the original S07
@@ -89,6 +102,7 @@ import re
 from deepgram import DeepgramClient
 from dotenv import load_dotenv
 from langgraph.graph import END, StateGraph
+from langsmith import traceable
 from rapidfuzz import fuzz, process
 
 from generate_data import ALL_MERCHANTS
@@ -145,6 +159,7 @@ TTS_MODEL = "aura-2-thalia-en"
 _MERCHANT_KEYTERMS = list(ALL_MERCHANTS)
 
 
+@traceable(run_type="tool", name="deepgram_transcribe")
 def transcribe(audio_bytes: bytes, filename: str = "audio.wav") -> str:
     """Audio bytes -> raw transcript text, via Deepgram Nova-3
     (prerecorded/single-shot REST transcription -- one full blob in, one
@@ -176,6 +191,7 @@ def transcribe(audio_bytes: bytes, filename: str = "audio.wav") -> str:
     return raw_transcript
 
 
+@traceable(run_type="tool", name="deepgram_synthesize")
 def synthesize(text: str) -> bytes:
     """Text -> mp3 bytes, via Deepgram Aura-2 (standard, non-streaming
     synthesis endpoint -- one text in, one full audio buffer out, same call

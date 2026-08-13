@@ -72,15 +72,20 @@ system-dependent metric reports 0% and the report says so explicitly.
 from __future__ import annotations
 
 import json
+import logging
 import math
+import os
 import re
 import time
-from datetime import date
+import uuid
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
 import pandas as pd
 import yaml
+
+logger = logging.getLogger("eval")
 
 # ---------------------------------------------------------------------------
 # Paths & fixed "today" -- this project is built against 2026-08-11 (see
@@ -940,10 +945,134 @@ def print_report(evald: dict, metrics: dict) -> None:
     print()
 
 
+# ---------------------------------------------------------------------------
+# LangSmith dataset + experiment logging -- S12. Additive only: this never
+# replaces or gates on anything above (EVAL_REPORT.md / stdout / the PASS-FAIL
+# columns are still the actual ship gate per PRD.md S8 / CLAUDE.md's hard
+# gates table). Tags every logged run by the same 9 buckets
+# gold_questions.json already uses (see DOMAIN_BY_TOOL / bucket field above)
+# so results are sliceable by bucket in the LangSmith UI.
+#
+# Gated on LANGSMITH_TRACING + LANGSMITH_API_KEY both being set (same env
+# vars documented in .env.example). With either unset -- the default, and
+# the state of every environment this was built/tested in -- this is a
+# no-op: no import of langsmith's network client, no run created, no
+# network call. A LangSmith outage or bad credentials degrades to "logging
+# silently skipped, printed report is unaffected", never to a crashed eval
+# run -- same failure-mode contract as voice.py's @traceable wraps.
+# ---------------------------------------------------------------------------
+
+LANGSMITH_DATASET_NAME = "credit-card-chatbot-gold-questions"
+_LANGSMITH_EXAMPLE_NAMESPACE = uuid.UUID("6f6e3f0a-3b8e-4a1a-9e1e-2f7b8f0c9d3a")
+
+
+def _langsmith_enabled() -> bool:
+    return bool(os.environ.get("LANGSMITH_API_KEY")) and os.environ.get(
+        "LANGSMITH_TRACING", ""
+    ).strip().lower() in ("true", "1", "yes")
+
+
+def log_run_to_langsmith(evald: dict, metrics: dict) -> None:
+    """Log this eval.py run as a LangSmith dataset + experiment. Best-effort
+    and fully optional -- see module note above for the exact gating and
+    failure-mode contract. Never called with live credentials during the
+    S12 build itself (see .claude/agents/langsmith-observability.md); this
+    only fires when a human has set LANGSMITH_TRACING=true + a real
+    LANGSMITH_API_KEY, which happens post-review, not during build.
+    """
+    if not _langsmith_enabled():
+        return
+
+    try:
+        from langsmith import Client  # noqa: PLC0415 -- optional, only on the live path
+    except Exception as e:
+        logger.warning("LangSmith logging skipped: langsmith not importable (%s)", e)
+        return
+
+    try:
+        client = Client()
+
+        # 1. Dataset: one example per gold question, upserted by a
+        #    deterministic id derived from the question's own id (Q1..Q55)
+        #    so re-running eval.py repeatedly doesn't create duplicate
+        #    examples in the dataset across passes.
+        if not client.has_dataset(dataset_name=LANGSMITH_DATASET_NAME):
+            client.create_dataset(
+                dataset_name=LANGSMITH_DATASET_NAME,
+                description=(
+                    "Gold question set for the credit-card voice chatbot "
+                    "(evals/gold_questions.json, 55 questions, 9 buckets). "
+                    "Mirrors eval.py's hard-gate ground truth."
+                ),
+            )
+
+        for entry in evald["gold"]:
+            example_id = uuid.uuid5(_LANGSMITH_EXAMPLE_NAMESPACE, entry["id"])
+            try:
+                client.create_example(
+                    dataset_name=LANGSMITH_DATASET_NAME,
+                    example_id=example_id,
+                    inputs={"utterance": entry["utterance"]},
+                    outputs={
+                        "expected_tool": entry.get("expected_tool"),
+                        "expected_domain": entry.get("expected_domain"),
+                        "expected_behaviour": entry.get("expected_behaviour"),
+                    },
+                    metadata={"bucket": entry["bucket"], "id": entry["id"]},
+                )
+            except Exception:
+                # Example with this id already exists from a prior run --
+                # expected on every re-run after the first; not a failure.
+                pass
+
+        # 2. Experiment: one run per gold question, grouped under a single
+        #    timestamped session (LangSmith's "experiment" for a dataset),
+        #    tagged by bucket for the UI's latency/accuracy slicing.
+        experiment_name = f"eval-{datetime.now(timezone.utc):%Y%m%dT%H%M%SZ}"
+        for row in evald["rows"]:
+            entry, result = row["entry"], row["result"]
+            example_id = uuid.uuid5(_LANGSMITH_EXAMPLE_NAMESPACE, entry["id"])
+            latency = result.get("latency") or 0.0
+            end_time = datetime.now(timezone.utc)
+            start_time = end_time
+            try:
+                start_time = end_time.fromtimestamp(end_time.timestamp() - latency, tz=timezone.utc)
+            except Exception:
+                pass
+            client.create_run(
+                name=entry["id"],
+                run_type="chain",
+                project_name=experiment_name,
+                inputs={"utterance": entry["utterance"]},
+                outputs={
+                    "tool_name": result.get("tool_name"),
+                    "behaviour": result.get("behaviour"),
+                    "answer_text": result.get("answer_text"),
+                    "error": result.get("error"),
+                },
+                reference_example_id=example_id,
+                tags=[entry["bucket"]],
+                start_time=start_time,
+                end_time=end_time,
+                extra={"metadata": {"bucket": entry["bucket"], "implemented": evald["implemented"]}},
+            )
+
+        logger.info(
+            "LangSmith: logged %d gold-question runs to experiment %r under dataset %r.",
+            len(evald["rows"]), experiment_name, LANGSMITH_DATASET_NAME,
+        )
+    except Exception as e:
+        # Never let LangSmith logging turn a working eval run into a
+        # crashed one -- same "tracing silently stops" contract as
+        # voice.py's @traceable wraps (see PRD-02.md S4.1 / S8 risk table).
+        logger.warning("LangSmith logging failed (eval results above are unaffected): %s", e)
+
+
 def main() -> None:
     evald = evaluate()
     metrics = compute_metrics(evald)
     print_report(evald, metrics)
+    log_run_to_langsmith(evald, metrics)
 
 
 if __name__ == "__main__":
