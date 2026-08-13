@@ -1,24 +1,30 @@
-"""Streamlit UI -- S08 (voice-ui-engineer).
+"""Streamlit UI -- S08 (voice-ui-engineer), restyled under S11 (frontend-redesign).
 
     [mic] -> listen -> plan -> {query -> verbalize | clarify} -> speak -> [audio out]
 
 Single column, deliberately plain, per all-specs.md S08 /
-.claude/agents/voice-ui-engineer.md:
+.claude/agents/voice-ui-engineer.md, with the S11 visual pass layered on top
+(all-specs.md S11 / .claude/agents/frontend-redesign.md):
 
     1. Title + one-line scope explanation.
-    2. st.audio_input -- native mic widget.
+    2. st.audio_input -- native mic widget, CSS-restyled (see MIC_BUTTON_CSS
+       below) into a standalone, floating, round button detached from the
+       main input row, colored idle vs. recording. Still the native widget --
+       no streamlit-webrtc, no custom component, no interaction-model change.
     3. A progress indicator that names the current stage (Listening /
        Thinking / Answering) as it actually happens, not a cosmetic fake --
        cleared once the turn finishes, leaving no residual box behind.
     4. st.audio(response, autoplay=True) for the spoken answer.
     5. Transcript + answer shown as text, always -- "trust requires seeing
        what it heard."
-    6. A sidebar: example questions as buttons, grouped "Your spending" /
-       "Your card" / "Your rewards", plus a dataset summary.
+    6. A sidebar: 5 example questions (one per question shape -- total spend,
+       category breakdown, a card-terms lookup, a cross-domain rewards
+       question, and one clarify-in-action question), a short "how to use
+       this" block, and the dataset summary.
 
 This file does not reimplement any planning/tool/verbalizing/ASR/TTS logic --
 everything it calls is already built and gated by graph.py (S05/S06) and
-voice.py (S07). The one piece of real orchestration here is `run_turn()`
+voice.py (S07/S10). The one piece of real orchestration here is `run_turn()`
 below, which sequences voice.py's own node functions (listen_node, plan_node,
 route, query_node, clarify_node, verbalize_node, speak_node -- the exact
 functions voice.build_voice_graph() wires into a single compiled graph) one
@@ -30,7 +36,8 @@ buttons reuse the same `run_turn()` with a typed transcript instead of audio
 they exercise the same planner/tool/verbalizer path a spoken question would,
 so they are honest demos, not decorative labels.
 
-See all-specs.md S08 and .claude/agents/voice-ui-engineer.md.
+See all-specs.md S08/S11 and .claude/agents/voice-ui-engineer.md /
+.claude/agents/frontend-redesign.md.
 """
 
 from __future__ import annotations
@@ -70,6 +77,67 @@ st.set_page_config(page_title="Voice Q&A over Credit Card Data", page_icon="\U00
 
 
 # ---------------------------------------------------------------------------
+# S11 -- mic button restyle. CSS-only restyle of the native st.audio_input
+# widget (per .claude/agents/frontend-redesign.md: confirmed approach is CSS
+# via st.markdown(unsafe_allow_html=True) targeting the widget's DOM wrapper
+# -- no streamlit-webrtc, no custom component). Detaches the widget from the
+# main input row into a persistent, floating, circular button and colors it
+# by state:
+#   - idle: neutral blue circle, just the record control.
+#   - recording: the widget's own waveform/timecode only render once a
+#     recording is in progress, so their presence in the DOM is used as the
+#     state hook (:has()) to swap in the active red color -- no JS needed.
+# The underlying record-on-click-hold-release behavior is untouched; this is
+# a restyle, not a reimplementation.
+# ---------------------------------------------------------------------------
+
+MIC_BUTTON_CSS = """
+<style>
+div[data-testid="stAudioInput"] {
+    position: fixed;
+    right: 1.75rem;
+    bottom: 1.75rem;
+    z-index: 9999;
+    width: 92px;
+    border-radius: 46px;
+    background-color: #1f6feb;   /* idle: neutral blue */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+    padding: 6px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+div[data-testid="stAudioInput"] label {
+    display: none;
+}
+div[data-testid="stAudioInput"] [data-testid="stAudioInputActionButton"] {
+    background: transparent;
+    border: none;
+}
+div[data-testid="stAudioInput"] svg {
+    fill: #ffffff;
+}
+div[data-testid="stAudioInput"] [data-testid="stAudioInputWaveformTimeCode"] {
+    color: #ffffff;
+    font-size: 0.7rem;
+}
+/* recording state -- waveform/timecode nodes only exist while a recording
+   is in progress or was just captured, so their presence flips the color */
+div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveSurfer"]),
+div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveformTimeCode"]) {
+    background-color: #e5484d;   /* recording: red */
+    box-shadow: 0 4px 22px rgba(229, 72, 77, 0.55);
+}
+@media (max-width: 640px) {
+    div[data-testid="stAudioInput"] {
+        right: 1rem;
+        bottom: 1rem;
+        width: 76px;
+    }
+}
+</style>
+"""
+
+
+# ---------------------------------------------------------------------------
 # Dataset summary -- for the sidebar. Reads the same canonical loader and
 # card_terms.yaml every tool reads; never a second, hand-maintained copy of
 # these facts.
@@ -93,27 +161,22 @@ def get_dataset_summary() -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Example questions -- grouped so the grouping itself teaches the scope
-# (transactions vs. terms vs. the cross-domain reward calc), per S08.
+# Example questions -- S11 trims this to exactly 5, one per question shape,
+# so the sidebar teaches the scope at a glance instead of listing every
+# question family (all-specs.md S11 / .claude/agents/frontend-redesign.md):
+#   1. Total spend            2. Category breakdown
+#   3. A card-terms lookup    4. A cross-domain rewards-earned question
+#   5. A clarify-in-action question (underspecified period -> the bot asks
+#      "which month?" instead of guessing)
 # ---------------------------------------------------------------------------
 
-EXAMPLE_QUESTIONS: dict[str, list[str]] = {
-    "Your spending": [
-        "How much did I spend last month?",
-        "What'd I blow on food last month?",
-        "Who are my top merchants last month?",
-    ],
-    "Your card": [
-        "What's my annual fee?",
-        "What's the forex markup on this card?",
-        "What's the late payment fee if I owe 10,000 rupees?",
-    ],
-    "Your rewards": [
-        "How many points did I earn last month?",
-        "How many dining points did I earn last month?",
-        "Did I hit my dining rewards cap in October 2025?",
-    ],
-}
+EXAMPLE_QUESTIONS: list[str] = [
+    "How much did I spend last month?",
+    "What'd I blow on food last month?",
+    "What's my annual fee?",
+    "How many points did I earn last month?",
+    "How much did I spend?",
+]
 
 
 # ---------------------------------------------------------------------------
@@ -177,12 +240,18 @@ def render_result(result: dict, *, heard_via_mic: bool) -> None:
 clicked_question: str | None = None
 
 with st.sidebar:
+    st.header("How to use this")
+    st.caption(
+        "Hold the mic button and ask your question. Release when you're "
+        "done. One question at a time."
+    )
+
+    st.divider()
+
     st.header("Try asking")
-    for group, questions in EXAMPLE_QUESTIONS.items():
-        st.subheader(group)
-        for q in questions:
-            if st.button(q, key=f"example::{q}", disabled=not HAS_API_KEY, width="stretch"):
-                clicked_question = q
+    for q in EXAMPLE_QUESTIONS:
+        if st.button(q, key=f"example::{q}", disabled=not HAS_API_KEY, width="stretch"):
+            clicked_question = q
 
     st.divider()
     st.header("Dataset")
@@ -214,7 +283,13 @@ if not HAS_API_KEY:
         "locally, or add it to this app's Streamlit secrets when deployed."
     )
 
-audio_value = st.audio_input("Ask a question", disabled=not HAS_API_KEY)
+st.markdown(MIC_BUTTON_CSS, unsafe_allow_html=True)
+audio_value = st.audio_input(
+    "Ask a question",
+    key="mic_input",
+    disabled=not HAS_API_KEY,
+    label_visibility="collapsed",
+)
 
 if "last_result" not in st.session_state:
     st.session_state["last_result"] = None
@@ -263,4 +338,7 @@ if st.session_state["last_result"] is not None:
         heard_via_mic=st.session_state["last_result_heard_via_mic"],
     )
 else:
-    st.caption("Record a question above, or pick an example from the sidebar.")
+    st.caption(
+        "Hold the round mic button (bottom right) to ask a question, or "
+        "pick an example from the sidebar."
+    )
