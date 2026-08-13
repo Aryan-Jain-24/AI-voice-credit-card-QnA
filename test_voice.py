@@ -1,10 +1,15 @@
-"""Pytest suite for voice.py's merchant fuzzy-correction (S07).
+"""Pytest suite for voice.py's merchant fuzzy-correction (S07) and the
+Deepgram STT/TTS call shape (S10).
 
-Scope: only `correct_merchants()` and its helpers are unit-testable without
-a live OpenAI API key/network call -- `transcribe()`/`synthesize()` are thin
-wrappers around whisper-1/tts-1 and are validated separately by a live smoke
-test (see the S07 handover notes), not here, so this suite runs in CI/offline
-without secrets.
+Scope: `correct_merchants()` and its helpers are unit-testable without any
+API key/network call. `transcribe()`/`synthesize()` are thin wrappers around
+Deepgram Nova-3/Aura-2 (swapped from whisper-1/tts-1 under S10) -- their
+empty-input validation is tested directly here, and their actual API call
+shape (model name, `keyterm`/`encoding` params, response parsing) is tested
+with the Deepgram client mocked out, so this suite still runs in CI/offline
+without secrets and without ever touching the network. A live smoke test
+against real Deepgram credentials happens separately post-review (see
+.claude/agents/stt-tts-deepgram-swap.md), not here.
 
 Every expected merchant name below is copied by hand from `ALL_MERCHANTS`
 (generate_data.py) -- these are not round-tripped through the function under
@@ -129,14 +134,16 @@ def test_realistic_gold_style_sentences_untouched_by_false_positives():
 
 
 # ---------------------------------------------------------------------------
-# Whisper `prompt` bias -- ALL_MERCHANTS must actually be in the prompt sent
-# to the API (the other half of "do both, not one or the other").
+# Nova-3 `keyterm` bias -- ALL_MERCHANTS must actually be in the keyterm list
+# sent to the API (the other half of "do both, not one or the other"). S10
+# swapped this from a single joined `_MERCHANT_PROMPT` string (whisper-1's
+# `prompt=`) to a `_MERCHANT_KEYTERMS` list (Nova-3's `keyterm=`).
 # ---------------------------------------------------------------------------
 
 
-def test_merchant_prompt_contains_every_merchant_name():
+def test_merchant_keyterms_contains_every_merchant_name():
     for merchant in ALL_MERCHANTS:
-        assert merchant in voice._MERCHANT_PROMPT
+        assert merchant in voice._MERCHANT_KEYTERMS
 
 
 def test_merchant_index_covers_all_merchants():
@@ -162,6 +169,123 @@ def test_synthesize_rejects_empty_text():
 
     with pytest.raises(ValueError):
         voice.synthesize("")
+
+
+# ---------------------------------------------------------------------------
+# S10 -- Deepgram call shape, verified with the Deepgram client mocked out
+# (no network, no API key). These pin down the two things S10's done-when
+# gate cares about: correct model names/endpoint types, and v1's exact
+# single-shot call shape (one blob in / one transcript out, one text in /
+# one buffer out -- no streaming/partial-result path).
+# ---------------------------------------------------------------------------
+
+
+class _FakeAlternative:
+    def __init__(self, transcript):
+        self.transcript = transcript
+
+
+class _FakeChannel:
+    def __init__(self, transcript):
+        self.alternatives = [_FakeAlternative(transcript)]
+
+
+class _FakeResults:
+    def __init__(self, transcript):
+        self.channels = [_FakeChannel(transcript)]
+
+
+class _FakeListenResponse:
+    def __init__(self, transcript):
+        self.results = _FakeResults(transcript)
+
+
+def test_transcribe_calls_nova3_prerecorded_with_full_blob_and_keyterms(monkeypatch):
+    captured = {}
+
+    class _FakeMedia:
+        def transcribe_file(self, **kwargs):
+            captured.update(kwargs)
+            return _FakeListenResponse("swiggy order arrived")
+
+    class _FakeListenV1:
+        media = _FakeMedia()
+
+    class _FakeListen:
+        v1 = _FakeListenV1()
+
+    class _FakeClient:
+        listen = _FakeListen()
+
+    monkeypatch.setattr(voice, "_get_client", lambda: _FakeClient())
+
+    out = voice.transcribe(b"some-wav-bytes")
+
+    assert out == "swiggy order arrived"
+    # Model is Nova-3, not whisper-1; the whole blob goes in one call (no
+    # chunking/streaming); keyterm bias carries every known merchant name,
+    # the direct replacement for whisper-1's `prompt=`.
+    assert captured["model"] == "nova-3"
+    assert captured["request"] == b"some-wav-bytes"
+    assert set(captured["keyterm"]) == set(ALL_MERCHANTS)
+
+
+def test_transcribe_runs_merchant_correction_on_nova3_output(monkeypatch):
+    class _FakeMedia:
+        def transcribe_file(self, **kwargs):
+            return _FakeListenResponse("I ordered dinner from Swiggie last night")
+
+    class _FakeListenV1:
+        media = _FakeMedia()
+
+    class _FakeListen:
+        v1 = _FakeListenV1()
+
+    class _FakeClient:
+        listen = _FakeListen()
+
+    monkeypatch.setattr(voice, "_get_client", lambda: _FakeClient())
+
+    # transcribe() itself only returns the raw transcript (correction is a
+    # separate step run by listen_node) -- assert the raw pass-through here,
+    # and exercise correct_merchants() on Nova-3-shaped output directly.
+    raw = voice.transcribe(b"some-wav-bytes")
+    assert raw == "I ordered dinner from Swiggie last night"
+    corrected = voice.correct_merchants(raw)
+    assert "Swiggy" in corrected
+
+
+def test_synthesize_calls_aura2_and_returns_joined_bytes(monkeypatch):
+    captured = {}
+
+    class _FakeAudio:
+        def generate(self, **kwargs):
+            captured.update(kwargs)
+            return iter([b"chunk1", b"chunk2", b"chunk3"])
+
+    class _FakeSpeakV1:
+        audio = _FakeAudio()
+
+    class _FakeSpeak:
+        v1 = _FakeSpeakV1()
+
+    class _FakeClient:
+        speak = _FakeSpeak()
+
+    monkeypatch.setattr(voice, "_get_client", lambda: _FakeClient())
+
+    out = voice.synthesize("Your total spend was 500 rupees.")
+
+    # Model is an Aura-2 voice, not tts-1; mp3 requested explicitly to match
+    # app.py's `st.audio(audio_out, format="audio/mp3")` contract; the
+    # (possibly chunked) response iterator is fully drained into one buffer
+    # before returning -- single-shot, not streamed to the caller.
+    assert captured["model"] == voice.TTS_MODEL
+    assert captured["model"].startswith("aura-2-")
+    assert captured["text"] == "Your total spend was 500 rupees."
+    assert captured["encoding"] == "mp3"
+    assert out == b"chunk1chunk2chunk3"
+    assert isinstance(out, bytes)
 
 
 # ---------------------------------------------------------------------------

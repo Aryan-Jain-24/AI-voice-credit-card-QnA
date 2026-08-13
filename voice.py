@@ -1,24 +1,43 @@
 """STT + TTS wrappers, ASR merchant fuzzy-correction, and the voice-wrapped
-graph -- S07 (voice-ui-engineer).
+graph -- originally S07 (voice-ui-engineer), STT/TTS provider swapped to
+Deepgram under S10 (stt-tts-deepgram-swap).
 
     [mic bytes] -> listen -> plan -> query/clarify -> verbalize -> speak -> [mp3 bytes]
 
-The two thin OpenAI wrappers all-specs.md S07 asks for:
+The two thin Deepgram wrappers this module exposes (same call shape v1 had
+with whisper-1/tts-1 -- one blob in / one transcript out, one text in / one
+audio buffer out; no streaming, no partial results):
 
-    transcribe(audio_bytes: bytes) -> str      whisper-1
-    synthesize(text: str) -> bytes             tts-1, voice="nova", mp3
+    transcribe(audio_bytes: bytes) -> str      Deepgram nova-3 (prerecorded)
+    synthesize(text: str) -> bytes             Deepgram aura-2-thalia-en (mp3)
+
+S10 note: v1 used OpenAI whisper-1 for STT and tts-1 (voice="nova") for TTS.
+Both are now Deepgram: Nova-3 for STT via the prerecorded/single-shot REST
+endpoint, Aura-2 for TTS via the standard (non-streaming) synthesis
+endpoint. `gpt-4o-mini` (the planner/verbalizer in graph.py) is unchanged --
+this file has never called it directly and still doesn't.
 
 Everything else in this file exists to make transcription trustworthy for
-Indian merchant names, which whisper-1 reliably mangles ("Swiggie",
-"Zomatoo", "Big Basket", ...). Two independent layers, per the spec ("do
-both, not one or the other"):
+Indian merchant names, which whisper-1 reliably mangled ("Swiggie",
+"Zomatoo", "Big Basket", ...). Two independent layers, per the original S07
+spec ("do both, not one or the other"):
 
   1. `transcribe()` passes the full S01 merchant dictionary (`ALL_MERCHANTS`,
-     ~50 names) as Whisper's `prompt` parameter -- this *biases* recognition
-     toward those spellings before a single token is fuzzy-matched.
+     ~50 names) as Nova-3's `keyterm` parameter (Deepgram's Nova-3-native
+     replacement for a free-text bias prompt -- see Deepgram's "Keyterm
+     Prompting" docs) -- this *biases* recognition toward those spellings
+     before a single token is fuzzy-matched. This is the direct swap for
+     whisper-1's `prompt=` parameter that used to carry the same string.
   2. `correct_merchants()` is the deterministic fallback for whatever (1)
      still gets wrong. This is NOT optional -- see
      .claude/agents/voice-ui-engineer.md and all-specs.md S07.
+
+  TODO(post-S10-review): `correct_merchants()`'s FUZZY_THRESHOLD/scorer/
+  denylist below were tuned empirically against whisper-1's specific
+  mangling patterns (see the tuning notes further down). Nova-3's error
+  modes have not been characterized yet -- retune against real Nova-3
+  transcripts once live credentials are available (see
+  .claude/agents/stt-tts-deepgram-swap.md, "post-review testing").
 
 --------------------------------------------------------------------------
 Fuzzy-matching design notes (read before changing FUZZY_THRESHOLD/scorer)
@@ -67,9 +86,9 @@ from __future__ import annotations
 import logging
 import re
 
+from deepgram import DeepgramClient
 from dotenv import load_dotenv
 from langgraph.graph import END, StateGraph
-from openai import OpenAI
 from rapidfuzz import fuzz, process
 
 from generate_data import ALL_MERCHANTS
@@ -95,38 +114,46 @@ logger.setLevel(logging.INFO)
 
 
 # ---------------------------------------------------------------------------
-# OpenAI client -- lazy singleton, mirrors graph.py's `_get_planner_llm()` /
-# `_get_verbalizer_llm()` pattern so importing this module never requires a
-# live API key (only calling transcribe()/synthesize() does).
+# Deepgram client -- lazy singleton, same pattern as v1's OpenAI client (and
+# mirrors graph.py's `_get_planner_llm()` / `_get_verbalizer_llm()`) so
+# importing this module never requires a live API key (only calling
+# transcribe()/synthesize() does). `DeepgramClient()` reads
+# `DEEPGRAM_API_KEY` from the environment automatically, same as the old
+# `OpenAI()` did for `OPENAI_API_KEY`.
 # ---------------------------------------------------------------------------
 
-_client: OpenAI | None = None
+_client: DeepgramClient | None = None
 
 
-def _get_client() -> OpenAI:
+def _get_client() -> DeepgramClient:
     global _client
     if _client is None:
-        _client = OpenAI()
+        _client = DeepgramClient()
     return _client
 
 
-STT_MODEL = "whisper-1"
-TTS_MODEL = "tts-1"
-TTS_VOICE = "nova"
+STT_MODEL = "nova-3"
+TTS_MODEL = "aura-2-thalia-en"
 
-# Whisper's `prompt` param biases decoding toward tokens it contains. Passing
-# the whole merchant dictionary up front means a correct spelling is more
-# likely straight out of the model, before correct_merchants() ever has to
-# intervene -- see all-specs.md S07 ("do both, not one or the other").
-_MERCHANT_PROMPT = "Merchants that may be mentioned: " + ", ".join(ALL_MERCHANTS)
+# Nova-3's `keyterm` parameter is its native replacement for a free-text
+# bias prompt (Deepgram "Keyterm Prompting"): passing the merchant
+# dictionary up front means a correct spelling is more likely straight out
+# of the model, before correct_merchants() ever has to intervene -- see
+# all-specs.md S07 ("do both, not one or the other"). This is a direct swap
+# for whisper-1's `prompt=` string; Nova-3 takes a list of terms instead of
+# one free-text string, so this is a list, not a joined sentence.
+_MERCHANT_KEYTERMS = list(ALL_MERCHANTS)
 
 
 def transcribe(audio_bytes: bytes, filename: str = "audio.wav") -> str:
-    """Audio bytes -> raw transcript text, via OpenAI whisper-1.
+    """Audio bytes -> raw transcript text, via Deepgram Nova-3
+    (prerecorded/single-shot REST transcription -- one full blob in, one
+    transcript out, same call shape v1 had with whisper-1).
 
-    `filename` is only a format hint for the API (Streamlit's
-    `st.audio_input` emits WAV; override it if a caller feeds something
-    else, e.g. mp3/webm from a different mic widget).
+    `filename` is kept for interface compatibility with v1's callers (it was
+    a format hint for OpenAI's multipart upload); Deepgram's prerecorded
+    endpoint takes a raw buffer and does not need it, so it is currently
+    unused here.
 
     Every raw transcript is logged at INFO, unmodified by merchant
     correction -- S07's done-when needs these logs for S09's WER number, so
@@ -136,29 +163,43 @@ def transcribe(audio_bytes: bytes, filename: str = "audio.wav") -> str:
         raise ValueError("transcribe() got empty audio_bytes")
 
     client = _get_client()
-    response = client.audio.transcriptions.create(
+    response = client.listen.v1.media.transcribe_file(
+        request=audio_bytes,
         model=STT_MODEL,
-        file=(filename, audio_bytes),
-        prompt=_MERCHANT_PROMPT,
+        smart_format=True,
+        keyterm=_MERCHANT_KEYTERMS,
     )
-    raw_transcript = (getattr(response, "text", None) or str(response)).strip()
+    raw_transcript = (
+        response.results.channels[0].alternatives[0].transcript or ""
+    ).strip()
     logger.info("RAW_TRANSCRIPT: %s", raw_transcript)
     return raw_transcript
 
 
 def synthesize(text: str) -> bytes:
-    """Text -> mp3 bytes, via OpenAI tts-1, voice="nova"."""
+    """Text -> mp3 bytes, via Deepgram Aura-2 (standard, non-streaming
+    synthesis endpoint -- one text in, one full audio buffer out, same call
+    shape v1 had with tts-1)."""
     if not text:
         raise ValueError("synthesize() got empty text")
 
     client = _get_client()
-    response = client.audio.speech.create(
+    response = client.speak.v1.audio.generate(
+        text=text,
         model=TTS_MODEL,
-        voice=TTS_VOICE,
-        input=text,
-        response_format="mp3",
+        # app.py's `speak_node` consumer (S08) hardcodes
+        # `st.audio(audio_out, format="audio/mp3")` -- v1's tts-1 call used
+        # `response_format="mp3"` for the same reason. Request it explicitly
+        # rather than relying on the SDK/API's undocumented default so that
+        # contract doesn't silently break on a Deepgram-side default change.
+        encoding="mp3",
     )
-    return response.content
+    # The installed SDK's `generate()` returns `Iterator[bytes]` (a chunked
+    # response body), not an object with a `.stream`/`.getvalue()` -- this
+    # is a single-shot call site (no streaming playback), so the whole
+    # iterator is drained into one buffer before returning, matching v1's
+    # "one text in, one full audio buffer out" contract with `speak_node`.
+    return b"".join(response)
 
 
 # ---------------------------------------------------------------------------

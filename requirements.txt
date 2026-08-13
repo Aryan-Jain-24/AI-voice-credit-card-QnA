@@ -3,6 +3,7 @@ langgraph
 langchain
 langchain-openai
 openai
+deepgram-sdk
 pandas
 pyyaml
 python-dotenv
