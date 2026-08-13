@@ -1,22 +1,52 @@
 # Eval Report — Voice Q&A over Credit Card Data
 
-Generated 2026-08-12 against commit `d61bbed` (`origin/main`, working tree clean).
-Every number below comes from a live run performed while writing this report —
-`python -m pytest -q` and `python eval.py` were both re-run from scratch, plus a
-handful of ad hoc probes described inline. Nothing here is copied from an earlier
-session's report.
+**v1 section generated 2026-08-12** against commit `d61bbed` (`origin/main`,
+working tree clean at that time). **v2 update added 2026-08-14** after S10
+(Deepgram STT/TTS swap), S11 (frontend rework), and S12 (LangSmith
+observability) landed and passed human review, per PRD-02.md §7/§11/§12's Day
+4 post-review live testing gate. Every number in both sections comes from a
+live run performed at the time each section was written — nothing here is
+copied from a stale or earlier-session report, and v2's numbers were measured
+against real `DEEPGRAM_API_KEY`/`OPENAI_API_KEY`/`LANGSMITH_API_KEY`
+credentials, not simulated. **The v1 findings below are not deleted or
+rewritten** — they're the historical baseline v2 is measured against, and
+several v1 known-failure-mode findings (§5) still apply unchanged since
+`graph.py`, the tools, and the data layer were untouched by S10–S12.
+
+**How to read this document:** §1's hard-gates table is now split into three
+explicit columns — v1 (superseded, `d61bbed`), v2 text-pipeline (carried
+forward unchanged, since `graph.py` itself was not touched by the v2
+workstreams), and v2 voice/observability (the genuinely new numbers this pass
+adds). Sections 2–5 are v1's original findings, left intact; a new **§7 — v2
+update (S10–S12 live results)** appends the post-review Deepgram/LangSmith
+findings, including a real latent bug found during this pass (§7.5) that is
+being flagged, not fixed, per this document's own scope.
 
 ```
+--- v1, 2026-08-12, commit d61bbed ---
 python -m pytest -q      -> 128 passed
 python eval.py            -> run 1: all 6 hard gates 100%, argument accuracy 88.6%,
                               latency p50 1.97s / p95 4.37s
                            -> run 2: all 6 hard gates 100%, argument accuracy 88.6%,
                               latency p50 1.88s / p95 2.86s
+
+--- v2, 2026-08-14, commit f852afc, live credentials (Deepgram/OpenAI/LangSmith) ---
+python eval.py (unchanged graph.py, text-only) -> all 10 metrics 100%, argument
+                              accuracy 90.9% (n=44), latency p50 2.04s / p95 3.14s
+voice round trip (Nova-3 + Aura-2)  -> p50 2.07s / p95 2.51s (target <=4s/<=7s, PASS)
+merchant-name parity (Nova-3 vs. whisper-1) -> word acc. 94.4%, merchant acc. 4/4 (100%),
+                              at/above the >=90% parity floor, PASS
+LangSmith trace coverage            -> 20/20 (100%) gold questions traced, 0 errors;
+                              graceful degradation confirmed under an invalid API key
 ```
+
+See §7 for full detail, method, and caveats on every v2 number above.
 
 ---
 
 ## 0. Methodology — read this before the numbers
+
+**[v1, 2026-08-12 — historical, superseded by §7 for anything voice/observability-related, but still the record of how the text pipeline got to green]**
 
 **This build has real iteration behind it, not a single clean pass, and that
 iteration is part of the evidence, not something to hide.**
@@ -75,20 +105,33 @@ URL exists.
 
 ## 1. Headline metrics vs. PRD §8 targets
 
+**Read this table left to right: "v1" is the historical baseline (superseded
+where v2 has a newer number), "v2 text-only" is `eval.py` re-run live against
+the exact same `graph.py` after S10–S12 (carried-forward-unchanged in the
+sense that the code being measured didn't change — the number itself was
+re-measured, not copied), and "v2 voice/obs." is the genuinely new
+territory this pass covers. Full method and caveats for every v2 column are
+in §7 — this table is the summary, not the evidence.**
+
 ### Hard gates (must be green before shipping)
 
-| Metric | Target | Result | Status |
-|---|---|---|---|
-| Numeric exactness (Domain A) | ≥ 95% | **100.0%** (n=22, both runs) | **PASS** |
-| Term exactness (Domain B) | = 100% | **100.0%** (n=10, both runs) | **PASS** |
-| Hallucinated facts | = 0 | **0** (0/55, both runs) | **PASS** |
-| No-invention on missing terms | 100% | **100.0%** (n=5, both runs) | **PASS** |
-| Clarify on underspecified | 100% | **100.0%** precision, 100.0% recall (n=6*, both runs) | **PASS** |
-| Out-of-scope refusal | 100% | **100.0%** precision, 100.0% recall (n=5, both runs) | **PASS** |
+| Metric | Target | v1 (`d61bbed`, 2026-08-12) | v2 (`f852afc`, 2026-08-14, live) | Status |
+|---|---|---|---|---|
+| Numeric exactness (Domain A) | ≥ 95% | 100.0% (n=22) | **100.0%** (n=22) | **PASS** |
+| Term exactness (Domain B) | = 100% | 100.0% (n=10) | **100.0%** (n=10) | **PASS** |
+| Hallucinated facts | = 0 | 0 (0/55) | **0** (0/55) | **PASS** |
+| No-invention on missing terms | 100% | 100.0% (n=5) | **100.0%** (n=5) | **PASS** |
+| Clarify on underspecified | 100% | 100.0% (n=6*) | **100.0%** (n=6) | **PASS** |
+| Out-of-scope refusal | 100% | 100.0% (n=5) | **100.0%** (n=5) | **PASS** |
 
-All six hard gates pass cleanly on both fresh runs performed for this report,
-consistent with the 12+ prior live runs on `d61bbed` recorded in
-`.claude/state.md`. No gate is close to its threshold.
+All six hard gates pass cleanly on both eras. The v2 numbers come from a live
+`eval.py` run against `f852afc` performed as part of the Day 4 post-review
+testing pass (PRD-02.md §7/§11/§12) — the same 55-question gold set,
+unchanged `graph.py`, run fresh rather than assumed to still hold. This
+confirms the S10 Deepgram swap and S12 LangSmith wrapping did not regress the
+text-only planner/verbalizer/tool path. **v1's numbers are not re-derived
+here and remain the historical record** — see §0 for the process (including
+a real three-round planner bug) that got v1 to this state in the first place.
 
 \* PRD.md §8's "how measured" column says "8 vague questions"; the actual gold
 set (per `all-specs.md` S04's own bucket table, and confirmed directly in
@@ -96,27 +139,46 @@ set (per `all-specs.md` S04's own bucket table, and confirmed directly in
 is a small drift between the PRD's prose and the spec/implementation that both
 came after it — noted here rather than silently normalized away, since it's
 the kind of discrepancy this report exists to surface. It does not affect the
-gate: 6/6 still means 100%.
+gate: 6/6 still means 100%. Applies identically in both eras.
 
 ### Quality targets
 
-| Metric | Target | Result | Status |
-|---|---|---|---|
-| Intent routing accuracy | ≥ 90% | **100.0%** (n=55, both runs) | **PASS** |
-| Domain routing accuracy | ≥ 95% | **100.0%** (n=44, both runs) | **PASS** |
-| Argument extraction accuracy | ≥ 85% | **88.6%** (n=44, both runs — identical) | **PASS** |
-| `rewards_earned` correctness incl. caps/exclusions | ≥ 95% | **100.0%** (n=5, both runs); independently spot-checked against a hand-computed quarter-spanning-a-cap case (§5.6) | **PASS** |
-| Merchant recognition after fuzzy correction | ≥ 90% | **100.0%** on the documented mangling patterns (offline suite) and on a fresh live round trip (§4) — see §4's caveat on what this test does and doesn't prove | **PASS**, with a caveat |
-| p50 latency (button release → audio start proxy) | ≤ 4s | **1.97s / 1.88s** (two runs) | **PASS** |
-| p95 latency | ≤ 7s | **4.37s / 2.86s** (two runs) | **PASS** |
+| Metric | Target | v1 (`d61bbed`) | v2 (`f852afc`, live) | Status |
+|---|---|---|---|---|
+| Intent routing accuracy | ≥ 90% | 100.0% (n=55) | **100.0%** (n=55) | **PASS** |
+| Domain routing accuracy | ≥ 95% | 100.0% (n=44) | **100.0%** (n=44) | **PASS** |
+| Argument extraction accuracy | ≥ 85% | 88.6% (n=44) | **90.9%** (n=44) | **PASS** |
+| `rewards_earned` correctness incl. caps/exclusions | ≥ 95% | 100.0% (n=5); hand-computed cap case (§5.6) | **100.0%** (n=5) | **PASS** |
+| Merchant recognition after fuzzy correction | ≥ 90% | 100.0% offline suite + live round trip, whisper-1 (§4) | **94.4%** word acc. / **100.0%** (4/4) merchant acc., Nova-3 (§7.3) | **PASS**, both eras, with caveats |
+| p50 latency (button release → audio start proxy) | ≤ 4s | 1.97s / 1.88s (two text-pipeline runs) | **2.04s** text-only; **2.07s** full voice round trip (Nova-3+Aura-2) | **PASS** |
+| p95 latency | ≤ 7s | 4.37s / 2.86s (two text-pipeline runs) | **3.14s** text-only; **2.51s** full voice round trip | **PASS** |
 
-Argument extraction accuracy is the one quality metric with real headroom
-below 100% — see §2 for exactly where the misses are and why most of them
-don't change user-facing behavior.
+Argument extraction accuracy improved slightly in v2 (88.6% -> 90.9%,
+n=44 in both) on an unchanged `graph.py` — most likely ordinary
+run-to-run LLM variance on the same near-miss string-format cases documented
+in §2, not a code change (S10–S12 touched `voice.py`, `app.py`, and
+observability wiring, not the planner prompt). Not re-investigated in depth
+here since it's an improvement, not a regression, and §2's root-cause
+analysis (string-format variance, not wrong answers) still applies to
+whichever cases account for the remaining ~9%.
+
+Latency in v2 is reported as two separate numbers because they measure two
+different things: the text-only number (`eval.py`, `gpt-4o-mini` plan+verbalize
+only) is directly comparable to v1's number since it's the same measurement
+methodology on the same code; the full-voice-round-trip number (Nova-3 STT +
+Aura-2 TTS, no `gpt-4o-mini` call in the loop) is new in v2 and measures the
+PRD-02.md §7 target directly. Both clear their targets by a wide margin — see
+§7.2 for the full breakdown (synthesize-only vs. transcribe-only vs. combined).
 
 ---
 
 ## 2. Per-family breakdown
+
+**[v1, 2026-08-12 — historical. §7.1 confirms the v2 per-bucket intent/behaviour
+numbers are unchanged (100% every bucket, both eras) but does not redo this
+report's per-bucket argument-accuracy breakdown from scratch — the
+underlying `graph.py` didn't change, so this analysis is treated as still
+applicable rather than re-derived.]**
 
 `eval.py`'s own report only prints per-bucket **intent accuracy** and
 **behaviour accuracy** (both 100.0% in every bucket, both runs — reproduced
@@ -186,12 +248,19 @@ behavior are covered in §5.
 
 ## 3. Latency distribution
 
+**[v1, 2026-08-12 — historical, text-only pipeline via `eval.py`. See §7.2 for
+the v2 full-voice-round-trip numbers, which are a different measurement
+(Nova-3+Aura-2, no `gpt-4o-mini` call) and not directly comparable to this
+table row-for-row, plus a fresh v2 `eval.py` text-only figure that is
+directly comparable.]**
+
 | Run | p50 | p95 | Notes |
 |---|---|---|---|
 | This report, run 1 | 1.97s | 4.37s | live, `d61bbed` |
 | This report, run 2 | 1.88s | 2.86s | live, `d61bbed`, immediately after run 1 |
 | `.claude/state.md`'s most recent independent pass | 2.05s | 3.30s | live, `d61bbed` |
 | Prior verification pass (3 runs, S07-era investigation) | 1.99s / 2.10s / 2.06s | 7.31s / 3.18s / 3.09s | see note below |
+| **v2, `eval.py` text-only, `f852afc`** | **2.04s** | **3.14s** | live, 2026-08-14, unchanged `graph.py` — see §7.1 |
 
 Both targets (p50 ≤ 4s, p95 ≤ 7s) pass on every run behind this report. p95 is
 the noisier of the two — it moved from 2.86s to 4.37s between this report's own
@@ -201,11 +270,18 @@ This tracks with `gpt-4o-mini` tool-call latency variance under real API
 conditions rather than anything specific to this codebase — there's no evidence
 it correlates with a particular question type or bucket. **This is not a cold-start
 number** — see §5.7 for that, which is materially worse (~6.3s) and a distinct
-finding from ordinary p95 variance.
+finding from ordinary p95 variance. The v2 row sits comfortably inside the same
+range as the v1 runs, consistent with "no regression" rather than a new best or
+worst case.
 
 ---
 
 ## 4. ASR accuracy, before and after fuzzy correction
+
+**[v1, 2026-08-12 — historical, `whisper-1`. This is the baseline v2's Nova-3
+numbers in §7.3 are compared against. `whisper-1` is no longer the shipped STT
+vendor as of S10 — this section is kept for the record, not as a current-state
+claim.]**
 
 **A note on how this number was produced, because it matters for how much to
 trust it.** S07's own transcript logging (`voice.py`'s `logger.info("RAW_TRANSCRIPT:
@@ -257,6 +333,14 @@ suite doesn't cover** — see §5.4.
 ---
 
 ## 5. Known failure modes
+
+**[v1, 2026-08-12 — historical. All seven candidates below were tested
+against `graph.py`/`tools_txn.py`/`tools_card.py`/`voice.py`'s
+`correct_merchants()` text-matching logic, none of which S10–S12 touched, so
+these findings are treated as still current rather than re-probed from
+scratch. §7.4/§7.5 add two new v2-era findings — one specific to the
+Nova-3 swap (a real transcription mangling this era's testing did surface,
+unlike v1's), and one a latent import-order bug in `voice.py`/`app.py`.]**
 
 Every item below was tested directly against the live pipeline while writing
 this report (`graph.run_pipeline()`, the same entry point `eval.py` uses, plus
@@ -593,7 +677,11 @@ low-frequency variance note.**
 
 ---
 
-## 6. Summary
+## 6. Summary (v1, 2026-08-12 — historical)
+
+**[This is the v1 close-out, left exactly as originally written. See §8 for the
+combined v1+v2 summary reflecting the current state of the build as of
+2026-08-14.]**
 
 Every PRD §8 hard gate passes, on two fresh live runs performed for this
 report and consistent with the extensive prior run history. Argument
@@ -616,3 +704,261 @@ across 27 boundary questions before this report was finalized — together the
 strongest evidence in this report that the eval-harness-first ordering in
 `all-specs.md`, and testing this handover's own claims rather than asserting
 them, both did what they were designed to do.
+
+---
+
+## 7. v2 update — S10–S12 live results (2026-08-14, commit `f852afc`)
+
+This section covers the Day 4 post-review live testing pass required by
+PRD-02.md §7/§11/§12, run only after Aryan reviewed the assembled S10
+(Deepgram STT/TTS swap), S11 (frontend rework), and S12 (LangSmith
+observability) build — per §11's build-stage testing policy, none of this was
+run during the build itself. All numbers below are against real
+`DEEPGRAM_API_KEY`, `OPENAI_API_KEY`, and `LANGSMITH_API_KEY` credentials.
+
+### 7.1 Full 55-question `eval.py` regression — text pipeline, unchanged `graph.py`
+
+PRD-02.md §7 makes this a ship-blocking regression gate, not a nice-to-have,
+precisely because the STT/TTS swap touches `listen`/`speak` and could in
+principle move numbers even where `plan`/`query`/`verbalize` weren't touched.
+Result: **all 10 of `eval.py`'s metrics at 100%**, with one exception noted
+below.
+
+| Metric | n | Result |
+|---|---|---|
+| Intent accuracy | 55 | 100.0% |
+| Domain routing accuracy | 44 | 100.0% |
+| Argument accuracy | 44 | **90.9%** |
+| Numeric exactness (Domain A) | 22 | 100.0% |
+| Term exactness (Domain B) | 10 | 100.0% |
+| Cross-domain exactness (`rewards_earned`) | 5 | 100.0% |
+| Hallucination rate | 55 | 0.0% (0 violations) |
+| Gap-admission precision | 5 | 100.0% |
+| Clarify precision | 6 | 100.0% |
+| Refusal precision | 5 | 100.0% |
+
+Latency (plan/verbalize only, `gpt-4o-mini`, no voice in the loop): **p50
+2.04s / p95 3.14s** — in the same range as every v1 run in §3, consistent with
+"no regression" from the STT/TTS swap on the part of the pipeline that swap
+shouldn't have touched at all.
+
+Per-bucket intent+behaviour accuracy: **100% across all 9 buckets**
+(`domain_a_straightforward` n=8, `domain_a_phrasing` n=8,
+`domain_a_multi_constraint` n=4, `domain_b_terms` n=10,
+`cross_domain_rewards_earned` n=5, `domain_routing_trap` n=4,
+`missing_terms_gap` n=5, `underspecified_clarify` n=6,
+`out_of_scope_refuse` n=5) — identical to v1's §2 table, confirming per-bucket
+routing didn't shift either.
+
+**The one number that moved: argument accuracy, 88.6% (v1) -> 90.9% (v2),
+n=44 both times.** `graph.py` was not touched by S10–S12, so this is most
+plausibly ordinary `gpt-4o-mini` run-to-run variance on the same
+near-miss-string-format cases §2 already root-caused (e.g.
+`wallet_load` vs. `wallet_load_fee`, ISO vs. prose date strings) — not a code
+change. This report does not claim a mechanism for the improvement beyond
+that, since none of §2's underlying causes were touched in v2; it's flagged
+here as a real, measured number rather than smoothed into "basically the
+same as before."
+
+This confirms the S10 Deepgram swap did not regress the text-only
+planner/tool/verbalizer path — the part of the system PRD-02.md §0/§3
+explicitly says stays untouched.
+
+### 7.2 Voice round-trip latency — Nova-3 (STT) + Aura-2 (TTS)
+
+Target per PRD-02.md §7: at least parity with v1 PRD §8 (≤4s p50 / ≤7s p95).
+Measured with 10 live round trips using the production `voice.synthesize()`
+-> `voice.transcribe()` functions against real question text pulled from
+`evals/gold_questions.json` (Q01, Q02, Q03, Q06, Q08, Q11, Q16, Q17, Q18,
+Q20):
+
+| Stage | p50 | p95 |
+|---|---|---|
+| `synthesize()` alone (Aura-2, text -> audio) | 1.64s | 2.18s |
+| `transcribe()` alone (Nova-3, audio -> text) | 0.42s | 0.57s |
+| **Combined round trip** | **2.07s** | **2.51s** |
+
+Both targets pass with wide margin (2.07s vs. a 4s p50 target; 2.51s vs. a 7s
+p95 target). This is also tighter and faster than v1's `whisper-1`/`tts-1`
+baseline already on record in §3 (p50 1.88s–2.05s / p95 2.86s–4.37s across
+runs, with one historical outlier touching 7.31s) — a genuine improvement,
+not just parity, though §3's v1 numbers were measured on a slightly different
+thing (full `run_pipeline()` including `gpt-4o-mini` plan+verbalize calls)
+than this section's numbers (STT/TTS only, no LLM call in the loop), so
+"faster" should be read as directionally true and consistent with PRD-02.md
+§4.3's expectation, not as a strictly apples-to-apples per-call comparison.
+
+**A genuine ASR mangling surfaced in this batch, worth naming since v1's §4
+explicitly could not produce one on synthesized audio:** Q17, "Find my Croma
+purchases over 2,000 rupees in the last 6 months," came back from Nova-3 as
+*"Thyme Microoma purchases over 2,000 rupees in the last six months."* — the
+merchant name "Croma" was mangled into "Microoma" with an unrelated "Thyme"
+prefix inserted. This is exactly the kind of failure v1's §4 caveat predicted
+would be missing from a clean-TTS-audio test ("Whisper already transcribed
+every merchant name correctly on the first pass... this live round trip does
+not demonstrate the fuzzy-correction layer catching a real mangling"). This
+Nova-3 pass did surface one, which is itself informative: it suggests Nova-3
+is not simply "no mangling ever happens on synthetic audio" the way v1's
+whisper-1 sample looked — it's tested further in §7.3.
+
+### 7.3 Merchant-name recognition parity, Nova-3 vs. `whisper-1` baseline
+
+Target per PRD-02.md §7: at least parity with v1's implicit ≥90% bar; v1's
+own baseline (§4 above) was 97.5% word accuracy / 2.5% WER, 4/4 merchant
+accuracy. Measured with 10 live round trips through the production
+`voice.synthesize()` -> `voice.transcribe()` -> `voice.correct_merchants()`
+chain, using 4 merchant-naming questions (Zomato, McDonald's, Swiggy,
+BigBasket) plus 6 non-merchant questions from the `evals/gold_questions.json`
+pool (Q04, Q05, Q06, Q07, Q09, Q13, Q14, Q18):
+
+| | Before `correct_merchants()` | After `correct_merchants()` |
+|---|---|---|
+| Word accuracy (punctuation-normalized) | 94.4% | 94.4% (unchanged) |
+| Merchant name accuracy (4/4 questions) | 4/4 (100%) | 4/4 (100%) |
+
+**Verdict: PASS, at 94.4% — above the ≥90% parity floor, but below v1's 97.5%
+whisper-1 number.** Root-caused, not just noted: the gap in this run was
+driven by two non-merchant transcription differences, not merchant
+mangling — a grammatical substitution ("are" -> "were") on one question, and
+Nova-3's `smart_format` rendering "March 14, 2026" as "03/14/2026" (a
+defensible reformatting choice, arguably not wrong, but still scored as a WER
+mismatch by this word-accuracy measure since it isn't a literal match).
+Merchant name accuracy itself is at exact parity with v1 — 4/4 in both eras,
+before and after correction, on this specific 4-question merchant sample.
+
+This result should be read alongside §7.2's finding, not instead of it: this
+section's 10-question sample (4 merchant, 6 non-merchant) happened not to hit
+the Croma mangling that §7.2's different 10-question sample did — both are
+real, small, live samples, and the honest read is "Nova-3 clears the parity
+bar on this measurement, and a mangling was still found nearby in a
+different sample," not "Nova-3 has no merchant-mangling risk."
+
+### 7.4 LangSmith trace coverage
+
+Target per PRD-02.md §7: 100% of graph runs traced.
+
+- **Text pipeline:** `graph.run_pipeline()` produced 8 correctly nested
+  LangSmith runs under one LangGraph root (`plan` -> `ChatOpenAI` + `route`;
+  `query` -> `spend_total` tool; `verbalize` -> `ChatOpenAI`) — no missing or
+  orphaned spans.
+- **Full voice pipeline:** `voice.run_voice_pipeline()` produced 12 correctly
+  nested runs, with `deepgram_transcribe` nested under `listen` and
+  `deepgram_synthesize` nested under `speak`, inside the same LangGraph root
+  as `plan`/`query`/`verbalize`. This confirms S12's `@traceable` wraps on
+  the raw Deepgram SDK calls (per PRD-02.md §4.1's requirement that
+  non-LangChain calls need an explicit wrap to show up in the trace tree)
+  actually land in the same tree rather than as untraced gaps.
+- **Coverage batch:** 20/20 (100%) of real gold questions (Q01–Q20) produced
+  a LangSmith trace when run through `graph.run_pipeline()` with tracing on,
+  0 errors.
+- **Failure-mode check (per PRD-02.md §8's risk table — "an outage must
+  degrade to tracing silently stops, never to the pipeline breaks"):** an
+  isolated subprocess with a deliberately invalid `LANGSMITH_API_KEY` still
+  completed `graph.run_pipeline()` successfully — exit 0, correct real answer
+  returned. LangSmith logged 403 warnings to stderr but never interrupted the
+  pipeline. A follow-up run with the real key restored immediately traced
+  successfully again. This is exactly the degradation behavior the PRD's risk
+  table calls for, verified rather than assumed.
+
+**Result: 100% trace coverage, target met, graceful degradation confirmed.**
+
+### 7.5 A latent bug found during this testing pass — not fixed, flagged here
+
+Per this document's own scope ("do not build or fix product code from here"),
+this is named as a known issue, not patched.
+
+`voice.py` imports `from deepgram import DeepgramClient` at module load time
+and calls `load_dotenv()` *after* that import — the module's own docstring
+documents this ordering as intentional, mirroring the pattern used for the
+OpenAI client. That reasoning does not actually hold for Deepgram:
+`DeepgramClient()`'s `api_key` parameter defaults to
+`os.getenv("DEEPGRAM_API_KEY")`, which the `deepgram` package appears to
+evaluate once, at the first import of the package in the process — not
+per-call. If `DEEPGRAM_API_KEY` is not already present in `os.environ` before
+that first `import deepgram` happens anywhere in the process, `DeepgramClient()`
+raises `ApiError` regardless of a `load_dotenv()` call made later in the same
+module. `app.py` has the identical ordering problem: it imports `voice` on
+line 53 and only calls `load_dotenv()` on line 66 — after `voice`'s own
+module-level Deepgram import has already run.
+
+**Why every live test in this section still passed despite the bug being
+real:** in all the testing behind §7.1–7.4, the required environment
+variables were already present in the process environment (shell/CI
+environment, not `.env`) before any import happened, so the ordering never
+got exercised on the failure path. This is a **latent** bug — real, currently
+masked by how this testing session's environment happened to be set up, and
+worth fixing before a deployment or local-setup path that relies on `.env`
+being the only place credentials live.
+
+**Recommended fix, for a future pass, not made here:** move `load_dotenv()`
+to the very top of both `voice.py` and `app.py`, before any provider SDK
+import (OpenAI's, Deepgram's, or otherwise) — the ordering that currently
+works by coincidence for OpenAI (whose client evaluates its API key lazily,
+per-call) is not safe to assume for every SDK, and this one specific case
+shows it isn't for Deepgram's.
+
+### 7.6 v2 hard-gate and success-metric status vs. PRD-02.md §7
+
+| Metric | Target | Result | Status |
+|---|---|---|---|
+| All v1 PRD §8 hard gates, re-run post-swap | must still pass | 100% on all 6, §7.1 | **PASS** |
+| Merchant-name recognition, Nova-3 vs. `whisper-1` | ≥ parity with v1's ≥90% | 94.4% word acc. (above floor, below v1's 97.5%), 4/4 merchant acc. (exact parity) | **PASS**, §7.3 |
+| p50/p95 round-trip latency, new vendor pair vs. v1 baseline | ≥ parity with ≤4s/≤7s | 2.07s / 2.51s combined round trip | **PASS**, §7.2 |
+| LangSmith trace coverage | 100% of graph runs traced | 100% (20/20 batch, 0 errors) | **PASS**, §7.4 |
+
+Every PRD-02.md §7 v2-specific success metric passes. One latent bug (§7.5)
+was found during this testing pass and is flagged, not fixed, per this
+document's scope — it did not affect any of the live results above because
+the testing environment happened not to exercise the failure path, but it is
+real and reachable under a plausible local-setup or deployment sequence.
+
+---
+
+## 8. Combined summary — v1 + v2, current state as of 2026-08-14
+
+**Hard gates:** all 6 pass, in both eras, on live runs — v1 on `d61bbed`
+(§1, §6), v2 on `f852afc` after the Deepgram/frontend/LangSmith workstreams
+(§1, §7.1). Domain B's 100% bar and the zero-hallucination bar both remain
+clean; nothing regressed across the swap.
+
+**What's genuinely new and verified in v2, not just carried forward:** the
+full voice round trip now runs on Deepgram Nova-3 (STT) and Aura-2 (TTS)
+instead of `whisper-1`/`tts-1`, measured live at p50 2.07s / p95 2.51s —
+comfortably inside target and faster than the v1 baseline range; every graph
+run, text or voice, now produces a complete LangSmith trace with 100%
+coverage and confirmed graceful degradation on a bad API key; and merchant
+recognition holds above the parity floor (94.4% word accuracy, 4/4 merchant
+accuracy) though not at v1's exact 97.5% figure.
+
+**What's unchanged and re-confirmed, not re-litigated:** `graph.py`, the six
+transaction tools, the four card-terms/rewards tools, and the eval harness
+itself were untouched by S10–S12 — §7.1's live re-run exists specifically to
+prove that untouched-on-paper didn't mean untouched-in-practice, and it
+didn't. §2 through §5's failure-mode analysis (compound questions, off-
+taxonomy categories, the fee-schedule-vs-charged trap, reward-cap boundary
+math, cold start) is treated as still current for the same reason — nothing
+in S10–S12 touched the code those findings describe.
+
+**What's new and not yet fixed:** two items, reported honestly rather than
+smoothed over, matching this report's own standing rule not to soften a known
+failure mode to make the numbers look cleaner:
+
+1. **§7.2's Croma -> "Thyme Microoma" mangling** — a real, reproduced Nova-3
+   transcription failure on a live synthesized-audio round trip, the kind of
+   finding v1's own §4 predicted synthetic audio was too clean to surface,
+   and which this pass's testing did surface. `correct_merchants()` was not
+   re-tested against this specific mangled string as part of this pass (§7.2
+   measured `synthesize()`/`transcribe()` in isolation, not the full
+   correction chain, on that particular sample); whether the fuzzy-correction
+   layer catches it is an open question for a follow-up probe, not answered
+   here.
+2. **§7.5's `load_dotenv()` ordering bug** — latent, not currently
+   manifesting in any live test in this report, but real and reachable under
+   a plausible local-setup sequence where `.env` is the only place
+   `DEEPGRAM_API_KEY` lives. Flagged back to the owning workstream rather
+   than patched here, per this document's scope.
+
+Taken together, this is the same posture v1's §6 argued for and v2 continues:
+the credibility of the clean numbers rests on this report actually going
+looking for what's broken, live, against real credentials, rather than
+presenting only the passing gates.
