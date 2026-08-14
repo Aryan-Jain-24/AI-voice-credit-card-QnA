@@ -311,6 +311,15 @@ if not HAS_API_KEY:
         "locally, or add it to this app's Streamlit secrets when deployed."
     )
 
+# Placeholder declared here, at the top of the page, so the transcript/answer
+# (or the idle instructions) always render above the fold -- the mic bar
+# below is fixed and centered on the viewport, so anything written into the
+# normal document flow after it can end up visually parked underneath it on
+# short pages. Streamlit lets a container be filled later in the script
+# while still rendering at the position it was declared, so `result_area` is
+# populated further down but always appears here.
+result_area = st.container()
+
 st.markdown(MIC_BUTTON_CSS, unsafe_allow_html=True)
 audio_value = st.audio_input(
     "Ask a question",
@@ -342,7 +351,7 @@ if new_audio_bytes is not None:
         result = run_turn(progress, audio_bytes=new_audio_bytes)
     except Exception as exc:
         progress.empty()
-        st.error(f"Couldn't process that: {exc}")
+        result_area.error(f"Couldn't process that: {exc}")
         result = None
     if result is not None:
         st.session_state["last_result"] = result
@@ -354,19 +363,20 @@ elif clicked_question is not None:
         result = run_turn(progress, transcript=clicked_question)
     except Exception as exc:
         progress.empty()
-        st.error(f"Couldn't process that: {exc}")
+        result_area.error(f"Couldn't process that: {exc}")
         result = None
     if result is not None:
         st.session_state["last_result"] = result
         st.session_state["last_result_heard_via_mic"] = False
 
 if st.session_state["last_result"] is not None:
-    render_result(
-        st.session_state["last_result"],
-        heard_via_mic=st.session_state["last_result_heard_via_mic"],
-    )
+    with result_area:
+        render_result(
+            st.session_state["last_result"],
+            heard_via_mic=st.session_state["last_result_heard_via_mic"],
+        )
 else:
-    st.caption(
+    result_area.caption(
         "Hold the mic bar (center of the screen) to ask a question, or "
         "pick an example from the sidebar."
     )
