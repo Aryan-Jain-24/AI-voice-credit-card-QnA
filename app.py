@@ -77,16 +77,19 @@ st.set_page_config(page_title="Voice Q&A over Credit Card Data", page_icon="\U00
 
 
 # ---------------------------------------------------------------------------
-# S11 -- mic button restyle. CSS-only restyle of the native st.audio_input
+# S11 -- mic control restyle. CSS-only restyle of the native st.audio_input
 # widget (per .claude/agents/frontend-redesign.md: confirmed approach is CSS
 # via st.markdown(unsafe_allow_html=True) targeting the widget's DOM wrapper
 # -- no streamlit-webrtc, no custom component). Detaches the widget from the
-# main input row into a persistent, floating, circular button and colors it
-# by state:
-#   - idle: neutral blue circle, just the record control.
+# main input row into a persistent, floating bar, centered on the screen,
+# and colors it by state:
+#   - idle: neutral blue bar, just the record control.
 #   - recording: the widget's own waveform/timecode only render once a
 #     recording is in progress, so their presence in the DOM is used as the
 #     state hook (:has()) to swap in the active red color -- no JS needed.
+#     The same state hook drives a "Listening..." label rendered via ::after
+#     below the bar, so no extra DOM element (and no sibling-selector
+#     fragility) is needed to show it.
 # The underlying record-on-click-hold-release behavior is untouched; this is
 # a restyle, not a reimplementation.
 # ---------------------------------------------------------------------------
@@ -95,14 +98,15 @@ MIC_BUTTON_CSS = """
 <style>
 div[data-testid="stAudioInput"] {
     position: fixed;
-    right: 1.75rem;
-    bottom: 1.75rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 9999;
-    width: 92px;
-    border-radius: 46px;
+    width: min(420px, 80vw);
+    border-radius: 14px;
     background-color: #1f6feb;   /* idle: neutral blue */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
-    padding: 6px;
+    padding: 10px 16px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 div[data-testid="stAudioInput"] label {
@@ -120,17 +124,29 @@ div[data-testid="stAudioInput"] [data-testid="stAudioInputWaveformTimeCode"] {
     font-size: 0.7rem;
 }
 /* recording state -- waveform/timecode nodes only exist while a recording
-   is in progress or was just captured, so their presence flips the color */
+   is in progress or was just captured, so their presence flips the color
+   and reveals the "Listening..." label below the bar */
 div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveSurfer"]),
 div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveformTimeCode"]) {
     background-color: #e5484d;   /* recording: red */
     box-shadow: 0 4px 22px rgba(229, 72, 77, 0.55);
 }
+div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveSurfer"])::after,
+div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveformTimeCode"])::after {
+    content: "Listening...";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.6rem;
+    color: #e5484d;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
 @media (max-width: 640px) {
     div[data-testid="stAudioInput"] {
-        right: 1rem;
-        bottom: 1rem;
-        width: 76px;
+        width: 90vw;
     }
 }
 </style>
@@ -339,6 +355,6 @@ if st.session_state["last_result"] is not None:
     )
 else:
     st.caption(
-        "Hold the round mic button (bottom right) to ask a question, or "
+        "Hold the mic bar (center of the screen) to ask a question, or "
         "pick an example from the sidebar."
     )
