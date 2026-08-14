@@ -84,30 +84,42 @@ st.set_page_config(page_title="Voice Q&A over Credit Card Data", page_icon="\U00
 # main input row into a persistent, floating bar, centered on the screen,
 # and colors it by state:
 #   - idle: neutral blue bar, just the record control.
-#   - recording: the widget's own waveform/timecode only render once a
-#     recording is in progress, so their presence in the DOM is used as the
-#     state hook (:has()) to swap in the active red color -- no JS needed.
-#     The same state hook drives a "Listening..." label rendered via ::after
-#     below the bar, so no extra DOM element (and no sibling-selector
-#     fragility) is needed to show it.
+#   - recording: the widget swaps its "Record" button for a "Stop recording"
+#     button (aria-label changes) only while actively capturing audio -- that
+#     aria-label, not the waveform/timecode (which stay in the DOM after the
+#     recording is captured too), is the precise state hook, via :has(), for
+#     the active-red color and the "Listening..." label rendered via ::after
+#     below the bar. Both disappear the moment recording stops, since the
+#     button reverts to "Record" -- no JS needed.
+# The output st.audio player (data-testid="stAudio", a plain <audio> element)
+# gets the same bar treatment -- same width/radius/background/shadow -- fixed
+# directly below the mic bar so the two form one vertically stacked, matching
+# pair instead of overlapping.
 # The underlying record-on-click-hold-release behavior is untouched; this is
 # a restyle, not a reimplementation.
 # ---------------------------------------------------------------------------
 
 MIC_BUTTON_CSS = """
 <style>
-div[data-testid="stAudioInput"] {
+div[data-testid="stAudioInput"],
+audio[data-testid="stAudio"] {
     position: fixed;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     z-index: 9999;
     width: min(420px, 80vw);
     border-radius: 14px;
     background-color: #1f6feb;   /* idle: neutral blue */
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
-    padding: 10px 16px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+div[data-testid="stAudioInput"] {
+    top: calc(50% - 80px);
+    padding: 10px 16px;
+}
+audio[data-testid="stAudio"] {
+    top: calc(50% + 10px);
+    padding: 6px 16px;
 }
 div[data-testid="stAudioInput"] label {
     display: none;
@@ -123,16 +135,15 @@ div[data-testid="stAudioInput"] [data-testid="stAudioInputWaveformTimeCode"] {
     color: #ffffff;
     font-size: 0.7rem;
 }
-/* recording state -- waveform/timecode nodes only exist while a recording
-   is in progress or was just captured, so their presence flips the color
-   and reveals the "Listening..." label below the bar */
-div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveSurfer"]),
-div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveformTimeCode"]) {
+/* recording state -- the "Stop recording" button only exists while a
+   recording is actively in progress, so its presence flips the color and
+   reveals the "Listening..." label below the bar; both revert the instant
+   recording stops (button reverts to "Record") */
+div[data-testid="stAudioInput"]:has([aria-label="Stop recording"]) {
     background-color: #e5484d;   /* recording: red */
     box-shadow: 0 4px 22px rgba(229, 72, 77, 0.55);
 }
-div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveSurfer"])::after,
-div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveformTimeCode"])::after {
+div[data-testid="stAudioInput"]:has([aria-label="Stop recording"])::after {
     content: "Listening...";
     position: absolute;
     top: 100%;
@@ -145,7 +156,8 @@ div[data-testid="stAudioInput"]:has([data-testid="stAudioInputWaveformTimeCode"]
     white-space: nowrap;
 }
 @media (max-width: 640px) {
-    div[data-testid="stAudioInput"] {
+    div[data-testid="stAudioInput"],
+    audio[data-testid="stAudio"] {
         width: 90vw;
     }
 }
