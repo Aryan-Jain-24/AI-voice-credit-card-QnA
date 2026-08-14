@@ -159,7 +159,7 @@ div[data-testid="stAudioInput"]:has([aria-label="Stop recording"])::after {
    bar, matching its width, so it never lands behind either bar */
 div.st-key-result_area {
     position: fixed;
-    top: calc(50% + 70px);
+    top: calc(50% + 130px);
     left: 50%;
     transform: translateX(-50%);
     width: min(420px, 80vw);
@@ -174,7 +174,7 @@ div.st-key-result_area {
         width: 90vw;
     }
     div.st-key-result_area {
-        top: calc(50% + 60px);
+        top: calc(50% + 120px);
         width: 90vw;
     }
 }
