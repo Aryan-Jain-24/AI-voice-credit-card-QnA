@@ -155,9 +155,26 @@ div[data-testid="stAudioInput"]:has([aria-label="Stop recording"])::after {
     font-weight: 600;
     white-space: nowrap;
 }
+/* transcript/answer (or idle instructions) -- fixed below the output audio
+   bar, matching its width, so it never lands behind either bar */
+div.st-key-result_area {
+    position: fixed;
+    top: calc(50% + 70px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(420px, 80vw);
+    max-height: 30vh;
+    overflow-y: auto;
+    z-index: 9998;
+    text-align: center;
+}
 @media (max-width: 640px) {
     div[data-testid="stAudioInput"],
     audio[data-testid="stAudio"] {
+        width: 90vw;
+    }
+    div.st-key-result_area {
+        top: calc(50% + 60px);
         width: 90vw;
     }
 }
@@ -311,14 +328,16 @@ if not HAS_API_KEY:
         "locally, or add it to this app's Streamlit secrets when deployed."
     )
 
-# Placeholder declared here, at the top of the page, so the transcript/answer
-# (or the idle instructions) always render above the fold -- the mic bar
-# below is fixed and centered on the viewport, so anything written into the
-# normal document flow after it can end up visually parked underneath it on
-# short pages. Streamlit lets a container be filled later in the script
-# while still rendering at the position it was declared, so `result_area` is
-# populated further down but always appears here.
-result_area = st.container()
+# Placeholder for the transcript/answer (or the idle instructions). Both the
+# mic bar and the output audio bar are fixed to the viewport, so normal
+# document flow -- regardless of where in the script this is declared or
+# filled -- can end up rendered underneath them on short pages. `key=` gives
+# this container an addressable "st-key-result_area" CSS class (see
+# MIC_BUTTON_CSS below), which fixes it to the viewport too, anchored below
+# the output audio bar, so it never lands behind either bar. Streamlit lets a
+# container be filled later in the script while still rendering at the
+# position/style declared here, so this is populated further down.
+result_area = st.container(key="result_area")
 
 st.markdown(MIC_BUTTON_CSS, unsafe_allow_html=True)
 audio_value = st.audio_input(
